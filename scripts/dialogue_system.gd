@@ -16,6 +16,7 @@ func _ready() -> void:
 	else:
 		$DialogueBox/MarginContainer/HBoxContainer/CharacterDetails/Portrait.texture = image
 		$DialogueBox/MarginContainer/HBoxContainer/CharacterDetails/Name.text = characterName
+		$DialogueBox/MarginContainer/HBoxContainer/CharacterDetails.show()
 
 func start() -> void:
 	show()

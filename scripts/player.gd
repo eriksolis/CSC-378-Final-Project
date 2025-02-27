@@ -9,6 +9,7 @@ var health = 6
 const SPEED = 150.0
 var tween
 var heartArray = []
+signal restart
 @onready var fireball = load("res://scenes/fireball.tscn")
 @onready var heart = load("res://scenes/heart.tscn")
 
@@ -110,9 +111,11 @@ func hit(damage):
 	tween.tween_property($Sprite, "modulate:v", 1, 0.2)
 	health -= damage
 	updateHealth()
+	await tween.finished
 	if health == 0:
 		# END GAME
-		get_tree().paused = true
+		# currently just takes you back to the title screen
+		restart.emit()
 
 ## RESET FIRE
 func _on_wand_animation_finished() -> void:

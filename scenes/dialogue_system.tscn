@@ -40,6 +40,7 @@ layout_mode = 2
 theme_override_constants/separation = 50
 
 [node name="CharacterDetails" type="VBoxContainer" parent="DialogueBox/MarginContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Portrait" type="TextureRect" parent="DialogueBox/MarginContainer/HBoxContainer/CharacterDetails"]

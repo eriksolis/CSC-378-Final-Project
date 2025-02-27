@@ -248,6 +248,7 @@ position = Vector2(33, -33)
 [node name="PlayerUI" type="CanvasLayer" parent="."]
 
 [node name="Placeholder" type="Control" parent="PlayerUI"]
+editor_description = "Placeholder for preventing CanvasLayer drawing from having issues on older devices."
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
