@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdhrvr5blpgm7"]
+
+[ext_resource type="Texture2D" uid="uid://4jf81f6ie3cl" path="res://images/summon/001.png" id="1_1h8f3"]
+[ext_resource type="Script" path="res://scripts/summon_circle.gd" id="2_ekidl"]
+[ext_resource type="Texture2D" uid="uid://c1ionbfprlcxy" path="res://images/summon/000.png" id="3_faq67"]
+
+[sub_resource type="Animation" id="Animation_ybg60"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Glow:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jpk6g"]
+resource_name = "fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.784314)]
+}
+
+[sub_resource type="Animation" id="Animation_3o52e"]
+resource_name = "summon"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Glow:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.196078)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_acc5b"]
+_data = {
+"RESET": SubResource("Animation_ybg60"),
+"fadein": SubResource("Animation_jpk6g"),
+"summon": SubResource("Animation_3o52e")
+}
+
+[node name="Summon" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0)
+z_index = -1
+y_sort_enabled = true
+position = Vector2(0, 42)
+texture = ExtResource("1_1h8f3")
+offset = Vector2(0, -42)
+script = ExtResource("2_ekidl")
+
+[node name="Glow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+y_sort_enabled = true
+texture = ExtResource("3_faq67")
+offset = Vector2(0, -42)
+
+[node name="SummonManager" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_acc5b")
+}
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -47)

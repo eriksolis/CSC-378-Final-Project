@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://7vlrnty15x2h"]
+
+[ext_resource type="PackedScene" uid="uid://boafl0ap4dpbv" path="res://scenes/slime.tscn" id="1_gb4t7"]
+[ext_resource type="PackedScene" uid="uid://cscudlnjgjbj1" path="res://scenes/player.tscn" id="2_5wvsr"]
+[ext_resource type="PackedScene" uid="uid://bdhrvr5blpgm7" path="res://scenes/summon.tscn" id="3_yanxi"]
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("2_5wvsr")]
+position = Vector2(524, 545)
+
+[node name="Slime" parent="." instance=ExtResource("1_gb4t7")]
+position = Vector2(1660, 305)
+
+[node name="Slime2" parent="." instance=ExtResource("1_gb4t7")]
+position = Vector2(1092, 226)
+type = 1
+
+[node name="Slime3" parent="." instance=ExtResource("1_gb4t7")]
+position = Vector2(1021, 723)
+type = 2
+
+[node name="Summon" parent="." instance=ExtResource("3_yanxi")]
+position = Vector2(855, 574)
