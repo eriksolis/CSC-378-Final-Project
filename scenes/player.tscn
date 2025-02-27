@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cscudlnjgjbj1"]
+[gd_scene load_steps=49 format=3 uid="uid://cscudlnjgjbj1"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ck705"]
 [ext_resource type="Texture2D" uid="uid://ly1rvorwqk67" path="res://images/player/back_idle/000.png" id="2_5pw4f"]
@@ -41,6 +41,10 @@
 [ext_resource type="Texture2D" uid="uid://rqh331h18jry" path="res://images/wand/001.png" id="39_pju5a"]
 [ext_resource type="Texture2D" uid="uid://dfvxxsiqwkjqn" path="res://images/wand/002.png" id="40_7h8oj"]
 [ext_resource type="Texture2D" uid="uid://cux66cl13xrha" path="res://images/wand/003.png" id="41_km8xd"]
+[ext_resource type="Texture2D" uid="uid://bxdwdw2pky1sl" path="res://images/buttons/normal.png" id="42_ciwnk"]
+[ext_resource type="Texture2D" uid="uid://dxx36sdj4e7au" path="res://images/buttons/pressed.png" id="43_n51px"]
+[ext_resource type="Texture2D" uid="uid://csllubqt7utyk" path="res://images/buttons/hover.png" id="44_vhvbs"]
+[ext_resource type="FontFile" uid="uid://b1ae4tx6npay3" path="res://JacquardaBastarda9-Regular.ttf" id="45_glsb0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p1bda"]
 animations = [{
@@ -264,4 +268,123 @@ offset_right = 351.0
 offset_bottom = 69.0
 theme_override_constants/separation = 10
 
+[node name="RestartMenu" type="ColorRect" parent="PlayerUI"]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.219608)
+
+[node name="RestartButton" type="TextureButton" parent="PlayerUI/RestartMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = 99.0
+offset_right = 138.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+focus_mode = 0
+texture_normal = ExtResource("42_ciwnk")
+texture_pressed = ExtResource("43_n51px")
+texture_hover = ExtResource("44_vhvbs")
+texture_disabled = ExtResource("43_n51px")
+texture_focused = ExtResource("44_vhvbs")
+
+[node name="RestartText" type="Label" parent="PlayerUI/RestartMenu/RestartButton"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -28.0
+offset_right = 26.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("45_glsb0")
+theme_override_font_sizes/font_size = 60
+text = "Restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TitleButton" type="TextureButton" parent="PlayerUI/RestartMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = 220.0
+offset_right = 138.0
+offset_bottom = 298.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+focus_mode = 0
+texture_normal = ExtResource("42_ciwnk")
+texture_pressed = ExtResource("43_n51px")
+texture_hover = ExtResource("44_vhvbs")
+texture_disabled = ExtResource("43_n51px")
+texture_focused = ExtResource("44_vhvbs")
+
+[node name="TitleText" type="Label" parent="PlayerUI/RestartMenu/TitleButton"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -28.0
+offset_right = 26.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("45_glsb0")
+theme_override_font_sizes/font_size = 60
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="RestartMessage" type="Label" parent="PlayerUI/RestartMenu"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.5
+offset_top = 314.0
+offset_right = 256.5
+offset_bottom = 555.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("45_glsb0")
+theme_override_font_sizes/font_size = 90
+text = "You are dead..."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [connection signal="animation_finished" from="Wand" to="." method="_on_wand_animation_finished"]
+[connection signal="button_down" from="PlayerUI/RestartMenu/RestartButton" to="." method="_on_restart_button_button_down"]
+[connection signal="button_down" from="PlayerUI/RestartMenu/TitleButton" to="." method="_on_title_button_button_down"]

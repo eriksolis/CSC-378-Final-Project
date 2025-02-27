@@ -10,10 +10,12 @@ const SPEED = 150.0
 var tween
 var heartArray = []
 signal restart
+signal title
 @onready var fireball = load("res://scenes/fireball.tscn")
 @onready var heart = load("res://scenes/heart.tscn")
 
 func _ready() -> void:
+	$PlayerUI/RestartMenu.hide()
 	setHealth()
 
 func _physics_process(_delta: float) -> void:
@@ -114,8 +116,8 @@ func hit(damage):
 	await tween.finished
 	if health == 0:
 		# END GAME
-		# currently just takes you back to the title screen
-		restart.emit()
+		get_tree().paused = true
+		$PlayerUI/RestartMenu.show()
 
 ## RESET FIRE
 func _on_wand_animation_finished() -> void:
@@ -143,3 +145,11 @@ func updateHealth():
 		elif heartArray[i].get_children():
 			for child in heartArray[i].get_children():
 				child.hide()
+
+
+func _on_restart_button_button_down() -> void:
+	restart.emit()
+
+
+func _on_title_button_button_down() -> void:
+	title.emit()
