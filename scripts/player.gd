@@ -7,8 +7,11 @@ enum MOTION {IDLE, WALK}
 var motion = MOTION.IDLE
 var health = 6
 const SPEED = 150.0
+var tween
 @onready var fireball = load("res://scenes/fireball.tscn")
 
+func _ready() -> void:
+	updateHealth()
 
 func _physics_process(_delta: float) -> void:
 	# MOVEMENT
@@ -98,7 +101,13 @@ func updateWand():
 
 ## CALLED BY ENEMY ON PLAYER
 func hit():
+	$Sprite.modulate.v = 3
+	if tween:
+		tween.kill()
+	tween = get_tree().create_tween()
+	tween.tween_property($Sprite, "modulate:v", 1, 0.2)
 	health -= 1
+	updateHealth()
 	if health == 0:
 		# END GAME
 		get_tree().paused = true
@@ -106,3 +115,7 @@ func hit():
 ## RESET FIRE
 func _on_wand_animation_finished() -> void:
 	$Wand.play("default")
+
+## PLACEHOLDER HEALTH FUNCTION WHERE IT UPDATES A LABEL
+func updateHealth():
+	$PlayerUI/Health/PlaceholderHealth.text = "Health: " + str(health)

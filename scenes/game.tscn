@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://7vlrnty15x2h"]
+[gd_scene load_steps=8 format=3 uid="uid://7vlrnty15x2h"]
 
 [ext_resource type="PackedScene" uid="uid://boafl0ap4dpbv" path="res://scenes/slime.tscn" id="1_gb4t7"]
 [ext_resource type="PackedScene" uid="uid://cscudlnjgjbj1" path="res://scenes/player.tscn" id="2_5wvsr"]
 [ext_resource type="PackedScene" uid="uid://bdhrvr5blpgm7" path="res://scenes/summon.tscn" id="3_yanxi"]
+[ext_resource type="Script" path="res://scripts/interaction_zone.gd" id="4_i0e0q"]
+[ext_resource type="PackedScene" uid="uid://c1sp7dmrvxbwb" path="res://scenes/dialogue_system.tscn" id="5_5xrf0"]
+[ext_resource type="FontFile" uid="uid://b1ae4tx6npay3" path="res://JacquardaBastarda9-Regular.ttf" id="6_ff80j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0kfkf"]
+size = Vector2(272, 288)
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -23,3 +29,25 @@ type = 2
 
 [node name="Summon" parent="." instance=ExtResource("3_yanxi")]
 position = Vector2(855, 574)
+
+[node name="InteractArea" type="Area2D" parent="."]
+script = ExtResource("4_i0e0q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(206, 585)
+shape = SubResource("RectangleShape2D_0kfkf")
+
+[node name="DialogueLayer" parent="InteractArea" instance=ExtResource("5_5xrf0")]
+dialogue = ["My young apprentice. It's up to you to defend this village! ]Press E to continue.[", "Gerald is a force to be reckoned with. I remember when I had to deal with his father.>", " His father, Geraldino, ruled this land with an iron fist. His king slime power knew no bounds.>", "Fortunately for you, my powers knew none either!>", "]You stare at him with a blank face.[>", "Anyways... Gerald's forces should be here soon. Be on guard!"]
+
+[node name="E" type="Label" parent="InteractArea"]
+offset_left = 182.0
+offset_top = 383.0
+offset_right = 222.0
+offset_bottom = 439.0
+theme_override_fonts/font = ExtResource("6_ff80j")
+theme_override_font_sizes/font_size = 42
+text = "E"
+
+[connection signal="body_entered" from="InteractArea" to="InteractArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="InteractArea" method="_on_body_exited"]
