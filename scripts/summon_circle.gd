@@ -3,7 +3,7 @@ extends Sprite2D
 enum TYPES {BLUE, GREEN, RED}
 var enemyTypes = [TYPES.BLUE, TYPES.GREEN, TYPES.RED]
 
-func _ready() -> void:
+func enable() -> void:
 	$SummonManager.play("fadein")
 	await $SummonManager.animation_finished
 	randomSummon(5)

@@ -8,10 +8,12 @@ var motion = MOTION.IDLE
 var health = 6
 const SPEED = 150.0
 var tween
+var heartArray = []
 @onready var fireball = load("res://scenes/fireball.tscn")
+@onready var heart = load("res://scenes/heart.tscn")
 
 func _ready() -> void:
-	updateHealth()
+	setHealth()
 
 func _physics_process(_delta: float) -> void:
 	# MOVEMENT
@@ -100,13 +102,13 @@ func updateWand():
 		$Wand.position.y = 26
 
 ## CALLED BY ENEMY ON PLAYER
-func hit():
+func hit(damage):
 	$Sprite.modulate.v = 3
 	if tween:
 		tween.kill()
 	tween = get_tree().create_tween()
 	tween.tween_property($Sprite, "modulate:v", 1, 0.2)
-	health -= 1
+	health -= damage
 	updateHealth()
 	if health == 0:
 		# END GAME
@@ -116,6 +118,25 @@ func hit():
 func _on_wand_animation_finished() -> void:
 	$Wand.play("default")
 
-## PLACEHOLDER HEALTH FUNCTION WHERE IT UPDATES A LABEL
+func setHealth():
+	@warning_ignore("integer_division")
+	var icons = health / 2
+	if health % 2 == 1:
+		icons += 1
+	for i in range(0, icons):
+		var healthIcon = heart.instantiate()
+		heartArray.append(healthIcon)
+		$PlayerUI/HealthIcons.add_child(healthIcon)
+	updateHealth()
+
+
 func updateHealth():
-	$PlayerUI/Health/PlaceholderHealth.text = "Health: " + str(health)
+	@warning_ignore("integer_division")
+	var startIndex = health / 2
+	for i in range(startIndex, len(heartArray)):
+		if i == startIndex and health % 2 == 1:
+			if heartArray[i].get_children():
+				heartArray[i].get_child(0).hide()
+		elif heartArray[i].get_children():
+			for child in heartArray[i].get_children():
+				child.hide()

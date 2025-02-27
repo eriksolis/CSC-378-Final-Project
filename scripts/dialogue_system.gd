@@ -1,7 +1,9 @@
 extends CanvasLayer
 var tween
 @export var dialogue = ["This is dialogue.", "hello","i like turtles :>"]
-@onready var dialogueLabel = $DialogueBox/MarginContainer/Dialogue
+@export var image = load("res://images/npcs/magnus/000.png")
+@export var characterName = "Magnus"
+@onready var dialogueLabel = $DialogueBox/MarginContainer/HBoxContainer/Dialogue
 signal dialogueFinished
 
 var current = 0
@@ -9,6 +11,11 @@ var textSpeed = 0.05
 
 func _ready() -> void:
 	hide()
+	if image == null:
+		$DialogueBox/MarginContainer/HBoxContainer/CharacterDetails.hide()
+	else:
+		$DialogueBox/MarginContainer/HBoxContainer/CharacterDetails/Portrait.texture = image
+		$DialogueBox/MarginContainer/HBoxContainer/CharacterDetails/Name.text = characterName
 
 func start() -> void:
 	show()
@@ -30,7 +37,7 @@ func nextChar(value: int):
 		$Click1.pitch_scale = randf_range(0.9, 1)
 		$Click1.play()
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if visible and Input.is_action_just_pressed("ui_interact"):
 		if !$Click1.playing:
 			$Click1.pitch_scale = randf_range(0.9, 1)

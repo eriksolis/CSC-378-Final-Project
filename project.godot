@@ -26,6 +26,7 @@ window/per_pixel_transparency/allowed=true
 PlayerBullets=""
 Player=""
 Enemies=""
+Summon=""
 
 [input]
 

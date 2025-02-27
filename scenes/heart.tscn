@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlho4tgqc7jax"]
+
+[ext_resource type="Texture2D" uid="uid://k4tofigupf1f" path="res://images/player/ui_heart/000.png" id="1_dkspc"]
+[ext_resource type="Texture2D" uid="uid://4opcthkjoyhr" path="res://images/player/ui_heart/001.png" id="2_xxb82"]
+[ext_resource type="Texture2D" uid="uid://drd5k1b122e5y" path="res://images/player/ui_heart/002.png" id="3_xkvri"]
+
+[node name="Empty" type="TextureRect"]
+texture = ExtResource("1_dkspc")
+
+[node name="Full" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+texture = ExtResource("3_xkvri")
+
+[node name="Half" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_xxb82")
