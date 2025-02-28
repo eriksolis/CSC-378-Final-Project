@@ -7,6 +7,7 @@ func enable() -> void:
 	$SummonManager.play("fadein")
 	await $SummonManager.animation_finished
 	randomSummon(5)
+	
 
 func randomSummon(delay) -> void:
 	var type = enemyTypes.pick_random()
