@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://2edc1dakbsme"]
+[gd_scene load_steps=10 format=3 uid="uid://2edc1dakbsme"]
 
 [ext_resource type="Texture2D" uid="uid://d216upekyd8qn" path="res://images/logo.png" id="1_krjgb"]
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_lrcy7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dxx36sdj4e7au" path="res://images/buttons/pressed.png" id="4_i350p"]
 [ext_resource type="Texture2D" uid="uid://csllubqt7utyk" path="res://images/buttons/hover.png" id="5_j1r3e"]
 [ext_resource type="FontFile" uid="uid://b1ae4tx6npay3" path="res://JacquardaBastarda9-Regular.ttf" id="6_r3cf0"]
+[ext_resource type="AudioStream" uid="uid://d2fo4t1ybtfgg" path="res://audio/click.wav" id="7_i18vo"]
 
 [sub_resource type="Gradient" id="Gradient_bfr36"]
 colors = PackedColorArray(0.4, 0.592157, 0.368627, 1, 0.647059, 0.780392, 0.670588, 1)
@@ -431,6 +432,10 @@ text = "Return"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_i18vo")
+bus = &"SFX"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

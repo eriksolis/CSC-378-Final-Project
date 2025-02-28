@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cscudlnjgjbj1"]
+[gd_scene load_steps=51 format=3 uid="uid://cscudlnjgjbj1"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ck705"]
 [ext_resource type="Texture2D" uid="uid://ly1rvorwqk67" path="res://images/player/back_idle/000.png" id="2_5pw4f"]
@@ -45,6 +45,8 @@
 [ext_resource type="Texture2D" uid="uid://dxx36sdj4e7au" path="res://images/buttons/pressed.png" id="43_n51px"]
 [ext_resource type="Texture2D" uid="uid://csllubqt7utyk" path="res://images/buttons/hover.png" id="44_vhvbs"]
 [ext_resource type="FontFile" uid="uid://b1ae4tx6npay3" path="res://JacquardaBastarda9-Regular.ttf" id="45_glsb0"]
+[ext_resource type="AudioStream" uid="uid://c54ble5qc1ik6" path="res://audio/fire.wav" id="46_rn5x4"]
+[ext_resource type="AudioStream" uid="uid://cxnrdix6el38u" path="res://audio/player_hit.wav" id="47_br5tx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p1bda"]
 animations = [{
@@ -385,6 +387,14 @@ text = "You are dead..."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Fire" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("46_rn5x4")
+bus = &"SFX"
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("47_br5tx")
+bus = &"SFX"
 
 [connection signal="animation_finished" from="Wand" to="." method="_on_wand_animation_finished"]
 [connection signal="button_down" from="PlayerUI/RestartMenu/RestartButton" to="." method="_on_restart_button_button_down"]

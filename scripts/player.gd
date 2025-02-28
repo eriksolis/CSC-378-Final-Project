@@ -87,6 +87,8 @@ func updateWand():
 	$Wand.rotation_degrees += 45
 	if Input.is_action_pressed("ui_accept") and $Wand.animation != "fire":
 		$Wand.play("fire")
+		$Fire.pitch_scale = randf_range(0.9, 1)
+		$Fire.play()
 		var fireSpawn = fireball.instantiate()
 		fireSpawn.global_position = $Wand/Marker2D.global_position
 		fireSpawn.rotation = get_angle_to(mousePos)
@@ -106,6 +108,8 @@ func updateWand():
 
 ## CALLED BY ENEMY ON PLAYER
 func hit(damage):
+	$Hit.pitch_scale = randf_range(0.95, 1)
+	$Hit.play()
 	$Sprite.modulate.v = 3
 	if tween:
 		tween.kill()
@@ -116,6 +120,7 @@ func hit(damage):
 	await tween.finished
 	if health == 0:
 		# END GAME
+		MusicHandler.play("BitTragedy")
 		get_tree().paused = true
 		$PlayerUI/RestartMenu.show()
 

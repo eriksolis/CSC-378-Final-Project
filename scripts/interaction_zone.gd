@@ -14,6 +14,7 @@ func _input(_event: InputEvent) -> void:
 		$DialogueLayer.start()
 
 func setCompleted():
+	MusicHandler.play("SwarmingOnslaught")
 	completed = true
 	set_deferred("monitorable", false)
 	set_deferred("monitoring", false)

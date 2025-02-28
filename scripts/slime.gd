@@ -30,6 +30,8 @@ func _physics_process(_delta: float) -> void:
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerBullets"):
+		$Hit.pitch_scale = randf_range(0.95, 1)
+		$Hit.play()
 		# modulate flash trick taken from
 		# https://www.reddit.com/r/godot/comments/y8n1wa/is_it_possible_to_make_a_sprite_flash_white_using/
 		$SlimeSprite.modulate.v = 3

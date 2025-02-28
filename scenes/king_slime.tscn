@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bpalqkfvqnm4k"]
+[gd_scene load_steps=17 format=3 uid="uid://bpalqkfvqnm4k"]
 
 [ext_resource type="Script" path="res://scripts/king_slime.gd" id="1_q78p1"]
 [ext_resource type="Texture2D" uid="uid://phyiidwrfamt" path="res://images/enemies/king_slime/000.png" id="2_j21rr"]
 [ext_resource type="Texture2D" uid="uid://ixcjxw70nhrb" path="res://images/enemies/king_slime/001.png" id="3_owwr8"]
 [ext_resource type="Texture2D" uid="uid://dpuoeofdhrxno" path="res://images/enemies/king_slime/002.png" id="4_dncho"]
+[ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="6_osnf1"]
 [ext_resource type="Texture2D" uid="uid://cb45fn7a7ek2c" path="res://images/enemies/slime_particle.png" id="11_gf631"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7nneo"]
@@ -162,6 +163,10 @@ speed_scale = 2.0
 position = Vector2(2, 65)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kmai8")
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_osnf1")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

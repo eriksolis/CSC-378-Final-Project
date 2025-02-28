@@ -5,10 +5,13 @@ extends Control
 var loadedGame
 
 func _ready() -> void:
+	MusicHandler.play("SquareDreams")
 	$SettingsMenu.hide()
 	$CreditsPanel.hide()
 
 func _on_start_button_pressed() -> void:
+	MusicHandler.play("PixelizedFields")
+	$Click.play()
 	loadedGame = game.instantiate()
 	loadedGame.get_node("Player").connect("restart", restart)
 	loadedGame.get_node("Player").connect("title", title)
@@ -18,26 +21,32 @@ func _on_start_button_pressed() -> void:
 
 
 func _on_quit_button_pressed() -> void:
+	$Click.play()
 	get_tree().quit()
 
 func restart():
+	MusicHandler.play("PixelizedFields")
 	loadedGame.queue_free()
 	_on_start_button_pressed()
 
 func title():
+	MusicHandler.play("SquareDreams")
 	loadedGame.queue_free()
 	show()
 
 func _on_settings_button_pressed() -> void:
+	$Click.play()
 	$SettingsMenu/MenuMargin/MenuOptions/MusicContainer/MusicSlider.value = db_to_linear(AudioServer.get_bus_volume_db(musicVolume))
 	$SettingsMenu/MenuMargin/MenuOptions/SFXContainer/SFXSlider.value = db_to_linear(AudioServer.get_bus_volume_db(sfxVolume))
 	$SettingsMenu.show()
 
 func _on_credits_button_pressed() -> void:
+	$Click.play()
 	$CreditsPanel.show()
 
 
 func _on_return_button_pressed() -> void:
+	$Click.play()
 	$SettingsMenu.hide()
 	$CreditsPanel.hide()
 
