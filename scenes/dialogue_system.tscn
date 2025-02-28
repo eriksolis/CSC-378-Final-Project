@@ -75,3 +75,4 @@ autowrap_mode = 2
 [node name="Click1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_0hfd7")
 pitch_scale = 0.5
+bus = &"SFX"

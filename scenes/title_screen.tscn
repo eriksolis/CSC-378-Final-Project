@@ -195,5 +195,249 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="SettingsMenu" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.0
+offset_top = -65.0
+offset_right = 333.0
+offset_bottom = 433.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_j1r3e")
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64
+
+[node name="MenuMargin" type="MarginContainer" parent="SettingsMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="MenuOptions" type="VBoxContainer" parent="SettingsMenu/MenuMargin"]
+layout_mode = 2
+
+[node name="SettingsText" type="Label" parent="SettingsMenu/MenuMargin/MenuOptions"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("6_r3cf0")
+theme_override_font_sizes/font_size = 60
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="FullscreenCheckbox" type="CheckBox" parent="SettingsMenu/MenuMargin/MenuOptions"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_r3cf0")
+theme_override_font_sizes/font_size = 45
+text = "Fullscreen"
+
+[node name="MusicContainer" type="VBoxContainer" parent="SettingsMenu/MenuMargin/MenuOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MusicText" type="Label" parent="SettingsMenu/MenuMargin/MenuOptions/MusicContainer"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("6_r3cf0")
+theme_override_font_sizes/font_size = 45
+text = "Music
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="MusicSlider" type="HSlider" parent="SettingsMenu/MenuMargin/MenuOptions/MusicContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.01
+
+[node name="SFXContainer" type="VBoxContainer" parent="SettingsMenu/MenuMargin/MenuOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SFXText" type="Label" parent="SettingsMenu/MenuMargin/MenuOptions/SFXContainer"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("6_r3cf0")
+theme_override_font_sizes/font_size = 45
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="SFXSlider" type="HSlider" parent="SettingsMenu/MenuMargin/MenuOptions/SFXContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.01
+
+[node name="ReturnButton" type="TextureButton" parent="SettingsMenu/MenuMargin/MenuOptions"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+texture_normal = ExtResource("3_5tji6")
+texture_pressed = ExtResource("4_i350p")
+texture_hover = ExtResource("5_j1r3e")
+texture_disabled = ExtResource("4_i350p")
+texture_focused = ExtResource("5_j1r3e")
+
+[node name="ReturnButton" type="Label" parent="SettingsMenu/MenuMargin/MenuOptions/ReturnButton"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -28.0
+offset_right = 26.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("6_r3cf0")
+theme_override_font_sizes/font_size = 60
+text = "Return"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CreditsPanel" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.0
+offset_top = -428.0
+offset_right = 333.0
+offset_bottom = 433.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_j1r3e")
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64
+
+[node name="CreditsMargin" type="MarginContainer" parent="CreditsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="CreditsContainer" type="VBoxContainer" parent="CreditsPanel/CreditsMargin"]
+layout_mode = 2
+
+[node name="CreditsText" type="Label" parent="CreditsPanel/CreditsMargin/CreditsContainer"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("6_r3cf0")
+theme_override_font_sizes/font_size = 60
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Credits" type="Label" parent="CreditsPanel/CreditsMargin/CreditsContainer"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("6_r3cf0")
+theme_override_font_sizes/font_size = 45
+text = "Tilemap from https://cainos.itch.io/pixel-art-top-down-basic
+SFX self-recorded
+Art made in Firealpaca
+Music made in Garageband
+Made with Godot"
+autowrap_mode = 2
+
+[node name="ReturnButton" type="TextureButton" parent="CreditsPanel/CreditsMargin/CreditsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+texture_normal = ExtResource("3_5tji6")
+texture_pressed = ExtResource("4_i350p")
+texture_hover = ExtResource("5_j1r3e")
+texture_disabled = ExtResource("4_i350p")
+texture_focused = ExtResource("5_j1r3e")
+
+[node name="ReturnButton" type="Label" parent="CreditsPanel/CreditsMargin/CreditsContainer/ReturnButton"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -28.0
+offset_right = 26.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("6_r3cf0")
+theme_override_font_sizes/font_size = 60
+text = "Return"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="toggled" from="SettingsMenu/MenuMargin/MenuOptions/FullscreenCheckbox" to="." method="_on_fullscreen_checkbox_toggled"]
+[connection signal="value_changed" from="SettingsMenu/MenuMargin/MenuOptions/MusicContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="SettingsMenu/MenuMargin/MenuOptions/SFXContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="SettingsMenu/MenuMargin/MenuOptions/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="CreditsPanel/CreditsMargin/CreditsContainer/ReturnButton" to="." method="_on_return_button_pressed"]
