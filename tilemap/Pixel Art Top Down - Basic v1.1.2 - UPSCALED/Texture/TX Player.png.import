@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1a0or6pq1lv4"
-path="res://.godot/imported/TX Props.png-f24837cab165b29468f4ee0bd432d9c6.ctex"
+uid="uid://dpbgxvloy15yt"
+path="res://.godot/imported/TX Player.png-2214a11e12bb4d8544f44b15ca54b6ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemap/Pixel Art Top Down - Basic v1.1.2 (1)/Texture/TX Props.png"
-dest_files=["res://.godot/imported/TX Props.png-f24837cab165b29468f4ee0bd432d9c6.ctex"]
+source_file="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Player.png"
+dest_files=["res://.godot/imported/TX Player.png-2214a11e12bb4d8544f44b15ca54b6ec.ctex"]
 
 [params]
 

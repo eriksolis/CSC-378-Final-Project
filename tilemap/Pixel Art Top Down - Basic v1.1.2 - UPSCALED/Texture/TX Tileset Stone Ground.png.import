@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8hrkmkom4q0b"
-path="res://.godot/imported/TX Shadow.png-8cd34012af6423085c1e9d885ae0615a.ctex"
+uid="uid://b0mcibq6a61un"
+path="res://.godot/imported/TX Tileset Stone Ground.png-92878322eeb350e6b41f3dabf126d92e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemap/Pixel Art Top Down - Basic v1.1.2 (1)/Texture/TX Shadow.png"
-dest_files=["res://.godot/imported/TX Shadow.png-8cd34012af6423085c1e9d885ae0615a.ctex"]
+source_file="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Tileset Stone Ground.png"
+dest_files=["res://.godot/imported/TX Tileset Stone Ground.png-92878322eeb350e6b41f3dabf126d92e.ctex"]
 
 [params]
 
