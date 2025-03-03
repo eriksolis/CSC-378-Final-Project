@@ -8,6 +8,7 @@ enum TYPES {BLUE, GREEN, RED}
 var tween
 var player
 var speed = 300
+signal enemyDead
 
 func _ready() -> void:
 	match type:
@@ -56,4 +57,5 @@ func destroy():
 	$SummonAnim.speed_scale *= 2
 	$SummonAnim.play_backwards("fadein")
 	await $SummonAnim.animation_finished
+	enemyDead.emit()
 	queue_free()
