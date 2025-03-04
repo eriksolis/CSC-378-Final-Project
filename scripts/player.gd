@@ -6,7 +6,7 @@ var direction = DIRECTIONS.FRONT
 enum MOTION {IDLE, WALK}
 var motion = MOTION.IDLE
 var health = 6
-const SPEED = 150.0
+const SPEED = 300.0
 var tween
 var heartArray = []
 signal restart
