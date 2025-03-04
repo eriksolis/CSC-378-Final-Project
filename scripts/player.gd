@@ -9,9 +9,11 @@ var health = 6
 const SPEED = 300.0
 var tween
 var heartArray = []
+var alt_fire = false
 signal restart
 signal title
 @onready var fireball = load("res://scenes/fireball.tscn")
+@onready var large_fireball = load("res://scenes/large_fireball.tscn")
 @onready var heart = load("res://scenes/heart.tscn")
 
 func _ready() -> void:
@@ -85,11 +87,19 @@ func updateWand():
 	var mousePos = get_global_mouse_position()
 	$Wand.look_at(mousePos)
 	$Wand.rotation_degrees += 45
-	if Input.is_action_pressed("ui_accept") and $Wand.animation != "fire":
+	if Input.is_action_pressed("ui_accept") and $Wand.animation == "default":
 		$Wand.play("fire")
 		$Fire.pitch_scale = randf_range(0.9, 1)
 		$Fire.play()
 		var fireSpawn = fireball.instantiate()
+		fireSpawn.global_position = $Wand/Marker2D.global_position
+		fireSpawn.rotation = get_angle_to(mousePos)
+		get_parent().add_child(fireSpawn)
+	elif alt_fire and Input.is_action_pressed("ui_alt_fire") and $Wand.animation == "default":
+		$Wand.play("alt_fire")
+		$Fire.pitch_scale = randf_range(0.8, 0.9)
+		$Fire.play()
+		var fireSpawn = large_fireball.instantiate()
 		fireSpawn.global_position = $Wand/Marker2D.global_position
 		fireSpawn.rotation = get_angle_to(mousePos)
 		get_parent().add_child(fireSpawn)

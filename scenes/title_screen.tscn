@@ -437,6 +437,318 @@ autowrap_mode = 2
 stream = ExtResource("7_i18vo")
 bus = &"SFX"
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 128
+visible = false
+
+[node name="Placeholder" type="Control" parent="CanvasLayer"]
+editor_description = "ignore this"
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PauseMenu" type="ColorRect" parent="CanvasLayer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -216.0
+offset_right = 138.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="ResumeButton" type="TextureButton" parent="CanvasLayer/PauseMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+texture_normal = ExtResource("3_5tji6")
+texture_pressed = ExtResource("4_i350p")
+texture_hover = ExtResource("5_j1r3e")
+texture_disabled = ExtResource("4_i350p")
+texture_focused = ExtResource("5_j1r3e")
+
+[node name="ResumeButton" type="Label" parent="CanvasLayer/PauseMenu/VBoxContainer/ResumeButton"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -28.0
+offset_right = 26.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("6_r3cf0")
+theme_override_font_sizes/font_size = 60
+text = "Resume"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="SettingsButton" type="TextureButton" parent="CanvasLayer/PauseMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+texture_normal = ExtResource("3_5tji6")
+texture_pressed = ExtResource("4_i350p")
+texture_hover = ExtResource("5_j1r3e")
+texture_disabled = ExtResource("4_i350p")
+texture_focused = ExtResource("5_j1r3e")
+
+[node name="SettingsText" type="Label" parent="CanvasLayer/PauseMenu/VBoxContainer/SettingsButton"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -28.0
+offset_right = 26.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("6_r3cf0")
+theme_override_font_sizes/font_size = 60
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TitleButton" type="TextureButton" parent="CanvasLayer/PauseMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+texture_normal = ExtResource("3_5tji6")
+texture_pressed = ExtResource("4_i350p")
+texture_hover = ExtResource("5_j1r3e")
+texture_disabled = ExtResource("4_i350p")
+texture_focused = ExtResource("5_j1r3e")
+
+[node name="TitleText" type="Label" parent="CanvasLayer/PauseMenu/VBoxContainer/TitleButton"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -28.0
+offset_right = 26.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("6_r3cf0")
+theme_override_font_sizes/font_size = 60
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="QuitButton" type="TextureButton" parent="CanvasLayer/PauseMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+texture_normal = ExtResource("3_5tji6")
+texture_pressed = ExtResource("4_i350p")
+texture_hover = ExtResource("5_j1r3e")
+texture_disabled = ExtResource("4_i350p")
+texture_focused = ExtResource("5_j1r3e")
+
+[node name="QuitText" type="Label" parent="CanvasLayer/PauseMenu/VBoxContainer/QuitButton"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -28.0
+offset_right = 26.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("6_r3cf0")
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="SettingsMenu" type="NinePatchRect" parent="CanvasLayer/PauseMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.5
+offset_top = -249.0
+offset_right = 332.5
+offset_bottom = 249.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_j1r3e")
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64
+
+[node name="MenuMargin" type="MarginContainer" parent="CanvasLayer/PauseMenu/SettingsMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="MenuOptions" type="VBoxContainer" parent="CanvasLayer/PauseMenu/SettingsMenu/MenuMargin"]
+layout_mode = 2
+
+[node name="SettingsText" type="Label" parent="CanvasLayer/PauseMenu/SettingsMenu/MenuMargin/MenuOptions"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("6_r3cf0")
+theme_override_font_sizes/font_size = 60
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="FullscreenCheckbox" type="CheckBox" parent="CanvasLayer/PauseMenu/SettingsMenu/MenuMargin/MenuOptions"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_r3cf0")
+theme_override_font_sizes/font_size = 45
+text = "Fullscreen"
+
+[node name="MusicContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/SettingsMenu/MenuMargin/MenuOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MusicText" type="Label" parent="CanvasLayer/PauseMenu/SettingsMenu/MenuMargin/MenuOptions/MusicContainer"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("6_r3cf0")
+theme_override_font_sizes/font_size = 45
+text = "Music
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/PauseMenu/SettingsMenu/MenuMargin/MenuOptions/MusicContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.01
+
+[node name="SFXContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/SettingsMenu/MenuMargin/MenuOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SFXText" type="Label" parent="CanvasLayer/PauseMenu/SettingsMenu/MenuMargin/MenuOptions/SFXContainer"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("6_r3cf0")
+theme_override_font_sizes/font_size = 45
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="SFXSlider" type="HSlider" parent="CanvasLayer/PauseMenu/SettingsMenu/MenuMargin/MenuOptions/SFXContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.01
+
+[node name="ReturnButton" type="TextureButton" parent="CanvasLayer/PauseMenu/SettingsMenu/MenuMargin/MenuOptions"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+texture_normal = ExtResource("3_5tji6")
+texture_pressed = ExtResource("4_i350p")
+texture_hover = ExtResource("5_j1r3e")
+texture_disabled = ExtResource("4_i350p")
+texture_focused = ExtResource("5_j1r3e")
+
+[node name="ReturnButton" type="Label" parent="CanvasLayer/PauseMenu/SettingsMenu/MenuMargin/MenuOptions/ReturnButton"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -28.0
+offset_right = 26.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("6_r3cf0")
+theme_override_font_sizes/font_size = 60
+text = "Return"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
@@ -446,3 +758,11 @@ bus = &"SFX"
 [connection signal="value_changed" from="SettingsMenu/MenuMargin/MenuOptions/SFXContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="SettingsMenu/MenuMargin/MenuOptions/ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="CreditsPanel/CreditsMargin/CreditsContainer/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/SettingsButton" to="." method="_on_pause_settings_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/TitleButton" to="." method="_on_title_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="toggled" from="CanvasLayer/PauseMenu/SettingsMenu/MenuMargin/MenuOptions/FullscreenCheckbox" to="." method="_on_fullscreen_checkbox_toggled"]
+[connection signal="value_changed" from="CanvasLayer/PauseMenu/SettingsMenu/MenuMargin/MenuOptions/MusicContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/PauseMenu/SettingsMenu/MenuMargin/MenuOptions/SFXContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/SettingsMenu/MenuMargin/MenuOptions/ReturnButton" to="." method="_on_pause_return_button_pressed"]

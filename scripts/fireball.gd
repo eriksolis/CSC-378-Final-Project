@@ -1,5 +1,6 @@
 extends Area2D
 @export var speed = 15
+@export var damage = 1
 
 ## SPAWNS INITIAL EFFECT
 func _ready() -> void:

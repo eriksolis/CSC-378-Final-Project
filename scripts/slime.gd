@@ -41,7 +41,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		tween = get_tree().create_tween()
 		tween.tween_property($SlimeSprite, "modulate:v", 1, 0.2)
 		area.destroy()
-		health -= 1
+		health -= area.damage
 		if health <= 0:
 			destroy()
 

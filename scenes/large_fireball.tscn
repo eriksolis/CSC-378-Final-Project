@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dgahtc86xjcrr"]
+[gd_scene load_steps=13 format=3 uid="uid://3i0wkor8chy0"]
 
-[ext_resource type="Script" path="res://scripts/fireball.gd" id="1_5bt5d"]
-[ext_resource type="Texture2D" uid="uid://bjmw2qa4gxw2g" path="res://images/wand/fireball.png" id="2_0hyww"]
-[ext_resource type="Texture2D" uid="uid://c3470f3morp4i" path="res://images/wand/particle_effect/particle_flipbook.png" id="3_dhr5h"]
-[ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="4_fiel5"]
+[ext_resource type="Script" path="res://scripts/large_fireball.gd" id="1_bnxvi"]
+[ext_resource type="Texture2D" uid="uid://oh5yl1s77x2i" path="res://images/wand/large_fireball.png" id="2_nimjq"]
+[ext_resource type="Texture2D" uid="uid://c3470f3morp4i" path="res://images/wand/particle_effect/particle_flipbook.png" id="3_gvkqt"]
+[ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="4_orsik"]
 
 [sub_resource type="Animation" id="Animation_ajvcb"]
 length = 0.001
@@ -43,8 +43,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fvhc1"]
-radius = 9.0
-height = 40.0
+radius = 45.0
+height = 176.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xnw2v"]
 particles_animation = true
@@ -67,8 +67,7 @@ spread = 180.0
 initial_velocity_min = 100.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
-scale_min = 0.5
-scale_max = 0.7
+scale_min = 0.7
 alpha_curve = SubResource("CurveTexture_q3oir")
 anim_offset_max = 1.0
 
@@ -76,11 +75,13 @@ anim_offset_max = 1.0
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_5bt5d")
+script = ExtResource("1_bnxvi")
+speed = 10
+damage = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
-texture = ExtResource("2_0hyww")
+texture = ExtResource("2_nimjq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -100,11 +101,11 @@ material = SubResource("CanvasItemMaterial_xnw2v")
 emitting = false
 amount = 5
 process_material = SubResource("ParticleProcessMaterial_avkuf")
-texture = ExtResource("3_dhr5h")
+texture = ExtResource("3_gvkqt")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_fiel5")
+stream = ExtResource("4_orsik")
 bus = &"SFX"

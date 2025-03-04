@@ -4,7 +4,7 @@ enum TYPES {BLUE, GREEN, RED}
 var enemyTypes = [TYPES.BLUE, TYPES.GREEN, TYPES.RED]
 var count = 0
 var spawned = 0
-@export var max = 10
+@export var maxSpawns = 10
 @export var summonDelay = 0.5
 
 signal spawnComplete
@@ -38,7 +38,7 @@ func randomSummon(delay) -> void:
 	get_parent().add_child(enemySpawn)
 	$SummonManager.play_backwards("summon")
 	await $SummonManager.animation_finished
-	if count < max:
+	if count < maxSpawns:
 		await get_tree().create_timer(delay).timeout
 		randomSummon(randf_range(delay - 0.5, delay + 0.5))
 	else:
@@ -50,8 +50,10 @@ func randomSummon(delay) -> void:
 
 func checkSpawned():
 	spawned -= 1
-	if spawned <= 0 and count >= max:
+	if spawned <= 0 and count >= maxSpawns:
 		# Connect this signal to whatever script wants 
 		# to know that all enemies are dead.
-		print("done with count " + str(max))
-		spawnComplete.emit()
+		print("done with count " + str(maxSpawns))
+		spawnedClear.emit()
+		spawned = 0
+		count = 0
