@@ -11,6 +11,8 @@ signal spawnComplete
 signal spawnedClear
 
 func enable() -> void:
+	count = 0
+	spawned = 0
 	$SummonManager.play("fadein")
 	await $SummonManager.animation_finished
 	randomSummon(summonDelay)
