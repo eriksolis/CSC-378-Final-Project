@@ -1,5 +1,7 @@
 class_name SceneManager extends Node
 
+# tutorial from https://www.youtube.com/watch?v=sKqtCc_HykM&t
+
 var player: Player
 
 var scene_dir_path = "res://scenes/"
