@@ -1,19 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://2edc1dakbsme"]
+[gd_scene load_steps=9 format=3 uid="uid://2edc1dakbsme"]
 
 [ext_resource type="Texture2D" uid="uid://d216upekyd8qn" path="res://images/logo.png" id="1_krjgb"]
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_lrcy7"]
+[ext_resource type="Texture2D" uid="uid://yfojxrkhwa31" path="res://images/AOTA_TitleScreen.png" id="2_gv1rt"]
 [ext_resource type="Texture2D" uid="uid://bxdwdw2pky1sl" path="res://images/buttons/normal.png" id="3_5tji6"]
 [ext_resource type="Texture2D" uid="uid://dxx36sdj4e7au" path="res://images/buttons/pressed.png" id="4_i350p"]
 [ext_resource type="Texture2D" uid="uid://csllubqt7utyk" path="res://images/buttons/hover.png" id="5_j1r3e"]
 [ext_resource type="FontFile" uid="uid://b1ae4tx6npay3" path="res://JacquardaBastarda9-Regular.ttf" id="6_r3cf0"]
 [ext_resource type="AudioStream" uid="uid://d2fo4t1ybtfgg" path="res://audio/click.wav" id="7_i18vo"]
-
-[sub_resource type="Gradient" id="Gradient_bfr36"]
-colors = PackedColorArray(0.4, 0.592157, 0.368627, 1, 0.647059, 0.780392, 0.670588, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_at30f"]
-gradient = SubResource("Gradient_bfr36")
-fill_from = Vector2(1, 1)
 
 [node name="TitleScreen" type="Control"]
 process_mode = 3
@@ -32,7 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_at30f")
+texture = ExtResource("2_gv1rt")
 
 [node name="Logo" type="TextureRect" parent="."]
 layout_mode = 1
