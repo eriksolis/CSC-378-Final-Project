@@ -1,8 +1,13 @@
 extends Area2D
 var completed = false
 var inProgress = false
+var summon_circles = 0
+var completed_summons = 0
+enum STATES{PRESTAGE, POSTSTAGE, PREBOSS, POSTBOSS}
+var state = STATES.PRESTAGE
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var boss = load("res://scenes/king_slime.tscn")
+var post_stage_dialogue = ["Well done, my apprentice, you've defeated the slimes!>", "I will now bestow upon you the ability to fire a giant fireball.>", "]Right-click to fire a slow-moving fireball that explodes into mini fireballs.[>", "Your next task is to head into the left door and face the challenge within that room. Good luck!"]
 
 func _ready() -> void:
 	$DialogueLayer.connect("dialogueFinished", setCompleted)
@@ -14,17 +19,26 @@ func _input(_event: InputEvent) -> void:
 		$DialogueLayer.start()
 
 func setCompleted():
-	MusicHandler.play("SwarmingOnslaught")
-	completed = true
-	set_deferred("monitorable", false)
-	set_deferred("monitoring", false)
-	# ENABLE ALL SUMMON CIRCLES UPON DIALOGUE COMPLETION
-	for summonCircles in get_tree().get_nodes_in_group("Summon"):
-		summonCircles.enable()
-	# SPAWN BOSS
-	await get_tree().create_timer(10).timeout
-	var bossSpawn = boss.instantiate()
-	get_parent().add_child(bossSpawn)
+	match state:
+		STATES.PRESTAGE:
+			MusicHandler.play("SwarmingOnslaught")
+			completed = true
+			set_deferred("monitorable", false)
+			set_deferred("monitoring", false)
+			# ENABLE ALL SUMMON CIRCLES UPON DIALOGUE COMPLETION
+			for summonCircles in get_tree().get_nodes_in_group("Summon"):
+				summonCircles.enable()
+				summonCircles.connect("spawnedClear", _on_summon_depleted)
+				summon_circles += 1
+			# SPAWN BOSS
+			await get_tree().create_timer(10).timeout
+			var bossSpawn = boss.instantiate()
+			get_parent().add_child(bossSpawn)
+		STATES.POSTSTAGE:
+			completed = true
+			set_deferred("monitorable", false)
+			set_deferred("monitoring", false)
+			player.alt_fire = true
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -35,3 +49,14 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		$E.hide()
+
+func _on_summon_depleted():
+	completed_summons += 1
+	if completed_summons >= summon_circles and state == STATES.PRESTAGE:
+		state = STATES.POSTSTAGE
+		inProgress = false
+		completed = false
+		$DialogueLayer.dialogue = post_stage_dialogue
+		MusicHandler.play("PixelizedFields")
+		set_deferred("monitorable", true)
+		set_deferred("monitoring", true)
