@@ -3,6 +3,7 @@ class_name BaseScene extends Node
 
 @onready var player: Player = $Player
 @onready var entrance_markers: Node2D = $EntranceMarkers
+var doorSpawn = false
 
 func _ready() -> void:
 	if scene_manager.player:
@@ -12,7 +13,8 @@ func _ready() -> void:
 		player = scene_manager.player
 		add_child(player)
 		
-	position_player()
+	if doorSpawn:
+		position_player()
 
 func position_player() -> void:
 	for entrance in entrance_markers.get_children():

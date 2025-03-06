@@ -33,6 +33,7 @@ PlayerBullets=""
 Player=""
 Enemies=""
 Summon=""
+GameScene=""
 
 [input]
 

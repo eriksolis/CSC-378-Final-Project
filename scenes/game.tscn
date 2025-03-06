@@ -850,7 +850,7 @@ sources/8 = SubResource("TileSetAtlasSource_mp6xe")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n0k21"]
 size = Vector2(110.75, 131.875)
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" groups=["GameScene"]]
 y_sort_enabled = true
 script = ExtResource("1_u7ftc")
 
