@@ -1,8 +1,7 @@
 extends Control
-@onready var game = load("res://scenes/game.tscn")
 @onready var musicVolume = AudioServer.get_bus_index("Music")
 @onready var sfxVolume = AudioServer.get_bus_index("SFX")
-var loadedGame
+var first = false
 
 func _ready() -> void:
 	MusicHandler.play("SquareDreams")
@@ -13,10 +12,10 @@ func _ready() -> void:
 func _on_start_button_pressed() -> void:
 	MusicHandler.play("PixelizedFields")
 	$Click.play()
-	loadedGame = game.instantiate()
-	loadedGame.get_node("Player").connect("restart", restart)
-	loadedGame.get_node("Player").connect("title", title)
-	get_parent().add_child(loadedGame)
+	scene_manager.resetGame()
+	scene_manager.change_scene("game")
+	scene_manager.player.connect("restart", restart)
+	scene_manager.player.connect("title", title)
 	get_tree().paused = false
 	hide()
 
@@ -27,12 +26,12 @@ func _on_quit_button_pressed() -> void:
 
 func restart():
 	MusicHandler.play("PixelizedFields")
-	loadedGame.queue_free()
+	scene_manager.clearScenes()
 	_on_start_button_pressed()
 
 func title():
 	MusicHandler.play("SquareDreams")
-	loadedGame.queue_free()
+	scene_manager.clearScenes()
 	$CanvasLayer.hide()
 	$Background.show()
 	$Logo.show()

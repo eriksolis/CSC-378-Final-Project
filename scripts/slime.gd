@@ -6,7 +6,7 @@ enum TYPES {BLUE, GREEN, RED}
 @onready var greenParticle = load("res://images/enemies/slime_particle2.png")
 @onready var redParticle = load("res://images/enemies/slime_particle3.png")
 var tween
-var player
+@onready var player = scene_manager.player
 var speed = 300
 signal enemyDead
 
@@ -23,7 +23,6 @@ func _ready() -> void:
 			$SlimeSprite/SlimeParticles.texture = greenParticle
 	$SummonAnim.play("fadein")
 	await $SummonAnim.animation_finished
-	player = get_tree().get_first_node_in_group("Player")
 
 func _physics_process(_delta: float) -> void:
 	if player != null and player not in $Hitbox.get_overlapping_bodies():

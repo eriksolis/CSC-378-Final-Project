@@ -17,6 +17,8 @@ signal title
 @onready var heart = load("res://scenes/heart.tscn")
 
 func _ready() -> void:
+	$Camera2D.enabled = true
+	add_to_group("Player", true)
 	$PlayerUI/RestartMenu.hide()
 	setHealth()
 
@@ -128,7 +130,7 @@ func hit(damage):
 	health -= damage
 	updateHealth()
 	await tween.finished
-	if health == 0:
+	if health <= 0:
 		# END GAME
 		MusicHandler.play("BitTragedy")
 		get_tree().paused = true

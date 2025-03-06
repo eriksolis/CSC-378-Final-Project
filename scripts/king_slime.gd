@@ -3,7 +3,6 @@ extends "res://scripts/slime.gd"
 func _ready() -> void:
 	$SummonAnim.play("fadein")
 	await $SummonAnim.animation_finished
-	player = get_tree().get_first_node_in_group("Player")
 
 func destroy():
 	set_deferred("monitorable", false)

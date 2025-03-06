@@ -22,3 +22,7 @@ func destroy() -> void:
 	$FireParticles.emitting = true
 	await $FireParticles.finished
 	queue_free()
+
+func _on_body_entered(body: Node2D) -> void:
+	if !body.is_in_group("Enemies") and !body.is_in_group("Player"):
+		destroy()

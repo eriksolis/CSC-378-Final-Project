@@ -74,7 +74,6 @@ anim_offset_max = 1.0
 [node name="Fireball" type="Area2D" groups=["PlayerBullets"]]
 y_sort_enabled = true
 collision_layer = 2
-collision_mask = 2
 script = ExtResource("1_bnxvi")
 speed = 10
 damage = 3
@@ -109,3 +108,5 @@ explosiveness = 1.0
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_orsik")
 bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

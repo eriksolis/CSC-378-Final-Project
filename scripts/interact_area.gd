@@ -6,15 +6,13 @@ var completed_summons = 0
 enum STATES{PRESTAGE, POSTSTAGE, PREBOSS, POSTBOSS}
 var state = STATES.PRESTAGE
 @onready var player = scene_manager.player
-@onready var boss = load("res://scenes/king_slime.tscn")
-var post_stage_dialogue = ["Well done, my apprentice, you've defeated the slimes!>", "I will now bestow upon you the ability to fire a giant fireball.>", "]Right-click to fire a slow-moving fireball that explodes into mini fireballs.[>", "Your next task is to head into the left door and face the challenge within that room. Good luck!"]
+var post_stage_dialogue = ["Now that you have defeated the slimes, head back out of the room.>", "That will conclude our demonstration. Exit via the pause menu."]
 
 func _ready() -> void:
 	$DialogueLayer.connect("dialogueFinished", setCompleted)
 	$E.hide()
 
 func _input(_event: InputEvent) -> void:
-	
 	if !inProgress and !completed and Input.is_action_just_pressed("ui_interact") and player in get_overlapping_bodies():
 		inProgress = true
 		$DialogueLayer.start()
@@ -31,15 +29,10 @@ func setCompleted():
 				summonCircles.enable()
 				summonCircles.connect("spawnedClear", _on_summon_depleted)
 				summon_circles += 1
-			# SPAWN BOSS
-			await get_tree().create_timer(10).timeout
-			var bossSpawn = boss.instantiate()
-			get_parent().add_child(bossSpawn)
 		STATES.POSTSTAGE:
 			completed = true
 			set_deferred("monitorable", false)
 			set_deferred("monitoring", false)
-			player.alt_fire = true
 			get_parent().get_node("SceneTrigger").enable()
 	$Notification.hide()
 
