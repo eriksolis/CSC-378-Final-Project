@@ -39,6 +39,7 @@ func setCompleted():
 			set_deferred("monitorable", false)
 			set_deferred("monitoring", false)
 			player.alt_fire = true
+			get_parent().get_node("SceneTrigger").active = true
 
 
 func _on_body_entered(body: Node2D) -> void:

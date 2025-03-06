@@ -3,7 +3,7 @@ class_name BaseScene extends Node
 
 @onready var player: Player = $Player
 @onready var entrance_markers: Node2D = $EntranceMarkers
-var doorSpawn = false
+@export var doorSpawn = false
 
 func _ready() -> void:
 	if scene_manager.player:

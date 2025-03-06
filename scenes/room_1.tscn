@@ -919,6 +919,7 @@ size = Vector2(138, 146)
 
 [node name="Room1" type="Node2D" groups=["GameScene"]]
 script = ExtResource("1_6o2pf")
+doorSpawn = true
 
 [node name="Player" parent="." instance=ExtResource("10_bq78k")]
 z_index = 3
