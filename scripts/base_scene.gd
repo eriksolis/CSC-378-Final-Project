@@ -13,4 +13,6 @@ func set_player(player):
 			for entrance in entrance_markers.get_children():
 				if entrance is Marker2D and entrance.name == "DoorPos":
 					player.global_position = entrance.global_position
+				elif entrance is Marker2D and entrance.name == "DoorPos2":
+					player.global_position = entrance.global_position
 	add_child(player)
