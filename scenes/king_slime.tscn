@@ -170,7 +170,6 @@ bus = &"SFX"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
 simplify_path = true
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="Navigation"]
 wait_time = 0.1
