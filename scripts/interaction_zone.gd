@@ -7,7 +7,7 @@ enum STATES{PRESTAGE, POSTSTAGE, PREBOSS, POSTBOSS}
 var state = STATES.PRESTAGE
 @onready var player = scene_manager.player
 @onready var boss = load("res://scenes/king_slime.tscn")
-var post_stage_dialogue = ["Well done, my apprentice, you've defeated the slimes!>", "I will now bestow upon you the ability to fire a giant fireball.>", "]Right-click to fire a slow-moving fireball that explodes into mini fireballs.[>", "Your next task is to head into the left door and face the challenge within that room. Good luck!"]
+var post_stage_dialogue = ["Well done, my apprentice, you've defeated the slimes!>", "I will now bestow upon you the ability to fire a giant fireball. >", "[Right-click to fire a slow-moving fireball that explodes into mini fireballs.] >", "Your next task is to head into the left door and face the challenge within that room. Good luck!"]
 
 func _ready() -> void:
 	$DialogueLayer.connect("dialogueFinished", setCompleted)

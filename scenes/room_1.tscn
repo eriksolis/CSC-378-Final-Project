@@ -1025,7 +1025,7 @@ shape = SubResource("RectangleShape2D_ihv6j")
 
 [node name="DialogueLayer" parent="InteractArea" instance=ExtResource("21_8f152")]
 visible = false
-dialogue = ["How I got here, you ask? Do not inquire, apprentice. I have my ways.>", "Here, you must train against more slimes."]
+dialogue = ["How I got here, you ask? Do not inquire, apprentice. I have my ways. >", "Here, you must train against more slimes."]
 
 [node name="E" type="Label" parent="InteractArea"]
 offset_left = 182.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://7vlrnty15x2h"]
+[gd_scene load_steps=37 format=4 uid="uid://7vlrnty15x2h"]
 
 [ext_resource type="PackedScene" uid="uid://boafl0ap4dpbv" path="res://scenes/slime.tscn" id="1_gb4t7"]
 [ext_resource type="Script" path="res://scripts/base_scene.gd" id="1_u7ftc"]
@@ -849,6 +849,9 @@ sources/8 = SubResource("TileSetAtlasSource_mp6xe")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n0k21"]
 size = Vector2(110.75, 131.875)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hx1n"]
+size = Vector2(109.5, 125)
+
 [node name="Game" type="Node2D" groups=["GameScene"]]
 y_sort_enabled = true
 script = ExtResource("1_u7ftc")
@@ -886,7 +889,7 @@ position = Vector2(255, 628.5)
 shape = SubResource("RectangleShape2D_0kfkf")
 
 [node name="DialogueLayer" parent="InteractArea" instance=ExtResource("5_5xrf0")]
-dialogue = ["My young apprentice. It's up to you to defend this village! [Press E to continue.]", "Gerald is a force to be reckoned with. I remember when I had to deal with his father.>", " His father, Geraldino, ruled this land with an iron fist. His king slime power knew no bounds.>", "Fortunately for you, my powers knew none either!>", "]You stare at him with a blank face.[>", "Anyways... Gerald's forces should be here soon. Be on guard!"]
+dialogue = ["My young apprentice. It's up to you to defend this village! [Press E to continue.]", "Gerald is a force to be reckoned with. I remember when I had to deal with his father. >", " His father, Geraldino, ruled this land with an iron fist. His King Slime's power knew no bounds. >", "Fortunately for you, my powers knew none either! >", "[You stare at him with a blank face.] >", "Anyways... Gerald's forces should be here soon. Be on guard!"]
 
 [node name="E" type="Label" parent="InteractArea"]
 offset_left = 182.0
@@ -1194,13 +1197,13 @@ shape = SubResource("RectangleShape2D_n0k21")
 
 [node name="SceneTrigger2" parent="." instance=ExtResource("22_voy70")]
 z_index = 5
-position = Vector2(1828, -543)
+position = Vector2(1823, -548)
 connected_scene = "room_2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger2"]
 z_index = 5
-position = Vector2(0, -3.9375)
-shape = SubResource("RectangleShape2D_n0k21")
+position = Vector2(1.25, 4.5)
+shape = SubResource("RectangleShape2D_0hx1n")
 
 [node name="EntranceMarkers" type="Node2D" parent="."]
 
@@ -1208,7 +1211,7 @@ shape = SubResource("RectangleShape2D_n0k21")
 position = Vector2(-476, -436)
 
 [node name="DoorPos2" type="Marker2D" parent="EntranceMarkers"]
-position = Vector2(1827, -436)
+position = Vector2(1825, -338)
 
 [connection signal="body_entered" from="InteractArea" to="InteractArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="InteractArea" method="_on_body_exited"]

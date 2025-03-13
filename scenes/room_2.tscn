@@ -1,5 +1,6 @@
-[gd_scene load_steps=36 format=4 uid="uid://dbovs8ra0ynx2"]
+[gd_scene load_steps=37 format=4 uid="uid://dow633838vbbv"]
 
+[ext_resource type="Script" path="res://scripts/base_scene.gd" id="1_cu2cf"]
 [ext_resource type="Texture2D" uid="uid://83f53etsk1i0" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Tileset Grass.png" id="1_xv5ej"]
 [ext_resource type="Texture2D" uid="uid://ogkd2hbp2sar" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Tileset Wall.png" id="2_41oai"]
 [ext_resource type="Texture2D" uid="uid://bttg6hb64h1bd" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Struct.png" id="3_qmob4"]
@@ -911,7 +912,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4y32"]
 size = Vector2(138, 146)
 
-[node name="Room2" type="Node2D"]
+[node name="Room2" type="Node2D" groups=["GameScene"]]
+script = ExtResource("1_cu2cf")
+doorStatus = 1
 
 [node name="Door" type="TileMapLayer" parent="."]
 z_index = -2
@@ -988,13 +991,13 @@ y_sort_enabled = true
 position = Vector2(-2, 31)
 
 [node name="DoorPos" type="Marker2D" parent="EntranceMarkers"]
-position = Vector2(864, 1089)
+position = Vector2(864, 1024)
 
 [node name="Summon" parent="." groups=["Summon"] instance=ExtResource("11_w88ii")]
 position = Vector2(464, 491)
 
 [node name="Summon2" parent="." groups=["Summon"] instance=ExtResource("11_w88ii")]
-position = Vector2(455, 715)
+position = Vector2(455, 802)
 
 [node name="InteractArea" type="Area2D" parent="."]
 y_sort_enabled = true
@@ -1021,7 +1024,7 @@ shape = SubResource("RectangleShape2D_x4y32")
 
 [node name="DialogueLayer" parent="InteractArea" instance=ExtResource("20_8df5o")]
 visible = false
-dialogue = ["How I got here, you ask? Do not inquire, apprentice. I have my ways. >", "Here, you must train against more slimes."]
+dialogue = ["It feels like the magic is strong within this room. >", "Be prepared, this one might be tough!"]
 
 [node name="E" type="Label" parent="InteractArea"]
 offset_left = 182.0
