@@ -117,10 +117,8 @@ _data = {
 radius = 97.9999
 height = 342.0
 
-[node name="KingSlime" type="RigidBody2D" groups=["Enemies"]]
+[node name="KingSlime" type="CharacterBody2D" groups=["Enemies"]]
 y_sort_enabled = true
-gravity_scale = 0.0
-lock_rotation = true
 script = ExtResource("1_q78p1")
 health = 20
 
@@ -167,6 +165,16 @@ shape = SubResource("CapsuleShape2D_kmai8")
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_osnf1")
 bus = &"SFX"
+
+[node name="Navigation" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
+simplify_path = true
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="Navigation"]
+wait_time = 0.1
+autostart = true
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
