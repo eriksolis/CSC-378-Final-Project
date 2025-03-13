@@ -1,10 +1,11 @@
 extends CharacterBody2D
-@export var health = 3
+@export var health = 4
 enum TYPES {BLUE, GREEN, RED}
 @export var type = TYPES.BLUE
 @onready var blueParticle = load("res://images/enemies/slime_particle.png")
 @onready var greenParticle = load("res://images/enemies/slime_particle2.png")
 @onready var redParticle = load("res://images/enemies/slime_particle3.png")
+#@onready var orangeParticle = load("res://images/enemies/slime_particle4.png")
 var tween
 @onready var player = scene_manager.player
 @onready var nav_agent := $Navigation/NavigationAgent2D as NavigationAgent2D
@@ -22,6 +23,9 @@ func _ready() -> void:
 		TYPES.GREEN:
 			$SlimeSprite.play("green")
 			$SlimeSprite/SlimeParticles.texture = greenParticle
+		#TYPES.ORANGE:
+			#$SlimeSprite.play("orange")
+			#$SlimeSprite/SlimeParticles.texture = orangeParticle
 	$SummonAnim.play("fadein")
 	await $SummonAnim.animation_finished
 	

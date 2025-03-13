@@ -75,8 +75,7 @@ anim_offset_max = 1.0
 y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_bnxvi")
-speed = 10
-damage = 3
+damage = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true

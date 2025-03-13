@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://b8nf78t5137qr" path="res://images/enemies/blue_slime/000.png" id="2_iqq3g"]
 [ext_resource type="Texture2D" uid="uid://bhmd8ygk0c1my" path="res://images/enemies/blue_slime/001.png" id="3_4xoka"]
 [ext_resource type="Texture2D" uid="uid://bmchjp05wx787" path="res://images/enemies/blue_slime/002.png" id="4_ymhb0"]
-[ext_resource type="Texture2D" uid="uid://shhnq6epq7q6" path="res://images/enemies/green_slime/000.png" id="5_fubsk"]
-[ext_resource type="Texture2D" uid="uid://7lernc8ku2l" path="res://images/enemies/green_slime/001.png" id="6_fvqqk"]
-[ext_resource type="Texture2D" uid="uid://btc87udfea5tq" path="res://images/enemies/green_slime/002.png" id="7_hmq3h"]
+[ext_resource type="Texture2D" uid="uid://bq4vq2f3keba0" path="res://images/enemies/orange_slime/000.png" id="5_fubsk"]
+[ext_resource type="Texture2D" uid="uid://bfoj3cmvi1yuu" path="res://images/enemies/orange_slime/001.png" id="6_fvqqk"]
+[ext_resource type="Texture2D" uid="uid://dmxemh7t34ll3" path="res://images/enemies/orange_slime/002.png" id="7_hmq3h"]
 [ext_resource type="Texture2D" uid="uid://c3o1w2ebl7bxy" path="res://images/enemies/red_slime/000.png" id="8_3qtts"]
 [ext_resource type="Texture2D" uid="uid://c5mivuj8a7wsa" path="res://images/enemies/red_slime/001.png" id="9_o2j2n"]
 [ext_resource type="Texture2D" uid="uid://shi2j7gil0i4" path="res://images/enemies/red_slime/002.png" id="10_ms35o"]
@@ -41,6 +41,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"green",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_fubsk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fvqqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hmq3h")
+}],
+"loop": true,
+"name": &"orange",
 "speed": 6.0
 }, {
 "frames": [{
@@ -158,11 +172,10 @@ script = ExtResource("1_ehme8")
 
 [node name="SlimeSprite" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 0.501961, 0, 1)
 y_sort_enabled = true
 position = Vector2(0, 32)
 sprite_frames = SubResource("SpriteFrames_7nneo")
-animation = &"blue"
+animation = &"orange"
 offset = Vector2(0, -32)
 
 [node name="SlimeParticles" type="GPUParticles2D" parent="SlimeSprite"]

@@ -5,7 +5,7 @@ signal enemyDead
 @export var health: int = 3
 @export var speed: float = 300
 @export var chase_distance: float = 250.0  # Distance at which slime stops moving
-@export var attack_range: float = 400.0    # Distance within which slime can shoot
+@export var attack_range: float = 500.0    # Distance within which slime can shoot
 @export var attack_cooldown: float = 2.0
 @onready var player = scene_manager.player  # same approach as your melee slime
 
@@ -18,8 +18,8 @@ var tween
 
 func _ready() -> void:
 	# If you have unique animations/particles for the ranged slime, change them here:
-	$SlimeSprite.play("blue")  # for example
-	# $SlimeSprite/SlimeParticles.texture = load("res://images/enemies/slime_particle2.png") # optional
+	$SlimeSprite.play("orange")  # for example
+	$SlimeSprite/SlimeParticles.texture = load("res://images/enemies/slime_particle4.png") # optional
 
 	# Play the same "fadein" animation your melee slime uses
 	$SummonAnim.play("fadein")

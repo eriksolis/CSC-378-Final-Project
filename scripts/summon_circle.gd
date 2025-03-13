@@ -51,7 +51,7 @@ func randomSummon(delay) -> void:
 		TYPES.RED:
 			$Glow.self_modulate = Color("#ffa19e")
 		TYPES.RANGED:
-			$Glow.self_modulate = Color("#ff8000")
+			$Glow.self_modulate = Color("#ce8a3f")
 
 	$SummonManager.play("summon")
 	await $SummonManager.animation_finished
