@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends CharacterBody2D
 @export var health = 3
 enum TYPES {BLUE, GREEN, RED}
 @export var type = TYPES.BLUE
@@ -7,7 +7,8 @@ enum TYPES {BLUE, GREEN, RED}
 @onready var redParticle = load("res://images/enemies/slime_particle3.png")
 var tween
 @onready var player = scene_manager.player
-var speed = 300
+@onready var nav_agent := $Navigation/NavigationAgent2D as NavigationAgent2D
+var speed = 150
 signal enemyDead
 
 func _ready() -> void:
@@ -23,11 +24,16 @@ func _ready() -> void:
 			$SlimeSprite/SlimeParticles.texture = greenParticle
 	$SummonAnim.play("fadein")
 	await $SummonAnim.animation_finished
-
-func _physics_process(_delta: float) -> void:
-	if player != null and player not in $Hitbox.get_overlapping_bodies():
-		linear_velocity = linear_velocity.move_toward(player.position - position, speed).normalized() * 100
-
+	
+func _physics_process(delta:float) -> void:
+	nav_agent.target_position = player.global_position
+	var direction = Vector2.ZERO
+	direction = nav_agent.get_next_path_position() - global_position
+	direction = direction.normalized()
+	velocity = direction * speed
+	move_and_slide()
+		
+	
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerBullets"):
 		$Hit.pitch_scale = randf_range(0.95, 1)
@@ -58,3 +64,7 @@ func destroy():
 	await $SummonAnim.animation_finished
 	enemyDead.emit()
 	queue_free()
+
+func _on_timer_target_positiontimeout() -> void:
+	nav_agent.target_position = player.global_position
+	pass # Replace with function body.
