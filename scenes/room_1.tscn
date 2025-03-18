@@ -923,6 +923,7 @@ script = ExtResource("1_6o2pf")
 doorStatus = 1
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_650ft")
 navigation_layers = 3
 
@@ -993,6 +994,7 @@ connected_scene = "game"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]
 z_index = 5
+y_sort_enabled = true
 position = Vector2(0, -50.5)
 shape = SubResource("RectangleShape2D_0t2ef")
 
@@ -1001,10 +1003,12 @@ y_sort_enabled = true
 position = Vector2(-2, 31)
 
 [node name="DoorPos" type="Marker2D" parent="EntranceMarkers"]
+y_sort_enabled = true
 position = Vector2(864, 1089)
 
 [node name="Summon" parent="." groups=["Summon"] instance=ExtResource("23_k1ayb")]
 position = Vector2(1449, 462)
+heartSpawn = true
 
 [node name="Summon2" parent="." groups=["Summon"] instance=ExtResource("23_k1ayb")]
 position = Vector2(1448, 646)
@@ -1015,6 +1019,7 @@ position = Vector2(120, 2)
 script = ExtResource("13_nudbk")
 
 [node name="Magnus" type="AnimatedSprite2D" parent="InteractArea"]
+z_index = 3
 y_sort_enabled = true
 position = Vector2(201, 532)
 sprite_frames = SubResource("SpriteFrames_1lb0q")
@@ -1022,6 +1027,7 @@ autoplay = "default"
 offset = Vector2(1, -44)
 
 [node name="Staff" type="Sprite2D" parent="InteractArea"]
+z_index = 3
 y_sort_enabled = true
 position = Vector2(212, 541.75)
 rotation = -0.41113
@@ -1029,6 +1035,7 @@ texture = ExtResource("20_jd7uy")
 offset = Vector2(38.6154, -38.5281)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+y_sort_enabled = true
 position = Vector2(199, 495)
 shape = SubResource("RectangleShape2D_ihv6j")
 
@@ -1044,6 +1051,7 @@ offset_bottom = 439.0
 theme_override_fonts/font = ExtResource("22_1glnd")
 theme_override_font_sizes/font_size = 42
 text = "E"
+metadata/_edit_use_anchors_ = true
 
 [node name="Notification" type="Label" parent="InteractArea"]
 visible = false

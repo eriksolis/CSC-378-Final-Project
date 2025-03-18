@@ -6,6 +6,7 @@ var direction = DIRECTIONS.FRONT
 enum MOTION {IDLE, WALK}
 var motion = MOTION.IDLE
 var health = 6
+var maxHealth = 6
 const SPEED = 300.0
 var tween
 var heartArray = []
@@ -163,6 +164,27 @@ func updateHealth():
 			for child in heartArray[i].get_children():
 				child.hide()
 
+
+func heal():
+	@warning_ignore("integer_division")
+	if health + 2 > maxHealth:
+		if health + 1 > maxHealth:
+			return false
+		else:
+			health += 1
+	else:
+		health += 2
+	var tracker = 0
+	for i in range(0, len(heartArray)):
+		var heartSprites = heartArray[i].get_children()
+		heartSprites.reverse()
+		for child in heartSprites:
+			tracker += 1
+			if tracker <= health:
+				child.show()
+			else:
+				return true
+	return true
 
 func _on_restart_button_button_down() -> void:
 	restart.emit()

@@ -1,12 +1,18 @@
 extends Sprite2D
 
 # add ranged slime
-enum TYPES { BLUE, GREEN, RED, RANGED }
-var slime_types = [TYPES.BLUE, TYPES.GREEN, TYPES.RED, TYPES.RANGED]
+enum TYPES { BLUE, GREEN, RED, ORANGE, PURPLE, MUSHROOM, HEART }
+# add or decrease slime types allowed in the inspector panel
+@export var slime_types = [TYPES.BLUE, TYPES.GREEN, TYPES.RED, TYPES.ORANGE]
+# tracks if last spawn is heart slime
+@export var heartSpawn = false
 
 # load slimes
 @onready var melee_slime_scene = load("res://scenes/slime.tscn")
 @onready var ranged_slime_scene = load("res://scenes/ranged_slime.tscn")
+@onready var purple_slime_scene = load("res://scenes/purple_slime.tscn")
+@onready var mushroom_slime_scene = load("res://scenes/mushroom_slime.tscn")
+@onready var heart_slime_scene = load("res://scenes/pink_slime.tscn")
 var count = 0
 var spawned = 0
 @export var maxSpawns = 10
@@ -24,19 +30,30 @@ func enable() -> void:
 func randomSummon(delay) -> void:
 	count += 1
 	spawned += 1
-	# randomly pick type from enum
-	var chosen_type = slime_types.pick_random()
+	var chosen_type
 	var slime_scene
+	if heartSpawn and count == maxSpawns:
+		chosen_type = TYPES.HEART
+	else:
+		# randomly pick type from enum
+		chosen_type = slime_types.pick_random()
+	
 	match chosen_type:
 		TYPES.BLUE, TYPES.GREEN, TYPES.RED:
 			slime_scene = melee_slime_scene
-		TYPES.RANGED:
+		TYPES.ORANGE:
 			slime_scene = ranged_slime_scene
+		TYPES.PURPLE:
+			slime_scene = purple_slime_scene
+		TYPES.MUSHROOM:
+			slime_scene = mushroom_slime_scene
+		TYPES.HEART:
+			slime_scene = heart_slime_scene
 
 	var enemySpawn = slime_scene.instantiate()
 
 	# if a melee slime, set the "type" so it knows which color/animation to use
-	if chosen_type != TYPES.RANGED:
+	if chosen_type == TYPES.BLUE or chosen_type == TYPES.GREEN or chosen_type == TYPES.RED:
 		enemySpawn.type = chosen_type
 	enemySpawn.connect("enemyDead", checkSpawned)
 
@@ -50,8 +67,14 @@ func randomSummon(delay) -> void:
 			$Glow.self_modulate = Color("#b6ffbe")
 		TYPES.RED:
 			$Glow.self_modulate = Color("#ffa19e")
-		TYPES.RANGED:
+		TYPES.ORANGE:
 			$Glow.self_modulate = Color("#ce8a3f")
+		TYPES.PURPLE:
+			$Glow.self_modulate = Color("#BE74E6")
+		TYPES.MUSHROOM:
+			$Glow.self_modulate = Color("#BD054A")
+		TYPES.HEART:
+			$Glow.self_modulate = Color("#E47B9C")
 
 	$SummonManager.play("summon")
 	await $SummonManager.animation_finished

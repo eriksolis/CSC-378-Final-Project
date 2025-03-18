@@ -1,65 +1,28 @@
-[gd_scene load_steps=23 format=3 uid="uid://boafl0ap4dpbv"]
+[gd_scene load_steps=19 format=3 uid="uid://bpe8si04vxi0s"]
 
-[ext_resource type="Script" path="res://scripts/slime.gd" id="1_gsn1t"]
-[ext_resource type="Texture2D" uid="uid://b8nf78t5137qr" path="res://images/enemies/blue_slime/000.png" id="2_ov23e"]
-[ext_resource type="Texture2D" uid="uid://bhmd8ygk0c1my" path="res://images/enemies/blue_slime/001.png" id="3_h42gv"]
-[ext_resource type="Texture2D" uid="uid://bmchjp05wx787" path="res://images/enemies/blue_slime/002.png" id="4_dqbhs"]
-[ext_resource type="Texture2D" uid="uid://shhnq6epq7q6" path="res://images/enemies/green_slime/000.png" id="5_0qkla"]
-[ext_resource type="Texture2D" uid="uid://7lernc8ku2l" path="res://images/enemies/green_slime/001.png" id="6_5hvdi"]
-[ext_resource type="Texture2D" uid="uid://btc87udfea5tq" path="res://images/enemies/green_slime/002.png" id="7_ubpjm"]
-[ext_resource type="Texture2D" uid="uid://c3o1w2ebl7bxy" path="res://images/enemies/red_slime/000.png" id="8_h2r08"]
-[ext_resource type="Texture2D" uid="uid://c5mivuj8a7wsa" path="res://images/enemies/red_slime/001.png" id="9_e8atl"]
-[ext_resource type="Texture2D" uid="uid://shi2j7gil0i4" path="res://images/enemies/red_slime/002.png" id="10_puu5p"]
-[ext_resource type="Texture2D" uid="uid://cb45fn7a7ek2c" path="res://images/enemies/slime_particle.png" id="11_hx1kq"]
-[ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="12_p2jix"]
+[ext_resource type="Script" path="res://scripts/pink_slime.gd" id="1_nin15"]
+[ext_resource type="PackedScene" uid="uid://qqrsdx5mb1jv" path="res://scenes/pink_bullet.tscn" id="2_vre8b"]
+[ext_resource type="Texture2D" uid="uid://bofecdonnnwex" path="res://images/enemies/heart_slime/000.png" id="3_uwyd6"]
+[ext_resource type="Texture2D" uid="uid://btlche8c5aspq" path="res://images/enemies/heart_slime/001.png" id="4_bqgak"]
+[ext_resource type="Texture2D" uid="uid://cx0npvam6hhc5" path="res://images/enemies/heart_slime/002.png" id="5_we7w6"]
+[ext_resource type="Texture2D" uid="uid://bfoa5fim0bn2n" path="res://images/enemies/slime_particle7.png" id="6_4l4j1"]
+[ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="7_tu2cg"]
+[ext_resource type="AudioStream" uid="uid://chtu4g3wjjdsk" path="res://audio/slime_fire.wav" id="8_6qlaf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7nneo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ov23e")
+"texture": ExtResource("3_uwyd6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_h42gv")
+"texture": ExtResource("4_bqgak")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_dqbhs")
+"texture": ExtResource("5_we7w6")
 }],
 "loop": true,
-"name": &"blue",
-"speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_0qkla")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_5hvdi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_ubpjm")
-}],
-"loop": true,
-"name": &"green",
-"speed": 6.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"orange",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_h2r08")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_e8atl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_puu5p")
-}],
-"loop": true,
-"name": &"red",
+"name": &"pink",
 "speed": 6.0
 }]
 
@@ -67,7 +30,7 @@ animations = [{
 _data = [Vector2(0, 0.603166), 0.0, 3.329, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_m7sat"]
+[sub_resource type="CurveTexture" id="CurveTexture_8ikw3"]
 curve = SubResource("Curve_u1yal")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fg8xw"]
@@ -79,7 +42,7 @@ initial_velocity_min = 200.0
 initial_velocity_max = 200.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.7
-alpha_curve = SubResource("CurveTexture_m7sat")
+alpha_curve = SubResource("CurveTexture_8ikw3")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3aloq"]
 radius = 32.0
@@ -155,12 +118,14 @@ _data = {
 radius = 27.0
 height = 80.0
 
-[node name="Slime" type="CharacterBody2D" groups=["Enemies"]]
+[node name="PinkSlime" type="RigidBody2D" groups=["Enemies"]]
 y_sort_enabled = true
-collision_layer = 25
-collision_mask = 17
-motion_mode = 1
-script = ExtResource("1_gsn1t")
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_nin15")
+health = 4
+attack_cooldown = 3.0
+enemy_fireball_scene = ExtResource("2_vre8b")
 
 [node name="SlimeSprite" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -168,7 +133,8 @@ z_index = 3
 y_sort_enabled = true
 position = Vector2(0, 32)
 sprite_frames = SubResource("SpriteFrames_7nneo")
-animation = &"orange"
+animation = &"pink"
+autoplay = "pink"
 offset = Vector2(0, -32)
 
 [node name="SlimeParticles" type="GPUParticles2D" parent="SlimeSprite"]
@@ -177,7 +143,7 @@ position = Vector2(0, -32)
 emitting = false
 amount = 5
 process_material = SubResource("ParticleProcessMaterial_fg8xw")
-texture = ExtResource("11_hx1kq")
+texture = ExtResource("6_4l4j1")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
@@ -203,20 +169,12 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kmai8")
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_p2jix")
+stream = ExtResource("7_tu2cg")
 bus = &"SFX"
 
-[node name="Navigation" type="Node2D" parent="."]
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
-simplify_path = true
-avoidance_enabled = true
-radius = 20.1
-
-[node name="Timer" type="Timer" parent="Navigation"]
-wait_time = 0.1
-autostart = true
+[node name="Fire" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_6qlaf")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="timeout" from="Navigation/Timer" to="." method="_on_timer_timeout"]

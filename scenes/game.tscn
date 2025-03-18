@@ -1190,6 +1190,7 @@ position = Vector2(1359, 526)
 
 [node name="Summon2" parent="." groups=["Summon"] instance=ExtResource("3_yanxi")]
 position = Vector2(-504, 598)
+heartSpawn = true
 
 [node name="SceneTrigger" parent="." instance=ExtResource("22_voy70")]
 z_index = 5

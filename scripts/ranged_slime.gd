@@ -10,7 +10,7 @@ signal enemyDead
 @onready var player = scene_manager.player  # same approach as your melee slime
 
 # Load your new enemy fireball scene
-@onready var enemy_fireball_scene = load("res://scenes/enemy_fireball.tscn")
+@export var enemy_fireball_scene = load("res://scenes/enemy_fireball.tscn")
 
 var attack_timer: float = 0.0
 var has_stopped: bool = false
@@ -18,8 +18,8 @@ var tween
 
 func _ready() -> void:
 	# If you have unique animations/particles for the ranged slime, change them here:
-	$SlimeSprite.play("orange")  # for example
-	$SlimeSprite/SlimeParticles.texture = load("res://images/enemies/slime_particle4.png") # optional
+	#$SlimeSprite.play("orange")  # for example
+	#$SlimeSprite/SlimeParticles.texture = load("res://images/enemies/slime_particle4.png") # optional
 
 	# Play the same "fadein" animation your melee slime uses
 	$SummonAnim.play("fadein")
@@ -58,6 +58,7 @@ func _physics_process(delta: float) -> void:
 		attack_timer -= delta
 
 func shoot_fireball() -> void:
+	$Fire.play()
 	# Instantiate the enemy fireball
 	var bullet = enemy_fireball_scene.instantiate()
 	# Position it at the slime's location (or use a Marker2D if you want a different spawn point)

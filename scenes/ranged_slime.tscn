@@ -1,48 +1,16 @@
-[gd_scene load_steps=23 format=3 uid="uid://dnijhf5cmo4xw"]
+[gd_scene load_steps=19 format=3 uid="uid://dnijhf5cmo4xw"]
 
 [ext_resource type="Script" path="res://scripts/ranged_slime.gd" id="1_ehme8"]
-[ext_resource type="Texture2D" uid="uid://b8nf78t5137qr" path="res://images/enemies/blue_slime/000.png" id="2_iqq3g"]
-[ext_resource type="Texture2D" uid="uid://bhmd8ygk0c1my" path="res://images/enemies/blue_slime/001.png" id="3_4xoka"]
-[ext_resource type="Texture2D" uid="uid://bmchjp05wx787" path="res://images/enemies/blue_slime/002.png" id="4_ymhb0"]
+[ext_resource type="PackedScene" uid="uid://by7ot4244s55x" path="res://scenes/enemy_fireball.tscn" id="2_2o48c"]
 [ext_resource type="Texture2D" uid="uid://bq4vq2f3keba0" path="res://images/enemies/orange_slime/000.png" id="5_fubsk"]
 [ext_resource type="Texture2D" uid="uid://bfoj3cmvi1yuu" path="res://images/enemies/orange_slime/001.png" id="6_fvqqk"]
+[ext_resource type="Texture2D" uid="uid://pp3uls5ptafd" path="res://images/enemies/slime_particle4.png" id="6_ucfp7"]
 [ext_resource type="Texture2D" uid="uid://dmxemh7t34ll3" path="res://images/enemies/orange_slime/002.png" id="7_hmq3h"]
-[ext_resource type="Texture2D" uid="uid://c3o1w2ebl7bxy" path="res://images/enemies/red_slime/000.png" id="8_3qtts"]
-[ext_resource type="Texture2D" uid="uid://c5mivuj8a7wsa" path="res://images/enemies/red_slime/001.png" id="9_o2j2n"]
-[ext_resource type="Texture2D" uid="uid://shi2j7gil0i4" path="res://images/enemies/red_slime/002.png" id="10_ms35o"]
-[ext_resource type="Texture2D" uid="uid://cb45fn7a7ek2c" path="res://images/enemies/slime_particle.png" id="11_ou73r"]
+[ext_resource type="AudioStream" uid="uid://chtu4g3wjjdsk" path="res://audio/slime_fire.wav" id="8_hlaii"]
 [ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="12_l0wxc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7nneo"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_iqq3g")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_4xoka")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_ymhb0")
-}],
-"loop": true,
-"name": &"blue",
-"speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_fubsk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_fvqqk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_hmq3h")
-}],
-"loop": true,
-"name": &"green",
-"speed": 6.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("5_fubsk")
@@ -55,20 +23,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"orange",
-"speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_3qtts")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_o2j2n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_ms35o")
-}],
-"loop": true,
-"name": &"red",
 "speed": 6.0
 }]
 
@@ -164,18 +118,21 @@ _data = {
 radius = 27.0
 height = 80.0
 
-[node name="ranged_Slime" type="RigidBody2D" groups=["Enemies"]]
+[node name="OrangeSlime" type="RigidBody2D" groups=["Enemies"]]
 y_sort_enabled = true
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_ehme8")
+enemy_fireball_scene = ExtResource("2_2o48c")
 
 [node name="SlimeSprite" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
+z_index = 3
 y_sort_enabled = true
 position = Vector2(0, 32)
 sprite_frames = SubResource("SpriteFrames_7nneo")
 animation = &"orange"
+autoplay = "orange"
 offset = Vector2(0, -32)
 
 [node name="SlimeParticles" type="GPUParticles2D" parent="SlimeSprite"]
@@ -184,7 +141,7 @@ position = Vector2(0, -32)
 emitting = false
 amount = 5
 process_material = SubResource("ParticleProcessMaterial_fg8xw")
-texture = ExtResource("11_ou73r")
+texture = ExtResource("6_ucfp7")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
@@ -211,6 +168,10 @@ shape = SubResource("CapsuleShape2D_kmai8")
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_l0wxc")
+bus = &"SFX"
+
+[node name="Fire" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_hlaii")
 bus = &"SFX"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

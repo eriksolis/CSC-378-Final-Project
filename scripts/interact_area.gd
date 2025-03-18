@@ -6,7 +6,7 @@ var completed_summons = 0
 enum STATES{PRESTAGE, POSTSTAGE, PREBOSS, POSTBOSS}
 var state = STATES.PRESTAGE
 @onready var player = scene_manager.player
-var post_stage_dialogue = ["Now that you have defeated the slimes, head back out of the room. >", "I sense more magical entities appearing in another area."]
+@export var post_stage_dialogue = ["Now that you have defeated the slimes, head back out of the room. >", "I sense more magical entities appearing in another area."]
 
 func _ready() -> void:
 	$DialogueLayer.connect("dialogueFinished", setCompleted)
