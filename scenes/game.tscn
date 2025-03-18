@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://7vlrnty15x2h"]
+[gd_scene load_steps=39 format=4 uid="uid://7vlrnty15x2h"]
 
 [ext_resource type="PackedScene" uid="uid://boafl0ap4dpbv" path="res://scenes/slime.tscn" id="1_gb4t7"]
 [ext_resource type="Script" path="res://scripts/base_scene.gd" id="1_u7ftc"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://be4h8xsn6m04x" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Shadow Plant.png" id="12_axsu5"]
 [ext_resource type="Texture2D" uid="uid://b0mcibq6a61un" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Tileset Stone Ground.png" id="13_2r5vt"]
 [ext_resource type="Texture2D" uid="uid://jle1yp8a4m7v" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Shadow.png" id="14_di4j6"]
+[ext_resource type="Texture2D" uid="uid://66pqnodaubef" path="res://images/fence.png" id="21_4goy5"]
 [ext_resource type="PackedScene" uid="uid://bxlmhfodkyvh4" path="res://scenes/scene_trigger.tscn" id="22_voy70"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v0w10"]
@@ -840,6 +841,19 @@ texture_region_size = Vector2i(96, 96)
 7:7/0 = 0
 7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, -48, 48, -48, 48, 48, -48, 48)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bx8la"]
+texture = ExtResource("21_4goy5")
+texture_region_size = Vector2i(96, 96)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_738cs"]
 tile_size = Vector2i(96, 96)
 physics_layer_0/collision_layer = 1
@@ -852,6 +866,7 @@ sources/5 = SubResource("TileSetAtlasSource_1nogi")
 sources/6 = SubResource("TileSetAtlasSource_5swka")
 sources/7 = SubResource("TileSetAtlasSource_gyjmq")
 sources/8 = SubResource("TileSetAtlasSource_mp6xe")
+sources/9 = SubResource("TileSetAtlasSource_bx8la")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n0k21"]
 size = Vector2(110.75, 131.875)
@@ -1043,6 +1058,14 @@ z_as_relative = false
 y_sort_enabled = true
 position = Vector2(-40, 45)
 tile_map_data = PackedByteArray("AAAGAAEABwAOAAEAAAA=")
+tile_set = SubResource("TileSet_738cs")
+
+[node name="Fence" type="TileMapLayer" parent="Environment/Props"]
+z_index = 3
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, -65)
+tile_map_data = PackedByteArray("AADy//T/CQAAAAEAAADy//X/CQAAAAEAAADy//b/CQAAAAEAAADy//f/CQAAAAEAAADy//j/CQAAAAEAAADy//P/CQAAAAAAAADz//P/CQABAAAAAAD0//P/CQABAAAAAAD1//P/CQABAAAAAAD2//P/CQABAAAAAAD3//P/CQABAAAAAADy//n/CQAAAAEAAADy//r/CQAAAAEAAADy//v/CQAAAAEAAADy//z/CQAAAAEAAADy//3/CQAAAAEAAADy//7/CQAAAAEAAADy////CQAAAAEAAADy/wAACQAAAAEAAADy/wEACQAAAAEAAADy/wIACQAAAAEAAADy/wMACQAAAAEAAADy/wQACQAAAAEAAADy/wUACQAAAAEAAADy/wYACQAAAAEAAADy/wcACQAAAAEAAADy/wgACQAAAAEAAADy/wkACQAAAAEAAADy/woACQAAAAEAAADy/wsACQAAAAEAAADy/wwACQAAAAEAAADy/w0ACQAAAAIAAAAYAPP/CQABAAAAAAAXAPP/CQABAAAAAAAZAPP/CQABAAAAAAAaAPP/CQACAAAAAAAaAPT/CQACAAEAAAAaAPX/CQACAAEAAAAaAPb/CQACAAEAAAAaAPf/CQACAAEAAAAaAPj/CQACAAEAAAAaAPn/CQACAAEAAAAaAPr/CQACAAEAAAAaAPv/CQACAAEAAAAaAPz/CQACAAEAAAAaAP3/CQACAAEAAAAaAP7/CQACAAEAAAAaAP//CQACAAEAAAAaAAAACQACAAEAAAAaAAEACQACAAEAAAAaAAIACQACAAEAAAAaAAMACQACAAEAAAAaAAQACQACAAEAAAAaAAUACQACAAEAAAAaAAYACQACAAEAAAAaAAcACQACAAEAAAAaAAgACQACAAEAAAAaAAkACQACAAEAAAAaAAoACQACAAEAAAAaAAsACQACAAEAAAAaAAwACQACAAEAAAAaAA0ACQACAAIAAAA=")
 tile_set = SubResource("TileSet_738cs")
 
 [node name="EastSign" type="TileMapLayer" parent="Environment/Props"]

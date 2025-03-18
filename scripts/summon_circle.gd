@@ -1,7 +1,7 @@
 extends Sprite2D
 
 # add ranged slime
-enum TYPES { BLUE, GREEN, RED, ORANGE, PURPLE, MUSHROOM, HEART }
+enum TYPES { BLUE, GREEN, RED, ORANGE, PURPLE, MUSHROOM, HEART, COMET, CLOUD, STAR, OVERGROWTH}
 # add or decrease slime types allowed in the inspector panel
 @export var slime_types = [TYPES.BLUE, TYPES.GREEN, TYPES.RED, TYPES.ORANGE]
 # tracks if last spawn is heart slime
@@ -13,6 +13,10 @@ enum TYPES { BLUE, GREEN, RED, ORANGE, PURPLE, MUSHROOM, HEART }
 @onready var purple_slime_scene = load("res://scenes/purple_slime.tscn")
 @onready var mushroom_slime_scene = load("res://scenes/mushroom_slime.tscn")
 @onready var heart_slime_scene = load("res://scenes/pink_slime.tscn")
+@onready var comet_slime_scene = load("res://scenes/comet_slime.tscn")
+@onready var cloud_slime_scene = load("res://scenes/cloud_slime.tscn")
+@onready var star_slime_scene = load("res://scenes/star_slime.tscn")
+@onready var overgrowth_slime_scene = load("res://scenes/overgrowth_slime.tscn")
 var count = 0
 var spawned = 0
 @export var maxSpawns = 10
@@ -49,6 +53,14 @@ func randomSummon(delay) -> void:
 			slime_scene = mushroom_slime_scene
 		TYPES.HEART:
 			slime_scene = heart_slime_scene
+		TYPES.COMET:
+			slime_scene = comet_slime_scene
+		TYPES.CLOUD:
+			slime_scene = cloud_slime_scene
+		TYPES.STAR:
+			slime_scene = star_slime_scene
+		TYPES.OVERGROWTH:
+			slime_scene = overgrowth_slime_scene
 
 	var enemySpawn = slime_scene.instantiate()
 

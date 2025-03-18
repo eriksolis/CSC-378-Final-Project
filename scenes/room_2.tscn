@@ -1004,14 +1004,14 @@ position = Vector2(864, 1024)
 
 [node name="Summon" parent="." groups=["Summon"] instance=ExtResource("11_w88ii")]
 position = Vector2(464, 491)
-slime_types = [3, 4, 5]
+slime_types = [4, 5]
 heartSpawn = true
 summonDelay = 1.0
 
 [node name="Summon2" parent="." groups=["Summon"] instance=ExtResource("11_w88ii")]
 position = Vector2(455, 802)
-slime_types = [0, 1, 2]
-maxSpawns = 20
+slime_types = [10]
+heartSpawn = true
 
 [node name="InteractArea" type="Area2D" parent="."]
 y_sort_enabled = true

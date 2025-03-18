@@ -137,7 +137,7 @@ script = ExtResource("1_perhv")
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_7n4ju")
 autoplay = "default"
-frame_progress = 0.531946
+frame_progress = 0.704725
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="AnimatedSprite2D"]
 modulate = Color(1, 0.694118, 1, 1)
