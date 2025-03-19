@@ -7,19 +7,19 @@ enum STATES{PRESTAGE, POSTSTAGE, PREBOSS, POSTBOSS}
 var state = STATES.PRESTAGE
 @onready var player = scene_manager.player
 @onready var boss = load("res://scenes/king_slime.tscn")
-var post_stage_dialogue = ["Well done, my apprentice, you've defeated the slimes!>", "I will now bestow upon you the ability to fire a giant fireball. >", "[Right-click to fire a slow-moving fireball that explodes into mini fireballs.] >", "Your next task is to head into the left door and face the challenge within that room. Good luck!"]
+var post_stage_dialogue = ["Well done, my apprentice, you've defeated the slimes!>", "I will now bestow upon you the ability to fire a giant fireball. >", "[Right-click to fire a slow-moving fireball that explodes into mini fireballs.] >", "Before you arrived, some slimes had already invaded the village. It ashames me to admit, but I was unable to stop them.>", "Before I knew it, they had already engulfed some of the villagers.>", "As such, your next task is to free the poor villager in the room to the left! Go forth my apprentice, and make me proud!"]
 
 func _ready() -> void:
 	$DialogueLayer.connect("dialogueFinished", setCompleted)
 	$E.hide()
 
 func _input(_event: InputEvent) -> void:
-	
 	if !inProgress and !completed and Input.is_action_just_pressed("ui_interact") and player in get_overlapping_bodies():
 		inProgress = true
 		$DialogueLayer.start()
 
 func setCompleted():
+	$Notification.hide()
 	match state:
 		STATES.PRESTAGE:
 			MusicHandler.play("SwarmingOnslaught")
@@ -41,7 +41,6 @@ func setCompleted():
 			set_deferred("monitoring", false)
 			player.alt_fire = true
 			get_parent().get_node("SceneTrigger").enable()
-	$Notification.hide()
 
 
 func _on_body_entered(body: Node2D) -> void:

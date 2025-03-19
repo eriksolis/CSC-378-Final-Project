@@ -397,6 +397,7 @@ texture_region_size = Vector2i(96, 96)
 2:5/0 = 0
 2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-38.4, 0, -48, -9.6, -48, 48, -38.4, 48)
 3:5/0 = 0
+3:5/0/y_sort_origin = 32
 3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13.0909, 21.8182, 4.36364, 21.8182, 4.36364, 39.2727, -13.0909, 39.2727)
 5:5/0 = 0
 7:5/0 = 0
@@ -416,6 +417,7 @@ texture_region_size = Vector2i(96, 96)
 11:6/0 = 0
 13:6/0 = 0
 3:7/0 = 0
+3:7/0/y_sort_origin = 32
 3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13.0909, 21.8182, 4.36364, 21.8182, 4.36364, 39.2727, -13.0909, 39.2727)
 5:7/0 = 0
 7:7/0 = 0
@@ -495,11 +497,11 @@ texture_region_size = Vector2i(96, 96)
 2:13/0 = 0
 0:0/size_in_atlas = Vector2i(5, 5)
 0:0/0 = 0
-0:0/0/y_sort_origin = 175
+0:0/0/y_sort_origin = 200
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 208, 16, 208, 16, 192, -16, 192)
 5:0/size_in_atlas = Vector2i(3, 5)
 5:0/0 = 0
-5:0/0/y_sort_origin = 175
+5:0/0/y_sort_origin = 200
 5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 208, 16, 208, 16, 192, -16, 192)
 1:6/0 = 0
 1:6/0/y_sort_origin = 8
@@ -519,7 +521,7 @@ texture_region_size = Vector2i(96, 96)
 0:8/0/y_sort_origin = -10
 9:0/size_in_atlas = Vector2i(3, 5)
 9:0/0 = 0
-9:0/0/y_sort_origin = 175
+9:0/0/y_sort_origin = 200
 9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 208, 16, 208, 16, 192, -16, 192)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1nogi"]
@@ -920,7 +922,6 @@ theme_override_font_sizes/font_size = 42
 text = "E"
 
 [node name="Notification" type="Label" parent="InteractArea"]
-visible = false
 offset_left = 182.0
 offset_top = 336.0
 offset_right = 222.0

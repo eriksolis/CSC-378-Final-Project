@@ -1,11 +1,13 @@
-[gd_scene load_steps=40 format=4 uid="uid://cpgh85m4w1e4v"]
+[gd_scene load_steps=44 format=4 uid="uid://cpgh85m4w1e4v"]
 
 [ext_resource type="Script" path="res://scripts/base_scene.gd" id="1_cu2cf"]
 [ext_resource type="Texture2D" uid="uid://83f53etsk1i0" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Tileset Grass.png" id="1_xv5ej"]
 [ext_resource type="Texture2D" uid="uid://ogkd2hbp2sar" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Tileset Wall.png" id="2_41oai"]
 [ext_resource type="Texture2D" uid="uid://bttg6hb64h1bd" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Struct.png" id="3_qmob4"]
 [ext_resource type="Texture2D" uid="uid://dkhilm1cxcukm" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Props.png" id="4_krqd0"]
+[ext_resource type="Texture2D" uid="uid://chyodpfyiw53i" path="res://images/botanist_room_decor.png" id="4_xy613"]
 [ext_resource type="Texture2D" uid="uid://bcuc81twlf1xv" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Plant.png" id="5_qjnid"]
+[ext_resource type="Texture2D" uid="uid://dnko70dffxvme" path="res://images/botanist_room_decor_shadows.png" id="5_sru7v"]
 [ext_resource type="Texture2D" uid="uid://be4h8xsn6m04x" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Shadow Plant.png" id="6_yw638"]
 [ext_resource type="Texture2D" uid="uid://b0mcibq6a61un" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Tileset Stone Ground.png" id="7_gapym"]
 [ext_resource type="Texture2D" uid="uid://jle1yp8a4m7v" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Shadow.png" id="8_11ys4"]
@@ -26,8 +28,8 @@
 [ext_resource type="FontFile" uid="uid://b1ae4tx6npay3" path="res://JacquardaBastarda9-Regular.ttf" id="21_74t1u"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_cur41"]
-vertices = PackedVector2Array(888.938, 1212, 839.062, 1212, 864, 1203.68, 1042.74, 214.453, 1040.96, 202, 1071.04, 202, 1069.26, 214.453, 1138.74, 214.453, 1136.96, 202, 1167.04, 202, 1165.26, 214.453, 1234.74, 214.453, 1232.96, 202, 1622, 202, 1622, 244, 298, 202, 975.039, 202, 973.258, 214.453, 298, 244, 1718, 244, 1718, 340, 10, 1142, 1814, 340, 1814, 436, 1910, 436, 1910, 1142, 1200, 240.5, 1104, 240.5, 1008, 240.5, 192.398, 480.398, 288.398, 384.398, 10, 436, 95.6016, 436, 95.6016, 480.398, 192.398, 384.398, 288.398, 278, 202, 278, 202, 244, 191.602, 374, 106, 374, 106, 340, 191.602, 340)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(11, 12, 13, 14), PackedInt32Array(15, 16, 17, 18), PackedInt32Array(14, 19, 20, 21), PackedInt32Array(20, 22, 23, 21), PackedInt32Array(23, 24, 25, 21), PackedInt32Array(11, 14, 21, 26), PackedInt32Array(7, 10, 26, 21, 27), PackedInt32Array(3, 6, 27, 21, 28), PackedInt32Array(17, 28, 21, 29, 30), PackedInt32Array(21, 31, 32, 33), PackedInt32Array(29, 34, 30), PackedInt32Array(35, 36, 37, 18), PackedInt32Array(21, 33, 29), PackedInt32Array(18, 17, 30, 35), PackedInt32Array(38, 39, 40, 41)])
+vertices = PackedVector2Array(888.938, 1212, 839.063, 1212, 864, 1203.68, 1335.51, 259.391, 1336.37, 202, 1333.87, 394, 1333.57, 302.656, 1299.96, 338.25, 1297.18, 237.188, 392.594, 202, 1259.1, 255.547, 490, 212, 1829.39, 1142, 88.7109, 1142, 90.2969, 1066, 106.078, 1066, 1546.08, 394, 1622, 340, 1720.61, 340, 1717.81, 490, 1543.58, 490, 181.867, 394, 183.602, 394, 181.813, 490, 106, 532, 1335.6, 394, 1333.81, 490, 1813.89, 922, 1815.75, 922, 1813.87, 1066, 104.422, 564.891, 10, 565.922, 10, 532, 1813.87, 778, 1815.4, 778, 394.078, 394, 393.656, 340, 490, 340, 104.961, 922, 106.031, 922, 391.578, 490, 390.859, 394, 1542.86, 394, 105.563, 778, 106.078, 778, 1544.59, 202, 1910, 202, 1910, 212, 1622, 212, 1910, 490, 1910, 565.094, 1816.63, 566.109, 106, 212, 10, 212, 10, 202, 184.367, 202, 392.672, 212, 1255.93, 311.422, 1828.6, 1066, 197.602, 586, 280.289, 586, 196.602, 490, 282.297, 490)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5), PackedInt32Array(6, 3, 5), PackedInt32Array(7, 6, 5), PackedInt32Array(4, 3, 8), PackedInt32Array(9, 4, 8, 10, 11), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(16, 17, 18, 19, 20), PackedInt32Array(21, 22, 23, 24), PackedInt32Array(5, 25, 26), PackedInt32Array(27, 28, 29, 15), PackedInt32Array(30, 31, 32, 24), PackedInt32Array(33, 34, 27), PackedInt32Array(35, 36, 37, 26), PackedInt32Array(15, 38, 39), PackedInt32Array(40, 41, 35, 26), PackedInt32Array(20, 42, 16), PackedInt32Array(39, 43, 44, 27), PackedInt32Array(45, 46, 47, 48), PackedInt32Array(16, 45, 48, 17), PackedInt32Array(19, 49, 50, 51), PackedInt32Array(52, 53, 54, 55), PackedInt32Array(52, 55, 21, 24), PackedInt32Array(11, 56, 9), PackedInt32Array(37, 11, 10, 57), PackedInt32Array(29, 58, 12), PackedInt32Array(29, 12, 15), PackedInt32Array(27, 15, 39), PackedInt32Array(33, 27, 44, 59, 60), PackedInt32Array(30, 24, 23, 61, 59, 44), PackedInt32Array(19, 51, 33, 60, 20), PackedInt32Array(26, 20, 60), PackedInt32Array(60, 62, 40), PackedInt32Array(26, 60, 40), PackedInt32Array(5, 26, 37, 57, 7)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 6, -1, 1354, 1927, 1347, 1925, 0)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xpowe"]
@@ -239,6 +241,72 @@ texture_region_size = Vector2i(96, 96)
 9:9/0 = 0
 9:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, -48, 48, -48, 48, 48, -48, 48)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxjnn"]
+texture = ExtResource("4_xy613")
+texture_region_size = Vector2i(96, 96)
+0:0/size_in_atlas = Vector2i(1, 2)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 48)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-33.5, -48, 32.5, -48, 30.5, 48, -32.5, 48)
+0:2/size_in_atlas = Vector2i(1, 2)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, 48)
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-33.5, -48, 32.5, -48, 30.5, 48, -32.5, 48)
+1:0/size_in_atlas = Vector2i(2, 2)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(-48, 48)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45.5, -86, 140.5, -85, 141.5, 48, -48, 48)
+3:0/size_in_atlas = Vector2i(2, 2)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(-48, 48)
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45.5, -86, 140.5, -85, 141.5, 48, -48, 48)
+5:0/size_in_atlas = Vector2i(1, 2)
+5:0/0 = 0
+5:0/0/texture_origin = Vector2i(0, 48)
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45.5, -144, 46.5, -145, 48, 48, -48, 48)
+6:0/size_in_atlas = Vector2i(1, 2)
+6:0/0 = 0
+6:0/0/texture_origin = Vector2i(0, 48)
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45.5, -144, 46.5, -145, 48, 48, -48, 48)
+7:0/size_in_atlas = Vector2i(1, 2)
+7:0/0 = 0
+7:0/0/texture_origin = Vector2i(0, 48)
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45.5, -144, 46.5, -145, 48, 48, -48, 48)
+7:2/size_in_atlas = Vector2i(1, 2)
+7:2/0 = 0
+7:2/0/texture_origin = Vector2i(0, 96)
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(47.3762, -192.333, 48, 0, -48, 0, -45.9619, -195.161)
+6:2/size_in_atlas = Vector2i(1, 2)
+6:2/0 = 0
+6:2/0/texture_origin = Vector2i(0, 48)
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45.5, -144, 46.5, -145, 48, 48, -48, 48)
+5:2/size_in_atlas = Vector2i(1, 2)
+5:2/0 = 0
+5:2/0/texture_origin = Vector2i(0, 48)
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45.5, -144, 46.5, -145, 48, 48, -48, 48)
+3:2/size_in_atlas = Vector2i(2, 2)
+3:2/0 = 0
+3:2/0/texture_origin = Vector2i(-48, 48)
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45.5, -86, 140.5, -85, 141.5, 48, -48, 48)
+1:2/size_in_atlas = Vector2i(2, 2)
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(-48, 48)
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45.5, -86, 140.5, -85, 141.5, 48, -48, 48)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_04uu1"]
+texture = ExtResource("5_sru7v")
+texture_region_size = Vector2i(96, 96)
+0:1/0 = 0
+1:2/size_in_atlas = Vector2i(3, 2)
+1:2/0 = 0
+7:1/size_in_atlas = Vector2i(1, 3)
+7:1/0 = 0
+5:3/0 = 0
+5:0/size_in_atlas = Vector2i(1, 2)
+5:0/0 = 0
+5:0/0/texture_origin = Vector2i(0, 48)
+5:2/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p542t"]
 texture = ExtResource("3_qmob4")
 texture_region_size = Vector2i(96, 96)
@@ -377,18 +445,17 @@ texture_region_size = Vector2i(96, 96)
 12:8/0 = 0
 13:8/0 = 0
 5:9/0 = 0
+5:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-33.5, -48, 32.5, -48, 30.5, 48, -32.5, 48)
 7:9/0 = 0
 9:9/0 = 0
 11:9/0 = 0
 12:9/0 = 0
 13:9/0 = 0
-5:10/0 = 0
 7:10/0 = 0
 9:10/0 = 0
 11:10/0 = 0
 12:10/0 = 0
 13:10/0 = 0
-5:11/0 = 0
 13:11/0 = 0
 14:11/0 = 0
 13:12/0 = 0
@@ -436,6 +503,9 @@ texture_region_size = Vector2i(96, 96)
 5:6/0 = 0
 5:6/0/y_sort_origin = 50
 5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-18, 24, 18, 24, 24, 66, 0, 84, -24, 66)
+5:10/size_in_atlas = Vector2i(1, 2)
+5:10/0 = 0
+5:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-27.25, 22, 0.75, 8.5, 29.25, 25, 27.75, 58.5, 2.25, 85.5, -29.75, 66)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trd6k"]
 texture = ExtResource("5_qjnid")
@@ -573,6 +643,7 @@ texture_region_size = Vector2i(96, 96)
 7:1/0 = 0
 8:1/0 = 0
 3:2/0 = 0
+3:2/0/texture_origin = Vector2i(40, 0)
 4:2/0 = 0
 9:2/0 = 0
 10:2/0 = 0
@@ -580,7 +651,9 @@ texture_region_size = Vector2i(96, 96)
 1:3/0 = 0
 2:3/0 = 0
 3:3/0 = 0
+3:3/0/texture_origin = Vector2i(40, 0)
 4:3/0 = 0
+4:3/0/texture_origin = Vector2i(40, 0)
 9:3/0 = 0
 10:3/0 = 0
 11:3/0 = 0
@@ -608,6 +681,7 @@ texture_region_size = Vector2i(96, 96)
 15:6/0 = 0
 3:7/0 = 0
 5:7/0 = 0
+5:7/0/texture_origin = Vector2i(40, -52)
 11:7/0 = 0
 12:7/0 = 0
 13:7/0 = 0
@@ -622,6 +696,7 @@ texture_region_size = Vector2i(96, 96)
 13:8/0 = 0
 15:8/0 = 0
 5:9/0 = 0
+5:9/0/texture_origin = Vector2i(40, 0)
 7:9/0 = 0
 9:9/0 = 0
 10:9/0 = 0
@@ -660,6 +735,7 @@ texture_region_size = Vector2i(96, 96)
 5:3/0 = 0
 5:5/size_in_atlas = Vector2i(2, 1)
 5:5/0 = 0
+5:5/0/texture_origin = Vector2i(0, -42)
 9:1/size_in_atlas = Vector2i(3, 1)
 9:1/0 = 0
 14:4/size_in_atlas = Vector2i(2, 1)
@@ -886,6 +962,8 @@ sources/6 = SubResource("TileSetAtlasSource_xkmis")
 sources/7 = SubResource("TileSetAtlasSource_qlv8f")
 sources/8 = SubResource("TileSetAtlasSource_mktko")
 sources/9 = SubResource("TileSetAtlasSource_63mpa")
+sources/10 = SubResource("TileSetAtlasSource_gxjnn")
+sources/11 = SubResource("TileSetAtlasSource_04uu1")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bap2f"]
 size = Vector2(95, 213)
@@ -948,34 +1026,7 @@ tile_set = SubResource("TileSet_k1bd2")
 
 [node name="Props" type="TileMapLayer" parent="NavigationRegion2D"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAAAAEAAwAFAAAAAAAAAAIAAwAFAAAAAAAAAAMAAwAFAAAAAAABAAEAAwAFAAAAAAABAAIAAwAFAAAAAAABAAMAAwAFAAIAAAABAAQAAwAFAAMAAAACAAEAAwAFAAAAAAACAAIAAwAFAAIAAAACAAMAAwAFAAMAAAAKAAEAAwAFAAYAAAALAAEAAwAFAAYAAAAMAAEAAwAFAAYAAAARAAEAAwAFAAQAAAASAAEAAwAFAAQAAAASAAIAAwAFAAQAAAATAAEAAwAFAAQAAAATAAIAAwAFAAQAAAATAAMAAwAFAAQAAAA=")
-tile_set = SubResource("TileSet_k1bd2")
-
-[node name="VaseShadows" type="TileMapLayer" parent="NavigationRegion2D/Props"]
-modulate = Color(1, 1, 1, 0.392157)
-show_behind_parent = true
-z_index = -1
-y_sort_enabled = true
-position = Vector2(-4, -44)
-tile_map_data = PackedByteArray("AAAKAAIABwAFAAcAAAALAAIABwAFAAcAAAAMAAIABwAFAAcAAAA=")
-tile_set = SubResource("TileSet_k1bd2")
-
-[node name="BarrelShadows" type="TileMapLayer" parent="NavigationRegion2D/Props"]
-modulate = Color(1, 1, 1, 0.392157)
-z_index = -1
-z_as_relative = false
-y_sort_enabled = true
-position = Vector2(41, -48)
-tile_map_data = PackedByteArray("AAASAAMABwAFAAUAAAATAAQABwAFAAUAAAATAAMABwAFAAUAAAATAAIABwAFAAUAAAASAAIABwAFAAUAAAARAAIABwAFAAUAAAA=")
-tile_set = SubResource("TileSet_k1bd2")
-
-[node name="SmallBoxShadows" type="TileMapLayer" parent="NavigationRegion2D/Props"]
-modulate = Color(1, 1, 1, 0.392157)
-z_index = -1
-z_as_relative = false
-y_sort_enabled = true
-position = Vector2(50, -96)
-tile_map_data = PackedByteArray("AAACAAQABwAFAAMAAAABAAUABwAFAAMAAAA=")
+tile_map_data = PackedByteArray("AAASAAIAAwAFAAAAAAATAAIAAwAFAAAAAAASAAQACgABAAAAAAARAAIAAwAFAAQAAAACAAMACgAFAAAAAAADAAMACgAFAAIAAAAAAAIAAwAFAAAAAAAAAAMAAwAFAAAAAAAAAAQAAwAFAAAAAAACAAQACgABAAIAAAAAAAcACgAHAAAAAAAAAAkACgAHAAIAAAATAAcACgAHAAAAAAAOAAQACgADAAAAAAAPAAMACgAGAAAAAAAOAAMACgAGAAIAAAATAAkACgAHAAIAAAAEAAIAAwAFAAQAAAACAAUAAwAFAAkAAAANAAIAAwAFAAoAAAATAAoACgAHAAAAAAAAAAoACgAHAAAAAAAAAAsACgAAAAIAAAATAAsACgAAAAIAAAA=")
 tile_set = SubResource("TileSet_k1bd2")
 
 [node name="LargeBoxShadows" type="TileMapLayer" parent="NavigationRegion2D/Props"]
@@ -984,7 +1035,15 @@ z_index = -1
 z_as_relative = false
 y_sort_enabled = true
 position = Vector2(50, -96)
-tile_map_data = PackedByteArray("AAAAAAQABwAFAAAAAAABAAMABwAFAAAAAAACAAIABwAFAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAMABwAFAAAAAAAAAAQABwAFAAAAAAAAAAUABwAFAAAAAAACAAYABwAFAAkAAAANAAMABwAFAAcAAAARAAMABwAFAAUAAAAEAAMABwAFAAUAAAA=")
+tile_set = SubResource("TileSet_k1bd2")
+
+[node name="LargeBoxShadows2" type="TileMapLayer" parent="NavigationRegion2D/Props"]
+modulate = Color(1, 1, 1, 0.392157)
+z_index = -1
+z_as_relative = false
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAAAAsACwAAAAEAAAAEAAMACwAHAAEAAAAQAAMACwAHAAEAAAABAAoACwAFAAMAAAABAAkACwAFAAIAAAABAAgACwAFAAIAAAABAAcACwAFAAAAAAATAAsACwAAAAEAAAA=")
 tile_set = SubResource("TileSet_k1bd2")
 
 [node name="SceneTrigger" parent="." instance=ExtResource("10_3kmwk")]
@@ -1005,74 +1064,74 @@ position = Vector2(-2, 31)
 position = Vector2(864, 1024)
 
 [node name="Summon" parent="." groups=["Summon"] instance=ExtResource("11_w88ii")]
-position = Vector2(464, 491)
+position = Vector2(1450, 642)
 slime_types = [5]
 heartSpawn = true
 maxSpawns = 5
 summonDelay = 2.0
 
 [node name="Summon4" parent="." groups=["Summon"] instance=ExtResource("11_w88ii")]
-position = Vector2(995, 440)
+position = Vector2(521, 642)
 slime_types = [4]
 heartSpawn = true
 maxSpawns = 5
 summonDelay = 2.0
 
 [node name="Summon2" parent="." groups=["Summon"] instance=ExtResource("11_w88ii")]
-position = Vector2(455, 802)
+position = Vector2(957, 962)
 slime_types = [10]
 heartSpawn = true
 summonDelay = 1.0
 
 [node name="Summon3" parent="." instance=ExtResource("13_24aml")]
-position = Vector2(948, 693)
+position = Vector2(972, 734)
 summon = ExtResource("14_x3rpi")
 
 [node name="InteractArea" type="Area2D" parent="."]
 y_sort_enabled = true
-position = Vector2(1373, 90)
+position = Vector2(959, 266)
 script = ExtResource("12_bu2lj")
 post_stage_dialogue = ["Good job, my apprentice! You've successfully defeated all the slimes in this room, but alas, I sense a far more powerful foe has appeared outside. >", "Go forth, and vanquish the final obstacle to a peaceful world."]
 
 [node name="Magnus" type="AnimatedSprite2D" parent="InteractArea"]
 z_index = 3
 y_sort_enabled = true
-position = Vector2(201, 532)
+position = Vector2(-1.5, 12)
 sprite_frames = SubResource("SpriteFrames_ks2i1")
 autoplay = "default"
-offset = Vector2(1, -44)
+offset = Vector2(0, -20)
 
 [node name="Staff" type="Sprite2D" parent="InteractArea"]
 z_index = 3
 y_sort_enabled = true
-position = Vector2(212, 541.75)
+position = Vector2(8.5, 45.75)
 rotation = -0.41113
 texture = ExtResource("19_2p4hq")
 offset = Vector2(38.6154, -38.5281)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
-position = Vector2(199, 495)
+position = Vector2(-4.5, -1)
 shape = SubResource("RectangleShape2D_x4y32")
 
 [node name="DialogueLayer" parent="InteractArea" instance=ExtResource("20_8df5o")]
 visible = false
-dialogue = ["It feels like the magic is strong within this room. >", "Be prepared, this one might be tough!"]
+dialogue = ["When I checked Melissa's place, it was positively swarming with slimes!>", "Much like Janus, I was surprised to see Melissa herself encased within a massive slime, and sealed them all away.>", "You must be brave, my apprentice. Save her, and then we will be one step closer to saving the village."]
 
 [node name="E" type="Label" parent="InteractArea"]
-offset_left = 182.0
-offset_top = 383.0
-offset_right = 222.0
-offset_bottom = 439.0
+offset_left = -21.5
+offset_top = -113.0
+offset_right = 18.5
+offset_bottom = -57.0
 theme_override_fonts/font = ExtResource("21_74t1u")
 theme_override_font_sizes/font_size = 42
 text = "E"
 
 [node name="Notification" type="Label" parent="InteractArea"]
 visible = false
-offset_left = 182.0
-offset_top = 336.0
-offset_right = 222.0
-offset_bottom = 392.0
+offset_left = -23.0
+offset_top = -167.0
+offset_right = 17.0
+offset_bottom = -111.0
 theme_override_fonts/font = ExtResource("21_74t1u")
 theme_override_font_sizes/font_size = 42
 text = "!"

@@ -46,10 +46,10 @@ script = ExtResource("1_hk8qs")
 [node name="Astrologist" type="AnimatedSprite2D" parent="."]
 z_index = 3
 y_sort_enabled = true
-position = Vector2(0, 63)
+position = Vector2(0, 51)
 sprite_frames = SubResource("SpriteFrames_v5yfb")
 autoplay = "default"
-offset = Vector2(1, -35)
+offset = Vector2(1, -23)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true

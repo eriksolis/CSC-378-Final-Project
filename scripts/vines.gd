@@ -3,7 +3,7 @@ var cloned = 0
 var destroyed = false
 @onready var cloneScene = load("res://scenes/vines.tscn")
 
-var health = 3
+var health = 2
 var timer = 2
 var tween
 @onready var player = scene_manager.player
