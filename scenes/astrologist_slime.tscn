@@ -120,7 +120,7 @@ height = 242.0
 [node name="AstrologistSlime" type="CharacterBody2D" groups=["Enemies"]]
 y_sort_enabled = true
 script = ExtResource("1_qn8v6")
-health = 200
+health = 150
 
 [node name="SlimeSprite" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)

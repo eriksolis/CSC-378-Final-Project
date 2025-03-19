@@ -120,6 +120,7 @@ height = 242.0
 [node name="BotanistSlime" type="CharacterBody2D" groups=["Enemies"]]
 y_sort_enabled = true
 script = ExtResource("1_71ocm")
+health = 200
 
 [node name="SlimeSprite" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)

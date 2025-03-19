@@ -187,6 +187,14 @@ func heal():
 				return true
 	return true
 
+func healthUpgrade():
+	maxHealth += 2
+	health = maxHealth
+	for heart in heartArray:
+		heart.queue_free()
+	heartArray.clear()
+	setHealth()
+
 func _on_restart_button_button_down() -> void:
 	restart.emit()
 

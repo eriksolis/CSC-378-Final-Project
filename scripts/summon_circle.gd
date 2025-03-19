@@ -36,74 +36,79 @@ func enable() -> void:
 		randomSummon(summonDelay)
 
 func randomSummon(delay) -> void:
-	count += 1
-	spawned += 1
-	var chosen_type
-	var slime_scene
-	if heartSpawn and count == maxSpawns:
-		chosen_type = TYPES.HEART
-	else:
-		# randomly pick type from enum
-		chosen_type = slime_types.pick_random()
-	
-	match chosen_type:
-		TYPES.BLUE, TYPES.GREEN, TYPES.RED:
-			slime_scene = melee_slime_scene
-		TYPES.ORANGE:
-			slime_scene = ranged_slime_scene
-		TYPES.PURPLE:
-			slime_scene = purple_slime_scene
-		TYPES.MUSHROOM:
-			slime_scene = mushroom_slime_scene
-		TYPES.HEART:
-			slime_scene = heart_slime_scene
-		TYPES.COMET:
-			slime_scene = comet_slime_scene
-		TYPES.CLOUD:
-			slime_scene = cloud_slime_scene
-		TYPES.STAR:
-			slime_scene = star_slime_scene
-		TYPES.OVERGROWTH:
-			slime_scene = overgrowth_slime_scene
+	if !emitted:
+		count += 1
+		spawned += 1
+		var chosen_type
+		var slime_scene
+		if heartSpawn and count == maxSpawns:
+			chosen_type = TYPES.HEART
+		else:
+			# randomly pick type from enum
+			chosen_type = slime_types.pick_random()
+		
+		match chosen_type:
+			TYPES.BLUE, TYPES.GREEN, TYPES.RED:
+				slime_scene = melee_slime_scene
+			TYPES.ORANGE:
+				slime_scene = ranged_slime_scene
+			TYPES.PURPLE:
+				slime_scene = purple_slime_scene
+			TYPES.MUSHROOM:
+				slime_scene = mushroom_slime_scene
+			TYPES.HEART:
+				slime_scene = heart_slime_scene
+			TYPES.COMET:
+				slime_scene = comet_slime_scene
+			TYPES.CLOUD:
+				slime_scene = cloud_slime_scene
+			TYPES.STAR:
+				slime_scene = star_slime_scene
+			TYPES.OVERGROWTH:
+				slime_scene = overgrowth_slime_scene
 
-	var enemySpawn = slime_scene.instantiate()
+		var enemySpawn = slime_scene.instantiate()
 
-	# if a melee slime, set the "type" so it knows which color/animation to use
-	if chosen_type == TYPES.BLUE or chosen_type == TYPES.GREEN or chosen_type == TYPES.RED:
-		enemySpawn.type = chosen_type
-	enemySpawn.connect("enemyDead", checkSpawned)
+		# if a melee slime, set the "type" so it knows which color/animation to use
+		if chosen_type == TYPES.BLUE or chosen_type == TYPES.GREEN or chosen_type == TYPES.RED:
+			enemySpawn.type = chosen_type
+		enemySpawn.connect("enemyDead", checkSpawned)
 
-	# pos of slime at our SpawnPoint
-	enemySpawn.global_position = $SpawnPoint.global_position
-	
-	match chosen_type:
-		TYPES.BLUE:
-			$Glow.self_modulate = Color("ffffff")
-		TYPES.GREEN:
-			$Glow.self_modulate = Color("#b6ffbe")
-		TYPES.RED:
-			$Glow.self_modulate = Color("#ffa19e")
-		TYPES.ORANGE:
-			$Glow.self_modulate = Color("#ce8a3f")
-		TYPES.PURPLE:
-			$Glow.self_modulate = Color("#BE74E6")
-		TYPES.MUSHROOM:
-			$Glow.self_modulate = Color("#BD054A")
-		TYPES.HEART:
-			$Glow.self_modulate = Color("#E47B9C")
+		# pos of slime at our SpawnPoint
+		enemySpawn.global_position = $SpawnPoint.global_position
+		
+		match chosen_type:
+			TYPES.BLUE:
+				$Glow.self_modulate = Color("ffffff")
+			TYPES.GREEN:
+				$Glow.self_modulate = Color("#b6ffbe")
+			TYPES.RED:
+				$Glow.self_modulate = Color("#ffa19e")
+			TYPES.ORANGE:
+				$Glow.self_modulate = Color("#ce8a3f")
+			TYPES.PURPLE:
+				$Glow.self_modulate = Color("#BE74E6")
+			TYPES.MUSHROOM:
+				$Glow.self_modulate = Color("#BD054A")
+			TYPES.HEART:
+				$Glow.self_modulate = Color("#E47B9C")
 
-	$SummonManager.play("summon")
-	await $SummonManager.animation_finished
+		$SummonManager.play("summon")
+		await $SummonManager.animation_finished
 
-	get_parent().add_child(enemySpawn)
+		get_parent().add_child(enemySpawn)
 
-	$SummonManager.play_backwards("summon")
-	await $SummonManager.animation_finished
+		$SummonManager.play_backwards("summon")
+		await $SummonManager.animation_finished
 
-	# spawn until reach maxSpawns
-	if count < maxSpawns:
-		await get_tree().create_timer(delay).timeout
-		randomSummon(randf_range(delay - 0.5, delay + 0.5))
+		# spawn until reach maxSpawns
+		if count < maxSpawns:
+			await get_tree().create_timer(delay).timeout
+			randomSummon(randf_range(delay - 0.5, delay + 0.5))
+		else:
+			$SummonManager.play_backwards("fadein")
+			await $SummonManager.animation_finished
+			spawnComplete.emit()
 	else:
 		$SummonManager.play_backwards("fadein")
 		await $SummonManager.animation_finished

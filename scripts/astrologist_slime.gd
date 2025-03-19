@@ -8,7 +8,7 @@ var astrologistLoad = load("res://scenes/astrologist_interact_area.tscn")
 signal minibossDead
 var destroyed = false
 var moving = true
-var counter = 5
+var counter = 2
 
 func _ready() -> void:
 	$SummonAnim.play("fadein")
@@ -68,18 +68,16 @@ func slimeSummons():
 		await get_tree().create_timer(1).timeout
 
 func _on_timer_timeout() -> void:
-	counter += 1
 	moving = false
-	if counter > 1:
-		counter = 0
-		await slimeSummons()
-	else:
-		match randi_range(0, 2):
-			0:
-				await shootingStarAttack()
-			1:
-				await crescentMoonAttack()
-			2:
-				await slimeSummons()
+	match counter:
+		0:
+			await shootingStarAttack()
+			counter += 1
+		1:
+			await crescentMoonAttack()
+			counter += 1
+		2:
+			await slimeSummons()
+			counter = 0
 	moving = true
 	$Timer.start()

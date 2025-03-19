@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://dwpxaal5mhx32"]
+
+[ext_resource type="Script" path="res://scripts/botanist_interact_area.gd" id="1_4fnbk"]
+[ext_resource type="Texture2D" uid="uid://pcy8a3ryamke" path="res://images/npcs/botanist/000.png" id="2_ygtck"]
+[ext_resource type="Texture2D" uid="uid://1svvusmtydt7" path="res://images/npcs/botanist/001.png" id="3_fdqiv"]
+[ext_resource type="Texture2D" uid="uid://x1nlmlvdoacw" path="res://images/npcs/botanist/002.png" id="4_ca15f"]
+[ext_resource type="Texture2D" uid="uid://crtlv2ceiirxm" path="res://images/npcs/botanist/003.png" id="5_fe6gf"]
+[ext_resource type="Texture2D" uid="uid://d0c21v1lruxcf" path="res://images/npcs/botanist/004.png" id="6_nb040"]
+[ext_resource type="Texture2D" uid="uid://diy7l58x7gcw0" path="res://images/npcs/botanist/005.png" id="7_tenck"]
+[ext_resource type="PackedScene" uid="uid://c1sp7dmrvxbwb" path="res://scenes/dialogue_system.tscn" id="8_16pqd"]
+[ext_resource type="FontFile" uid="uid://b1ae4tx6npay3" path="res://JacquardaBastarda9-Regular.ttf" id="9_nxj2s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v5yfb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ygtck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fdqiv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ca15f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fe6gf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nb040")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tenck")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8p2ji"]
+size = Vector2(138, 146)
+
+[node name="BotanistInteractArea" type="Area2D"]
+y_sort_enabled = true
+script = ExtResource("1_4fnbk")
+
+[node name="Botanist" type="AnimatedSprite2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+position = Vector2(0, 64)
+sprite_frames = SubResource("SpriteFrames_v5yfb")
+autoplay = "default"
+offset = Vector2(1, -36)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+shape = SubResource("RectangleShape2D_8p2ji")
+
+[node name="DialogueLayer" parent="." instance=ExtResource("8_16pqd")]
+visible = false
+dialogue = ["I was working on something when someone delivered some flowers to my door.>", "When I checked it, I got attacked by that horrid slime!>", "Thank you so much for saving me!>", "I'll give you this special potion that will increase your max health!>", "Oh, there's so much to do now that I'm out..."]
+image = ExtResource("2_ygtck")
+characterName = "Botanist"
+
+[node name="E" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -77.0
+offset_right = 20.0
+offset_bottom = -21.0
+theme_override_fonts/font = ExtResource("9_nxj2s")
+theme_override_font_sizes/font_size = 42
+text = "E"
+metadata/_edit_use_anchors_ = true
+
+[node name="Notification" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -124.0
+offset_right = 20.0
+offset_bottom = -68.0
+theme_override_fonts/font = ExtResource("9_nxj2s")
+theme_override_font_sizes/font_size = 42
+text = "!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

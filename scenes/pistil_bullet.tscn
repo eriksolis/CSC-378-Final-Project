@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://btsxbvg3nt4ta"]
+[gd_scene load_steps=13 format=3 uid="uid://cayktmym56l55"]
 
-[ext_resource type="Script" path="res://scripts/enemy_fireball.gd" id="1_enms3"]
-[ext_resource type="Texture2D" uid="uid://ctpldy11xpsqt" path="res://images/enemies/purple_slime/purple_bullet.png" id="2_ymo8v"]
-[ext_resource type="Texture2D" uid="uid://c3470f3morp4i" path="res://images/wand/particle_effect/particle_flipbook.png" id="3_6ttnm"]
-[ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="4_4n2ke"]
+[ext_resource type="Script" path="res://scripts/enemy_fireball.gd" id="1_aqd6e"]
+[ext_resource type="Texture2D" uid="uid://cx5hj2irywu7h" path="res://images/enemies/botanist_slime/pistil.png" id="2_0l4hj"]
+[ext_resource type="Texture2D" uid="uid://c3470f3morp4i" path="res://images/wand/particle_effect/particle_flipbook.png" id="3_wrpls"]
+[ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="4_pk05v"]
 
 [sub_resource type="Animation" id="Animation_ajvcb"]
 length = 0.001
@@ -43,8 +43,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fvhc1"]
-radius = 15.0
-height = 40.0
+radius = 11.0
+height = 22.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xnw2v"]
 particles_animation = true
@@ -75,12 +75,12 @@ anim_offset_max = 1.0
 [node name="EnemyFireball" type="Area2D" groups=["Enemies"]]
 y_sort_enabled = true
 collision_layer = 2
-script = ExtResource("1_enms3")
-speed = 8.0
+script = ExtResource("1_aqd6e")
+speed = 6.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
-texture = ExtResource("2_ymo8v")
+texture = ExtResource("2_0l4hj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -90,24 +90,23 @@ autoplay = "fadein"
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_fvhc1")
 
 [node name="FireParticles" type="GPUParticles2D" parent="."]
-self_modulate = Color(0.750194, 0.465947, 1, 1)
+self_modulate = Color(0.973986, 0.644228, 0.39495, 1)
 y_sort_enabled = true
 material = SubResource("CanvasItemMaterial_xnw2v")
 emitting = false
 amount = 5
 process_material = SubResource("ParticleProcessMaterial_avkuf")
-texture = ExtResource("3_6ttnm")
+texture = ExtResource("3_wrpls")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_4n2ke")
+stream = ExtResource("4_pk05v")
 bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
