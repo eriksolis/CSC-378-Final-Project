@@ -6,6 +6,7 @@ var slimeTypes = [load("res://scenes/cloud_slime.tscn"), load("res://scenes/star
 var smallSummon = load("res://scenes/small_summon.tscn")
 var astrologistLoad = load("res://scenes/astrologist_interact_area.tscn")
 signal minibossDead
+var destroyed = false
 var moving = true
 var counter = 5
 
@@ -14,17 +15,19 @@ func _ready() -> void:
 	await $SummonAnim.animation_finished
 
 func destroy():
-	set_deferred("monitorable", false)
-	set_deferred("monitoring", false)
-	set_physics_process(false)
-	var astrologist = astrologistLoad.instantiate()
-	astrologist.global_position = global_position
-	get_parent().add_child(astrologist)
-	$SlimeSprite/SlimeParticles.emitting = true
-	$SummonAnim.play_backwards("fadein")
-	await $SummonAnim.animation_finished
-	minibossDead.emit()
-	queue_free()
+	if !destroyed:
+		destroyed = true
+		set_deferred("monitorable", false)
+		set_deferred("monitoring", false)
+		call_deferred("set_physics_process", false)
+		var astrologist = astrologistLoad.instantiate()
+		astrologist.global_position = global_position
+		get_parent().add_child(astrologist)
+		$SlimeSprite/SlimeParticles.emitting = true
+		$SummonAnim.play_backwards("fadein")
+		await $SummonAnim.animation_finished
+		minibossDead.emit()
+		queue_free()
 
 func _physics_process(delta:float) -> void:
 	if moving:

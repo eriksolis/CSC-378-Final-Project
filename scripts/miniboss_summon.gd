@@ -5,7 +5,7 @@ var enabled = false
 var completed = false
 
 func enable() -> void:
-	if !enabled:
+	if !enabled and summon:
 		enabled = true
 		$SummonManager.play("fadein")
 		await $SummonManager.animation_finished

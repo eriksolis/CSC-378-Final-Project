@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://cpgh85m4w1e4v"]
+[gd_scene load_steps=39 format=4 uid="uid://cpgh85m4w1e4v"]
 
 [ext_resource type="Script" path="res://scripts/base_scene.gd" id="1_cu2cf"]
 [ext_resource type="Texture2D" uid="uid://83f53etsk1i0" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Tileset Grass.png" id="1_xv5ej"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bdhrvr5blpgm7" path="res://scenes/summon.tscn" id="11_w88ii"]
 [ext_resource type="Script" path="res://scripts/interact_area.gd" id="12_bu2lj"]
 [ext_resource type="Texture2D" uid="uid://clp6t4lh84vpp" path="res://images/npcs/magnus/000.png" id="13_7d7ho"]
+[ext_resource type="PackedScene" uid="uid://cng0frun30yli" path="res://scenes/miniboss_summon.tscn" id="13_24aml"]
 [ext_resource type="Texture2D" uid="uid://opbgbfways47" path="res://images/npcs/magnus/001.png" id="14_5o4mx"]
 [ext_resource type="Texture2D" uid="uid://cpf1un3il3gq2" path="res://images/npcs/magnus/002.png" id="15_qh8fg"]
 [ext_resource type="Texture2D" uid="uid://c8uqlfuaqoigs" path="res://images/npcs/magnus/003.png" id="16_qhcfh"]
@@ -1012,6 +1013,9 @@ summonDelay = 1.0
 position = Vector2(455, 802)
 slime_types = [10]
 heartSpawn = true
+
+[node name="Summon3" parent="." instance=ExtResource("13_24aml")]
+position = Vector2(948, 693)
 
 [node name="InteractArea" type="Area2D" parent="."]
 y_sort_enabled = true

@@ -50,6 +50,8 @@ func clearScenes():
 		gameScene.get_parent().remove_child(gameScene)
 
 func resetGame():
+	room1Cleared = false
+	openRoom2 = false
 	player.queue_free()
 	player = load("res://scenes/player.tscn").instantiate()
 	for scene in sceneDictionary:
