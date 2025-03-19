@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://cogt43i6umw2b"]
+
+[ext_resource type="Script" path="res://scripts/astrologist_interact_area.gd" id="1_hk8qs"]
+[ext_resource type="Texture2D" uid="uid://bwn5b5n2rdaj0" path="res://images/npcs/astrologist/000.png" id="2_6t7tl"]
+[ext_resource type="Texture2D" uid="uid://bnkycv6ubnon8" path="res://images/npcs/astrologist/001.png" id="3_o52lv"]
+[ext_resource type="Texture2D" uid="uid://cdilmt5ik5evh" path="res://images/npcs/astrologist/002.png" id="4_d8rbd"]
+[ext_resource type="Texture2D" uid="uid://6ghugms5xqm7" path="res://images/npcs/astrologist/003.png" id="5_cshl6"]
+[ext_resource type="Texture2D" uid="uid://cf18hod41olc5" path="res://images/npcs/astrologist/004.png" id="6_2dbbs"]
+[ext_resource type="Texture2D" uid="uid://dmqmgbu4xi57d" path="res://images/npcs/astrologist/005.png" id="7_wumxo"]
+[ext_resource type="PackedScene" uid="uid://c1sp7dmrvxbwb" path="res://scenes/dialogue_system.tscn" id="8_x8ptg"]
+[ext_resource type="FontFile" uid="uid://b1ae4tx6npay3" path="res://JacquardaBastarda9-Regular.ttf" id="9_kj5tg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v5yfb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6t7tl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o52lv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d8rbd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cshl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2dbbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wumxo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8p2ji"]
+size = Vector2(138, 146)
+
+[node name="AstrologistInteractArea" type="Area2D"]
+script = ExtResource("1_hk8qs")
+
+[node name="Astrologist" type="AnimatedSprite2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+position = Vector2(0, 72)
+sprite_frames = SubResource("SpriteFrames_v5yfb")
+autoplay = "default"
+offset = Vector2(1, -44)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+shape = SubResource("RectangleShape2D_8p2ji")
+
+[node name="DialogueLayer" parent="." instance=ExtResource("8_x8ptg")]
+visible = false
+dialogue = ["That wicked villain sent a package of moon rocks to me.>", "After opening it, I was enveloped in that disgusting slime! Oh, and they devoured my research too!>", "Without your help, I would've been stuck there for god knows how long.>", "As thanks, take this amulet infused with the power of the stars. It'll bestow upon you a temporary boost of speed.>", "Now, if you'll excuse me, I must get back to my work."]
+image = ExtResource("2_6t7tl")
+characterName = "Astrologist"
+
+[node name="E" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -77.0
+offset_right = 20.0
+offset_bottom = -21.0
+theme_override_fonts/font = ExtResource("9_kj5tg")
+theme_override_font_sizes/font_size = 42
+text = "E"
+
+[node name="Notification" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -124.0
+offset_right = 20.0
+offset_bottom = -68.0
+theme_override_fonts/font = ExtResource("9_kj5tg")
+theme_override_font_sizes/font_size = 42
+text = "!"
+horizontal_alignment = 1

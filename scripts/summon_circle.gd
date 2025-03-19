@@ -6,6 +6,8 @@ enum TYPES { BLUE, GREEN, RED, ORANGE, PURPLE, MUSHROOM, HEART, COMET, CLOUD, ST
 @export var slime_types = [TYPES.BLUE, TYPES.GREEN, TYPES.RED, TYPES.ORANGE]
 # tracks if last spawn is heart slime
 @export var heartSpawn = false
+var emitted = false
+var enabled = false
 
 # load slimes
 @onready var melee_slime_scene = load("res://scenes/slime.tscn")
@@ -25,11 +27,13 @@ signal spawnComplete
 signal spawnedClear
 
 func enable() -> void:
-	count = 0
-	spawned = 0
-	$SummonManager.play("fadein")
-	await $SummonManager.animation_finished
-	randomSummon(summonDelay)
+	if !enabled:
+		enabled = true
+		count = 0
+		spawned = 0
+		$SummonManager.play("fadein")
+		await $SummonManager.animation_finished
+		randomSummon(summonDelay)
 
 func randomSummon(delay) -> void:
 	count += 1
@@ -107,8 +111,10 @@ func randomSummon(delay) -> void:
 
 func checkSpawned():
 	spawned -= 1
-	if spawned <= 0 and count >= maxSpawns:
-		print("done with count " + str(maxSpawns))
-		spawnedClear.emit()
-		spawned = 0
-		count = 0
+	if !emitted:
+		if spawned <= 0 and count >= maxSpawns:
+			emitted = true
+			print("done with count " + str(maxSpawns))
+			spawnedClear.emit()
+			spawned = 0
+			count = 0

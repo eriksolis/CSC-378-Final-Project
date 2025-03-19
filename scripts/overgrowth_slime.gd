@@ -18,7 +18,7 @@ func _physics_process(delta:float) -> void:
 		velocity = direction * speed
 		move_and_slide()
 		timer -= delta
-		if !cloned and copied < 3 and timer <= delta:
+		if !cloned and copied < 2 and timer <= delta:
 			copied += 1
 			stopped = true
 			cloned = true

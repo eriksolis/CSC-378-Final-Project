@@ -53,8 +53,12 @@ func _on_summon_depleted():
 		state = STATES.POSTSTAGE
 		inProgress = false
 		completed = false
-		$DialogueLayer.dialogue = post_stage_dialogue
-		MusicHandler.play("PixelizedFields")
-		set_deferred("monitorable", true)
-		set_deferred("monitoring", true)
-		$Notification.show()
+		get_parent().get_node("Summon3").enable()
+
+
+func _on_summon_3_miniboss_complete() -> void:
+	$DialogueLayer.dialogue = post_stage_dialogue
+	MusicHandler.play("PixelizedFields")
+	set_deferred("monitorable", true)
+	set_deferred("monitoring", true)
+	$Notification.show()

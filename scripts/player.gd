@@ -11,6 +11,7 @@ const SPEED = 300.0
 var tween
 var heartArray = []
 var alt_fire = false
+var dash = false
 signal restart
 signal title
 @onready var fireball = load("res://scenes/fireball.tscn")

@@ -221,7 +221,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"alt_fire",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -275,7 +275,6 @@ shape = SubResource("RectangleShape2D_5h2xw")
 y_sort_enabled = true
 position = Vector2(23, 26)
 sprite_frames = SubResource("SpriteFrames_w4cw2")
-animation = &"alt_fire"
 autoplay = "default"
 offset = Vector2(12, -12)
 

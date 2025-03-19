@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://c1hesndgoq4xp"]
+[gd_scene load_steps=40 format=4 uid="uid://c1hesndgoq4xp"]
 
 [ext_resource type="Script" path="res://scripts/base_scene.gd" id="1_6o2pf"]
 [ext_resource type="Texture2D" uid="uid://83f53etsk1i0" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Tileset Grass.png" id="1_vtihd"]
@@ -11,8 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://jle1yp8a4m7v" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Shadow.png" id="8_v42cw"]
 [ext_resource type="Texture2D" uid="uid://ci77o22v7vwjp" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Tileset Room.png" id="9_56ru0"]
 [ext_resource type="PackedScene" uid="uid://bxlmhfodkyvh4" path="res://scenes/scene_trigger.tscn" id="11_ulrrn"]
+[ext_resource type="PackedScene" uid="uid://cng0frun30yli" path="res://scenes/miniboss_summon.tscn" id="13_5cyaf"]
 [ext_resource type="Script" path="res://scripts/interact_area.gd" id="13_nudbk"]
 [ext_resource type="Texture2D" uid="uid://clp6t4lh84vpp" path="res://images/npcs/magnus/000.png" id="14_6r4yi"]
+[ext_resource type="PackedScene" uid="uid://da1bir7ws6vn5" path="res://scenes/astrologist_slime.tscn" id="14_ppiyh"]
 [ext_resource type="Texture2D" uid="uid://opbgbfways47" path="res://images/npcs/magnus/001.png" id="15_i43g3"]
 [ext_resource type="Texture2D" uid="uid://cpf1un3il3gq2" path="res://images/npcs/magnus/002.png" id="16_8qbxk"]
 [ext_resource type="Texture2D" uid="uid://c8uqlfuaqoigs" path="res://images/npcs/magnus/003.png" id="17_wjena"]
@@ -1018,6 +1020,10 @@ slime_types = [7, 8, 9]
 heartSpawn = true
 summonDelay = 1.0
 
+[node name="Summon3" parent="." instance=ExtResource("13_5cyaf")]
+position = Vector2(957, 711)
+summon = ExtResource("14_ppiyh")
+
 [node name="InteractArea" type="Area2D" parent="."]
 y_sort_enabled = true
 position = Vector2(120, 2)
@@ -1069,5 +1075,6 @@ theme_override_font_sizes/font_size = 42
 text = "!"
 horizontal_alignment = 1
 
+[connection signal="minibossComplete" from="Summon3" to="InteractArea" method="_on_summon_3_miniboss_complete"]
 [connection signal="body_entered" from="InteractArea" to="InteractArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="InteractArea" method="_on_body_exited"]
