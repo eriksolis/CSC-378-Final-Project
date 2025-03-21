@@ -18,13 +18,45 @@ signal title
 @onready var large_fireball = load("res://scenes/large_fireball.tscn")
 @onready var heart = load("res://scenes/heart.tscn")
 
+var dash_unlocked = false
+var is_dashing = false
+var dash_speed = 700.0  
+var dash_time = 0.5
+var dash_cooldown = 10
+var can_dash = true
+var dash_direction = Vector2.ZERO
+@onready var dash_bar = $PlayerUI/DashCooldownBar
+var cooldown = false
+var progress = 10 
+var bar_speed = 1.0
+
 func _ready() -> void:
 	$Camera2D.enabled = true
 	add_to_group("Player", true)
 	$PlayerUI/RestartMenu.hide()
 	setHealth()
+	dash_bar.visible = false
+	if dash_bar:
+		dash_bar.max_value = dash_cooldown
+		dash_bar.value = dash_cooldown
 
+func _process(delta: float) -> void:
+	if dash_bar: 
+		dash_bar.value = progress
+	
+	if cooldown:
+		progress += bar_speed * delta
+		if progress >= dash_cooldown:
+			progress = dash_cooldown
+			cooldown = false
+			can_dash = true
+			
 func _physics_process(_delta: float) -> void:
+	if is_dashing:
+		velocity = dash_direction * dash_speed
+		move_and_slide()
+		return  
+		
 	# MOVEMENT
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	if input_direction:
@@ -38,6 +70,9 @@ func _physics_process(_delta: float) -> void:
 	updateAnimation()
 	updateWand()
 	move_and_slide()
+	
+	if dash_unlocked and can_dash and Input.is_action_just_pressed("ui_dash"):
+		start_dash()
 
 ## UPDATE DIRECTION BASED ON MOVEMENT AND THEN MOUSE
 func updateDirection():
@@ -195,9 +230,36 @@ func healthUpgrade():
 	heartArray.clear()
 	setHealth()
 
+func unlock_dash():
+	dash_unlocked = true
+
+func enable_dash_bar():
+	dash_bar.visible = true
+	
+func start_dash():
+	if velocity.length() > 0: 
+		is_dashing = true
+		can_dash = false
+		cooldown = true
+		progress = 0
+		dash_direction = velocity.normalized() 
+		$DashTimer.start(dash_time)  
+		$CooldownTimer.start(dash_cooldown)  
+		
+	if dash_bar:
+		dash_bar.value = 0
+
 func _on_restart_button_button_down() -> void:
 	restart.emit()
 
 
 func _on_title_button_button_down() -> void:
 	title.emit()
+
+
+func _on_dash_timer_timeout() -> void:
+	is_dashing = false
+
+
+func _on_cooldown_timer_timeout() -> void:
+	can_dash = true

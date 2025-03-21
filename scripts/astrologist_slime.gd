@@ -6,6 +6,7 @@ var slimeTypes = [load("res://scenes/cloud_slime.tscn"), load("res://scenes/star
 var smallSummon = load("res://scenes/small_summon.tscn")
 var astrologistLoad = load("res://scenes/astrologist_interact_area.tscn")
 signal minibossDead
+signal astrologist_defeated
 var destroyed = false
 var moving = true
 var counter = 2
@@ -13,6 +14,10 @@ var counter = 2
 func _ready() -> void:
 	$SummonAnim.play("fadein")
 	await $SummonAnim.animation_finished
+	
+	var player = get_tree().get_first_node_in_group("Player")
+	if player:
+		astrologist_defeated.connect(player.unlock_dash)
 
 func destroy():
 	if !destroyed:
@@ -27,6 +32,7 @@ func destroy():
 		$SummonAnim.play_backwards("fadein")
 		await $SummonAnim.animation_finished
 		minibossDead.emit()
+		astrologist_defeated.emit()
 		queue_free()
 
 func _physics_process(delta:float) -> void:
