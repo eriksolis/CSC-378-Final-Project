@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cscudlnjgjbj1"]
+[gd_scene load_steps=60 format=3 uid="uid://cscudlnjgjbj1"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ck705"]
 [ext_resource type="Texture2D" uid="uid://ly1rvorwqk67" path="res://images/player/back_idle/000.png" id="2_5pw4f"]
@@ -53,7 +53,9 @@
 [ext_resource type="FontFile" uid="uid://b1ae4tx6npay3" path="res://JacquardaBastarda9-Regular.ttf" id="45_glsb0"]
 [ext_resource type="AudioStream" uid="uid://c54ble5qc1ik6" path="res://audio/fire.wav" id="46_rn5x4"]
 [ext_resource type="AudioStream" uid="uid://cxnrdix6el38u" path="res://audio/player_hit.wav" id="47_br5tx"]
-[ext_resource type="Texture2D" uid="uid://0kitfw4er0ta" path="res://images/Dash Icon.png" id="52_kcrat"]
+[ext_resource type="Texture2D" uid="uid://cvvuuo4d3pmtc" path="res://images/player/ui_dash/000.png" id="48_chixv"]
+[ext_resource type="Texture2D" uid="uid://dyduaf42mq7rd" path="res://images/player/ui_dash/001.png" id="49_8k0hb"]
+[ext_resource type="Texture2D" uid="uid://by0481nc2f08b" path="res://images/player/ui_dash/002.png" id="50_b2c77"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p1bda"]
 animations = [{
@@ -247,8 +249,6 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxplk"]
-
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 3
 y_sort_enabled = true
@@ -302,6 +302,20 @@ offset_top = 15.0
 offset_right = 349.0
 offset_bottom = 69.0
 theme_override_constants/separation = 10
+
+[node name="DashCooldownBar" type="TextureProgressBar" parent="PlayerUI"]
+visible = false
+offset_left = 19.0
+offset_top = 120.0
+offset_right = 430.0
+offset_bottom = 198.0
+max_value = 10.0
+step = 0.01
+value = 10.0
+texture_under = ExtResource("48_chixv")
+texture_over = ExtResource("50_b2c77")
+texture_progress = ExtResource("49_8k0hb")
+texture_progress_offset = Vector2(12, 39)
 
 [node name="RestartMenu" type="ColorRect" parent="PlayerUI"]
 process_mode = 2
@@ -421,26 +435,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="DashCooldownBar" type="ProgressBar" parent="PlayerUI"]
-modulate = Color(0.13726, 0.639506, 0.383732, 1)
-offset_left = 30.0
-offset_top = 120.0
-offset_right = 413.0
-offset_bottom = 147.0
-theme_override_styles/background = SubResource("StyleBoxFlat_mxplk")
-max_value = 10.0
-step = 1.0
-value = 10.0
-show_percentage = false
-
-[node name="DashIcon" type="TextureRect" parent="PlayerUI"]
-offset_left = -2.0
-offset_top = 114.0
-offset_right = 38.0
-offset_bottom = 154.0
-texture = ExtResource("52_kcrat")
-expand_mode = 2
-
 [node name="Fire" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("46_rn5x4")
 bus = &"SFX"
@@ -450,13 +444,9 @@ stream = ExtResource("47_br5tx")
 bus = &"SFX"
 
 [node name="DashTimer" type="Timer" parent="."]
-wait_time = 5.0
-
-[node name="CooldownTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 3.0
 
 [connection signal="animation_finished" from="Wand" to="." method="_on_wand_animation_finished"]
 [connection signal="button_down" from="PlayerUI/RestartMenu/RestartButton" to="." method="_on_restart_button_button_down"]
 [connection signal="button_down" from="PlayerUI/RestartMenu/TitleButton" to="." method="_on_title_button_button_down"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
-[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

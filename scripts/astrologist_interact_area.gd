@@ -17,6 +17,7 @@ func setCompleted():
 	set_deferred("monitorable", false)
 	set_deferred("monitoring", false)
 	if player:
+		player.dash = true
 		player.enable_dash_bar()
 	$Notification.hide()
 
