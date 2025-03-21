@@ -15,6 +15,7 @@ func _on_body_entered(body: Node2D) -> void:
 		body.hit(damage)
 		destroy()
 	elif !body.is_in_group("Enemies"):
+		$Hit.play()
 		destroy()
 
 func destroy() -> void:
