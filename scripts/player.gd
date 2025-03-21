@@ -12,6 +12,7 @@ var tween
 var heartArray = []
 var alt_fire = false
 var dash = false
+var yes = false
 signal restart
 signal title
 @onready var fireball = load("res://scenes/fireball.tscn")
@@ -42,6 +43,9 @@ func _physics_process(_delta: float) -> void:
 	if dash:
 		if dash_bar: 
 			dash_bar.value = max(dash_bar.value + bar_speed * _delta, dash_bar.value)
+			if dash_bar.value == dash_bar.max_value and yes:
+				yes = false
+				$DashReset.play()
 		if is_dashing:
 			velocity = dash_direction * dash_speed
 			move_and_slide()
@@ -226,6 +230,7 @@ func enable_dash_bar():
 	dash_bar.visible = true
 	
 func start_dash():
+	$Dash.play()
 	is_dashing = true
 	dash_direction = velocity.normalized() 
 	$DashTimer.start(dash_time)
@@ -241,4 +246,5 @@ func _on_title_button_button_down() -> void:
 
 
 func _on_dash_timer_timeout() -> void:
+	yes = true
 	is_dashing = false

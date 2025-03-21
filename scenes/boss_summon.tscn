@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://qsmge41ixknx"]
+[gd_scene load_steps=9 format=3 uid="uid://qsmge41ixknx"]
 
 [ext_resource type="Texture2D" uid="uid://cg7yg6f1bl6mo" path="res://images/summon/boss/001.png" id="1_m5xkm"]
 [ext_resource type="Texture2D" uid="uid://drd2dfgsyegab" path="res://images/summon/boss/000.png" id="2_3imdn"]
 [ext_resource type="Script" path="res://scenes/boss_summon.gd" id="2_3patx"]
+[ext_resource type="AudioStream" uid="uid://bg8nmhtrh2ljj" path="res://audio/summon.wav" id="4_ox0wh"]
 
 [sub_resource type="Animation" id="Animation_ybg60"]
 length = 0.001
@@ -89,3 +90,8 @@ libraries = {
 [node name="SpawnPoint" type="Marker2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, -47)
+
+[node name="Summon" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ox0wh")
+pitch_scale = 0.5
+bus = &"SFX"

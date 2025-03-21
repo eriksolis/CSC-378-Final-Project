@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cscudlnjgjbj1"]
+[gd_scene load_steps=62 format=3 uid="uid://cscudlnjgjbj1"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ck705"]
 [ext_resource type="Texture2D" uid="uid://ly1rvorwqk67" path="res://images/player/back_idle/000.png" id="2_5pw4f"]
@@ -56,6 +56,8 @@
 [ext_resource type="Texture2D" uid="uid://cvvuuo4d3pmtc" path="res://images/player/ui_dash/000.png" id="48_chixv"]
 [ext_resource type="Texture2D" uid="uid://dyduaf42mq7rd" path="res://images/player/ui_dash/001.png" id="49_8k0hb"]
 [ext_resource type="Texture2D" uid="uid://by0481nc2f08b" path="res://images/player/ui_dash/002.png" id="50_b2c77"]
+[ext_resource type="AudioStream" uid="uid://by123gj5ngbrn" path="res://audio/collect.wav" id="57_hrwos"]
+[ext_resource type="AudioStream" uid="uid://dld0lh7d18g7v" path="res://audio/comet.wav" id="58_bsx7v"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p1bda"]
 animations = [{
@@ -443,8 +445,19 @@ bus = &"SFX"
 stream = ExtResource("47_br5tx")
 bus = &"SFX"
 
+[node name="DashReset" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("57_hrwos")
+pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="Dash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("58_bsx7v")
+pitch_scale = 2.0
+bus = &"SFX"
+
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 3.0
+one_shot = true
 
 [connection signal="animation_finished" from="Wand" to="." method="_on_wand_animation_finished"]
 [connection signal="button_down" from="PlayerUI/RestartMenu/RestartButton" to="." method="_on_restart_button_button_down"]

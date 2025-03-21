@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://c1hesndgoq4xp"]
+[gd_scene load_steps=47 format=4 uid="uid://c1hesndgoq4xp"]
 
 [ext_resource type="Script" path="res://scripts/base_scene.gd" id="1_6o2pf"]
 [ext_resource type="Texture2D" uid="uid://83f53etsk1i0" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Tileset Grass.png" id="1_vtihd"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://c1sp7dmrvxbwb" path="res://scenes/dialogue_system.tscn" id="21_8f152"]
 [ext_resource type="FontFile" uid="uid://b1ae4tx6npay3" path="res://JacquardaBastarda9-Regular.ttf" id="22_1glnd"]
 [ext_resource type="PackedScene" uid="uid://bdhrvr5blpgm7" path="res://scenes/summon.tscn" id="23_k1ayb"]
+[ext_resource type="AudioStream" uid="uid://dy38pg4yq2xyw" path="res://audio/open.wav" id="28_nybt3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_650ft"]
 vertices = PackedVector2Array(888.938, 1212, 839.063, 1212, 864, 1203.68, 191.602, 374, 106, 374, 106, 340, 191.602, 340, 279.867, 278, 202, 278, 202, 244, 278.422, 244, 1814, 436, 1909.7, 436, 1835.8, 459.211, 1788.38, 419.82, 1814, 340, 1718, 340, 150.313, 568.867, 107.313, 480.398, 192.398, 480.398, 1658.23, 422.07, 1638.72, 378.023, 1907.61, 1142, 1831, 472.438, 1042.74, 214.453, 1040.96, 202, 1071.04, 202, 1069.26, 214.453, 1138.74, 214.453, 1136.96, 202, 1167.04, 202, 1165.26, 214.453, 1234.74, 214.453, 1232.96, 202, 1239.52, 202, 1239.52, 377.242, 1200, 240.5, 488.172, 202, 975.039, 202, 973.258, 214.453, 490.273, 280.453, 10, 1142, 1626.86, 471.68, 95.6016, 436, 95.6016, 469.953, 90.8281, 469.648, 10, 436, 31.5703, 560.07, 37.3672, 570.609, 1621.74, 459.461, 288.398, 384.398, 288.398, 279.688, 1641.09, 244, 1718, 244, 192.398, 384.398, 1446.72, 378.023, 1446.73, 377.289, 1008, 240.5, 1104, 240.5)
@@ -1162,6 +1163,12 @@ theme_override_fonts/font = ExtResource("22_1glnd")
 theme_override_font_sizes/font_size = 42
 text = "!"
 horizontal_alignment = 1
+
+[node name="Door" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("28_nybt3")
+pitch_scale = 0.8
+autoplay = true
+bus = &"SFX"
 
 [connection signal="minibossComplete" from="Summon3" to="InteractArea" method="_on_summon_3_miniboss_complete"]
 [connection signal="body_entered" from="InteractArea" to="InteractArea" method="_on_body_entered"]

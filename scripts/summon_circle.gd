@@ -37,6 +37,7 @@ func enable() -> void:
 
 func randomSummon(delay) -> void:
 	if !emitted:
+		$Summon.play()
 		count += 1
 		spawned += 1
 		var chosen_type

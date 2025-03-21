@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsjt7rjp6i284"]
+[gd_scene load_steps=9 format=3 uid="uid://dsjt7rjp6i284"]
 
 [ext_resource type="Texture2D" uid="uid://bst61ldnd204l" path="res://images/summon/small_circle/001.png" id="1_teouf"]
 [ext_resource type="Script" path="res://scripts/small_summon.gd" id="2_umydg"]
 [ext_resource type="Texture2D" uid="uid://c6nl0t6u44o6f" path="res://images/summon/small_circle/000.png" id="3_1v6n8"]
+[ext_resource type="AudioStream" uid="uid://cygx0w24dqdcd" path="res://audio/minisummon.wav" id="4_vu7hj"]
 
 [sub_resource type="Animation" id="Animation_ybg60"]
 length = 0.001
@@ -93,3 +94,6 @@ libraries = {
 [node name="SpawnPoint" type="Marker2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, -47)
+
+[node name="Summon" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_vu7hj")

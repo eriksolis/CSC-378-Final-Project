@@ -13,6 +13,8 @@ var counter = 2
 func _ready() -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_property($CanvasLayer/HealthBar, "modulate:a", 1, 0.25)
+	$CanvasLayer/HealthBar.max_value = health
+	$CanvasLayer/HealthBar.value = health
 	$SummonAnim.play("fadein")
 	await $SummonAnim.animation_finished
  

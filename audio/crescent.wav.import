@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://by123gj5ngbrn"
-path="res://.godot/imported/collect.wav-5776c82af039ef1e10a83fe376200cfb.sample"
+uid="uid://drtidbphu7nl3"
+path="res://.godot/imported/crescent.wav-ea880e9652067d252188616acea9f8e1.sample"
 
 [deps]
 
-source_file="res://audio/collect.wav"
-dest_files=["res://.godot/imported/collect.wav-5776c82af039ef1e10a83fe376200cfb.sample"]
+source_file="res://audio/crescent.wav"
+dest_files=["res://.godot/imported/crescent.wav-ea880e9652067d252188616acea9f8e1.sample"]
 
 [params]
 

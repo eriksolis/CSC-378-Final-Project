@@ -2,6 +2,8 @@ extends Sprite2D
 @export var summon : PackedScene
 
 func _ready() -> void:
+	$Summon.pitch_scale = randf_range(0.3, 0.7)
+	$Summon.play()
 	$SummonManager.play("fadein")
 	await $SummonManager.animation_finished
 	var newSummon = summon.instantiate()

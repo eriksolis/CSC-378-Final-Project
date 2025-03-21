@@ -1,13 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://bpalqkfvqnm4k"]
+[gd_scene load_steps=23 format=3 uid="uid://bpalqkfvqnm4k"]
 
 [ext_resource type="Script" path="res://scripts/king_slime.gd" id="1_q78p1"]
 [ext_resource type="Texture2D" uid="uid://phyiidwrfamt" path="res://images/enemies/king_slime/000.png" id="2_j21rr"]
 [ext_resource type="Texture2D" uid="uid://ixcjxw70nhrb" path="res://images/enemies/king_slime/001.png" id="3_owwr8"]
 [ext_resource type="Texture2D" uid="uid://dpuoeofdhrxno" path="res://images/enemies/king_slime/002.png" id="4_dncho"]
 [ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="6_osnf1"]
+[ext_resource type="AudioStream" uid="uid://bndpi5kyysur5" path="res://audio/kingdash.wav" id="7_7xxqo"]
 [ext_resource type="Texture2D" uid="uid://73fb3qh68iif" path="res://images/enemies/boss_health_bar/001.png" id="7_ia4mi"]
 [ext_resource type="Texture2D" uid="uid://8ael3f46uy1n" path="res://images/enemies/boss_health_bar/002.png" id="8_njt4n"]
+[ext_resource type="AudioStream" uid="uid://bwnleyyckkajc" path="res://audio/heartslime.wav" id="8_yfwry"]
 [ext_resource type="Texture2D" uid="uid://bu3fi8jqb7c5k" path="res://images/enemies/boss_health_bar/king_slime_icon.png" id="9_dyvy2"]
+[ext_resource type="AudioStream" uid="uid://cygx0w24dqdcd" path="res://audio/minisummon.wav" id="9_ebwyr"]
 [ext_resource type="Texture2D" uid="uid://cb45fn7a7ek2c" path="res://images/enemies/slime_particle.png" id="11_gf631"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7nneo"]
@@ -168,6 +171,23 @@ shape = SubResource("CapsuleShape2D_kmai8")
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_osnf1")
+bus = &"SFX"
+
+[node name="Charge" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_7xxqo")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="Fire" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_yfwry")
+volume_db = 20.0
+pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="Summon" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ebwyr")
+volume_db = 10.0
+pitch_scale = 0.5
 bus = &"SFX"
 
 [node name="Navigation" type="Node2D" parent="."]

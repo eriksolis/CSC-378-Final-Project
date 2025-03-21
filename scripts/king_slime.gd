@@ -81,6 +81,7 @@ func chargeAttack():
 
 func bulletAttack():
 	for i in range(0, 8):
+		$Fire.play()
 		# Instantiate the enemy fireball
 		var bullet = bulletLoad.instantiate()
 		# Position it at the slime's location (or use a Marker2D if you want a different spawn point)
@@ -112,7 +113,9 @@ func _on_timer_timeout() -> void:
 	moving = false
 	match counter:
 		0:
+			$Charge.play()
 			await chargeAttack()
+			$Charge.stop()
 			#print("charge attack")
 			counter += 1
 		1:

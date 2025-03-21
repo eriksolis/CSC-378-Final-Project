@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dme5ayex5tj8g"]
+[gd_scene load_steps=14 format=3 uid="uid://dme5ayex5tj8g"]
 
 [ext_resource type="Script" path="res://scripts/shooting_star_bullet.gd" id="1_ywiav"]
 [ext_resource type="Texture2D" uid="uid://c7fkeckdjqeg" path="res://images/enemies/cloud_slime/particle_flipbook.png" id="2_s37o8"]
 [ext_resource type="Texture2D" uid="uid://6n75qsuvc2jm" path="res://images/enemies/king_slime/wave_shot.png" id="3_3lplj"]
 [ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="4_ilhyk"]
+[ext_resource type="AudioStream" uid="uid://dhsvmesrjr038" path="res://audio/whoosh.wav" id="5_h5phi"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xnw2v"]
 particles_animation = true
@@ -105,6 +106,11 @@ shape = SubResource("CapsuleShape2D_fvhc1")
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_ilhyk")
+bus = &"SFX"
+
+[node name="Whoosh" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_h5phi")
+autoplay = true
 bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

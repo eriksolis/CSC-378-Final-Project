@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkunx83t2yjw1"]
+[gd_scene load_steps=14 format=3 uid="uid://bkunx83t2yjw1"]
 
 [ext_resource type="Script" path="res://scripts/vines.gd" id="1_j4v41"]
 [ext_resource type="Texture2D" uid="uid://dk8mdk612qvuc" path="res://images/enemies/botanist_slime/vine.png" id="2_m8pwj"]
 [ext_resource type="Texture2D" uid="uid://c7fkeckdjqeg" path="res://images/enemies/cloud_slime/particle_flipbook.png" id="3_v6or5"]
 [ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="4_g5a6b"]
+[ext_resource type="AudioStream" uid="uid://csiebxepxteuc" path="res://audio/vines.wav" id="5_2vjik"]
 
 [sub_resource type="Animation" id="Animation_ajvcb"]
 length = 0.001
@@ -109,6 +110,12 @@ explosiveness = 1.0
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_g5a6b")
+bus = &"SFX"
+
+[node name="Grow" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_2vjik")
+volume_db = 10.0
+autoplay = true
 bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

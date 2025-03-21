@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cayktmym56l55"]
+[gd_scene load_steps=14 format=3 uid="uid://cayktmym56l55"]
 
 [ext_resource type="Script" path="res://scripts/enemy_fireball.gd" id="1_aqd6e"]
 [ext_resource type="Texture2D" uid="uid://cx5hj2irywu7h" path="res://images/enemies/botanist_slime/pistil.png" id="2_0l4hj"]
 [ext_resource type="Texture2D" uid="uid://c3470f3morp4i" path="res://images/wand/particle_effect/particle_flipbook.png" id="3_wrpls"]
 [ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="4_pk05v"]
+[ext_resource type="AudioStream" uid="uid://b473q7gxummgg" path="res://audio/pistil.wav" id="5_8bso8"]
 
 [sub_resource type="Animation" id="Animation_ajvcb"]
 length = 0.001
@@ -107,6 +108,11 @@ explosiveness = 1.0
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_pk05v")
+bus = &"SFX"
+
+[node name="Fired" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8bso8")
+autoplay = true
 bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

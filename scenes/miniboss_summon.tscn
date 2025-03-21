@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cng0frun30yli"]
+[gd_scene load_steps=9 format=3 uid="uid://cng0frun30yli"]
 
 [ext_resource type="Texture2D" uid="uid://ddtw40vfv5olk" path="res://images/summon/midboss/001.png" id="1_ht6pk"]
 [ext_resource type="Script" path="res://scripts/miniboss_summon.gd" id="2_1trvg"]
 [ext_resource type="Texture2D" uid="uid://bpqchcofk8ehs" path="res://images/summon/midboss/000.png" id="3_ukmsi"]
+[ext_resource type="AudioStream" uid="uid://bg8nmhtrh2ljj" path="res://audio/summon.wav" id="4_3n65i"]
 
 [sub_resource type="Animation" id="Animation_ybg60"]
 length = 0.001
@@ -93,3 +94,7 @@ libraries = {
 [node name="SpawnPoint" type="Marker2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, -47)
+
+[node name="Summon" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3n65i")
+bus = &"SFX"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://cpgh85m4w1e4v"]
+[gd_scene load_steps=45 format=4 uid="uid://cpgh85m4w1e4v"]
 
 [ext_resource type="Script" path="res://scripts/base_scene.gd" id="1_cu2cf"]
 [ext_resource type="Texture2D" uid="uid://83f53etsk1i0" path="res://tilemap/Pixel Art Top Down - Basic v1.1.2 - UPSCALED/Texture/TX Tileset Grass.png" id="1_xv5ej"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://c4y6ob32newii" path="res://images/npcs/magnus/staff.png" id="19_2p4hq"]
 [ext_resource type="PackedScene" uid="uid://c1sp7dmrvxbwb" path="res://scenes/dialogue_system.tscn" id="20_8df5o"]
 [ext_resource type="FontFile" uid="uid://b1ae4tx6npay3" path="res://JacquardaBastarda9-Regular.ttf" id="21_74t1u"]
+[ext_resource type="AudioStream" uid="uid://dy38pg4yq2xyw" path="res://audio/open.wav" id="27_b3ps3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_cur41"]
 vertices = PackedVector2Array(888.938, 1212, 839.063, 1212, 864, 1203.68, 1335.51, 259.391, 1336.37, 202, 1333.87, 394, 1333.57, 302.656, 1299.96, 338.25, 1297.18, 237.188, 392.594, 202, 1259.1, 255.547, 490, 212, 1829.39, 1142, 88.7109, 1142, 90.2969, 1066, 106.078, 1066, 1546.08, 394, 1622, 340, 1720.61, 340, 1717.81, 490, 1543.58, 490, 181.867, 394, 183.602, 394, 181.813, 490, 106, 532, 1335.6, 394, 1333.81, 490, 1813.89, 922, 1815.75, 922, 1813.87, 1066, 104.422, 564.891, 10, 565.922, 10, 532, 1813.87, 778, 1815.4, 778, 394.078, 394, 393.656, 340, 490, 340, 104.961, 922, 106.031, 922, 391.578, 490, 390.859, 394, 1542.86, 394, 105.563, 778, 106.078, 778, 1544.59, 202, 1910, 202, 1910, 212, 1622, 212, 1910, 490, 1910, 565.094, 1816.63, 566.109, 106, 212, 10, 212, 10, 202, 184.367, 202, 392.672, 212, 1255.93, 311.422, 1828.6, 1066, 197.602, 586, 280.289, 586, 196.602, 490, 282.297, 490)
@@ -1136,6 +1137,12 @@ theme_override_fonts/font = ExtResource("21_74t1u")
 theme_override_font_sizes/font_size = 42
 text = "!"
 horizontal_alignment = 1
+
+[node name="Door" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("27_b3ps3")
+pitch_scale = 0.8
+autoplay = true
+bus = &"SFX"
 
 [connection signal="minibossComplete" from="Summon3" to="InteractArea" method="_on_summon_3_miniboss_complete"]
 [connection signal="body_entered" from="InteractArea" to="InteractArea" method="_on_body_entered"]

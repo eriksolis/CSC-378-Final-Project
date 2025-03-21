@@ -39,6 +39,7 @@ func spawn() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerBullets"):
+		$Hit.play()
 		$Sprite2D.modulate.v = 3
 		if tween:
 			tween.kill()
