@@ -33,7 +33,6 @@ func _ready() -> void:
 
 func destroy():
 	if !destroyed:
-		$Timer.start()
 		set_deferred("monitorable", false)
 		set_deferred("monitoring", false)
 		set_physics_process(false)
@@ -126,6 +125,7 @@ func _on_timer_timeout() -> void:
 			await slimeSummons()
 			counter = 0
 	moving = true
+	$Timer.start()
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerBullets"):
