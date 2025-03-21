@@ -6,7 +6,7 @@ var completed_summons = 0
 enum STATES{PRESTAGE, POSTSTAGE, PREBOSS, POSTBOSS}
 var state = STATES.PRESTAGE
 @onready var player = scene_manager.player
-@onready var boss = load("res://scenes/king_slime.tscn")
+#@onready var boss = load("res://scenes/king_slime.tscn")
 var post_stage_dialogue = ["Well done, my apprentice, you've defeated the slimes!>", "I will now bestow upon you the ability to fire a giant fireball. >", "[Right-click to fire a slow-moving fireball that explodes into mini fireballs.] >", "Before you arrived, some slimes had already invaded the village. It ashames me to admit, but I was unable to stop them.>", "Before I knew it, they had already engulfed some of the villagers.>", "As such, your next task is to free the poor villager in the room to the left! Go forth my apprentice, and make me proud!"]
 
 func _ready() -> void:
@@ -33,8 +33,8 @@ func setCompleted():
 				summon_circles += 1
 			# SPAWN BOSS
 			await get_tree().create_timer(10).timeout
-			var bossSpawn = boss.instantiate()
-			get_parent().add_child(bossSpawn)
+			#var bossSpawn = boss.instantiate()
+			#get_parent().add_child(bossSpawn)
 		STATES.POSTSTAGE:
 			completed = true
 			set_deferred("monitorable", false)

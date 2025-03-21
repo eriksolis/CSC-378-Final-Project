@@ -34,7 +34,12 @@ func setCompleted():
 			set_deferred("monitorable", false)
 			set_deferred("monitoring", false)
 			get_parent().get_node("SceneTrigger").enable()
-			scene_manager.enableRoom2()
+			if !scene_manager.room1Cleared:
+				print("enabled room 2")
+				scene_manager.enableRoom2()
+			elif scene_manager.room1Cleared:
+				print("enabled boss room")
+				scene_manager.enableBossRoom()
 	$Notification.hide()
 
 
@@ -57,6 +62,13 @@ func _on_summon_depleted():
 
 
 func _on_summon_3_miniboss_complete() -> void:
+	$DialogueLayer.dialogue = post_stage_dialogue
+	MusicHandler.play("PixelizedFields")
+	set_deferred("monitorable", true)
+	set_deferred("monitoring", true)
+	$Notification.show()
+	
+func _on_summon_3_boss_complete() -> void:
 	$DialogueLayer.dialogue = post_stage_dialogue
 	MusicHandler.play("PixelizedFields")
 	set_deferred("monitorable", true)
