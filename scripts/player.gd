@@ -18,16 +18,12 @@ signal title
 @onready var large_fireball = load("res://scenes/large_fireball.tscn")
 @onready var heart = load("res://scenes/heart.tscn")
 
-var dash_unlocked = false
 var is_dashing = false
 var dash_speed = 700.0  
-var dash_time = 0.5
-var dash_cooldown = 10
-var can_dash = true
+var dash_time : float = 0.3
+var dash_cooldown = 3
 var dash_direction = Vector2.ZERO
 @onready var dash_bar = $PlayerUI/DashCooldownBar
-var cooldown = false
-var progress = 10 
 var bar_speed = 1.0
 
 func _ready() -> void:
@@ -35,28 +31,24 @@ func _ready() -> void:
 	add_to_group("Player", true)
 	$PlayerUI/RestartMenu.hide()
 	setHealth()
-	dash_bar.visible = false
+	dash_bar.visible = dash
 	if dash_bar:
 		dash_bar.max_value = dash_cooldown
 		dash_bar.value = dash_cooldown
 
-func _process(delta: float) -> void:
-	if dash_bar: 
-		dash_bar.value = progress
-	
-	if cooldown:
-		progress += bar_speed * delta
-		if progress >= dash_cooldown:
-			progress = dash_cooldown
-			cooldown = false
-			can_dash = true
-			
+
 func _physics_process(_delta: float) -> void:
-	if is_dashing:
-		velocity = dash_direction * dash_speed
-		move_and_slide()
-		return  
-		
+	# DASH
+	if dash:
+		if dash_bar: 
+			dash_bar.value = max(dash_bar.value + bar_speed * _delta, dash_bar.value)
+		if is_dashing:
+			velocity = dash_direction * dash_speed
+			move_and_slide()
+			return  
+		elif (dash_bar.value == dash_bar.max_value) and Input.is_action_just_pressed("ui_dash") and velocity.length() != 0:
+			start_dash()
+
 	# MOVEMENT
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	if input_direction:
@@ -71,8 +63,7 @@ func _physics_process(_delta: float) -> void:
 	updateWand()
 	move_and_slide()
 	
-	if dash_unlocked and can_dash and Input.is_action_just_pressed("ui_dash"):
-		start_dash()
+	
 
 ## UPDATE DIRECTION BASED ON MOVEMENT AND THEN MOUSE
 func updateDirection():
@@ -159,14 +150,15 @@ func updateWand():
 func hit(damage):
 	$Hit.pitch_scale = randf_range(0.95, 1)
 	$Hit.play()
-	$Sprite.modulate.v = 3
-	if tween:
-		tween.kill()
-	tween = get_tree().create_tween()
-	tween.tween_property($Sprite, "modulate:v", 1, 0.2)
-	health -= damage
-	updateHealth()
-	await tween.finished
+	if !is_dashing:
+		$Sprite.modulate.v = 3
+		if tween:
+			tween.kill()
+		tween = get_tree().create_tween()
+		tween.tween_property($Sprite, "modulate:v", 1, 0.2)
+		health -= damage
+		updateHealth()
+		await tween.finished
 	if health <= 0:
 		# END GAME
 		MusicHandler.play("BitTragedy")
@@ -230,22 +222,13 @@ func healthUpgrade():
 	heartArray.clear()
 	setHealth()
 
-func unlock_dash():
-	dash_unlocked = true
-
 func enable_dash_bar():
 	dash_bar.visible = true
 	
 func start_dash():
-	if velocity.length() > 0: 
-		is_dashing = true
-		can_dash = false
-		cooldown = true
-		progress = 0
-		dash_direction = velocity.normalized() 
-		$DashTimer.start(dash_time)  
-		$CooldownTimer.start(dash_cooldown)  
-		
+	is_dashing = true
+	dash_direction = velocity.normalized() 
+	$DashTimer.start(dash_time)
 	if dash_bar:
 		dash_bar.value = 0
 
@@ -259,7 +242,3 @@ func _on_title_button_button_down() -> void:
 
 func _on_dash_timer_timeout() -> void:
 	is_dashing = false
-
-
-func _on_cooldown_timer_timeout() -> void:
-	can_dash = true
