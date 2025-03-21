@@ -57,7 +57,7 @@ shape = SubResource("RectangleShape2D_8p2ji")
 
 [node name="DialogueLayer" parent="." instance=ExtResource("8_x8ptg")]
 visible = false
-dialogue = ["That wicked villain sent a package of moon rocks to me.>", "After opening it, I was enveloped in that disgusting slime! Oh, and they devoured my research too!>", "Without your help, I would've been stuck there for god knows how long.>", "As thanks, take this amulet infused with the power of the stars. It'll bestow upon you a temporary boost of speed.>", "Now, if you'll excuse me, I must get back to my work."]
+dialogue = ["That wicked villain sent a package of moon rocks to me.>", "After opening it, I was enveloped in that disgusting slime! Oh, and they devoured my research too!>", "Without your help, I would've been stuck there for god knows how long.>", "As thanks, take this amulet infused with the power of the stars. It'll bestow upon you a temporary boost of speed.>", "(Pressing SHIFT will let you dash in the direction you are moving in)>", "Now, if you'll excuse me, I must get back to my work."]
 image = ExtResource("2_6t7tl")
 characterName = "Astrologist"
 

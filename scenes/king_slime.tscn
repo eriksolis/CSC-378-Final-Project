@@ -184,7 +184,7 @@ autostart = true
 [node name="Lever" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="Lever"]
-position = Vector2(0, -150)
+position = Vector2(-2, -388)
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

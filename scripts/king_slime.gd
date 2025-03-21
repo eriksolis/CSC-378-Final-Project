@@ -7,21 +7,20 @@ load("res://scenes/purple_slime.tscn"),
 load("res://scenes/mushroom_slime.tscn"),
 load("res://scenes/cloud_slime.tscn"), 
 load("res://scenes/star_slime.tscn"), 
-load("res://scenes/comet_slime.tscn")
+load("res://scenes/comet_slime.tscn"),
+load("res://scenes/pink_slime.tscn")
 ]
 var bulletLoad = load("res://scenes/blue_bullet.tscn")
 var waveLoad = load("res://scenes/wave_shot.tscn")
 var smallSummon = load("res://scenes/small_summon.tscn")
 signal bossDead
 
-@export var chargeSpeed = 1000
+@export var chargeSpeed = 1500
 var destroyed = false
 var moving = true
 var counter = 3
 
 var playerPos = Vector2(0, 0)
-var attack_timer: float = 0.0
-var has_stopped: bool = false
 var isCharging = false
 
 func _ready() -> void:
@@ -46,9 +45,10 @@ func _physics_process(delta:float) -> void:
 		var direction = Vector2.ZERO
 		direction = nav_agent.get_next_path_position() - global_position
 		direction = direction.normalized()
-		velocity = direction * speed 
+		velocity = direction * (speed * 1.25) 
+		move_and_slide()
 		
-	move_and_slide()
+	#move_and_slide()
 
 func chargeAttack():
 	# Set target position to player's current position
@@ -56,7 +56,7 @@ func chargeAttack():
 
 	# Telegraph the attack
 	velocity = Vector2.ZERO
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.25).timeout
 
 	# Charge toward the saved player position
 	var direction = (playerPos - global_position).normalized()
@@ -72,7 +72,7 @@ func chargeAttack():
 
 	# Stop after charge
 	velocity = Vector2.ZERO
-	await get_tree().create_timer(0.3).timeout  # Recovery time
+	await get_tree().create_timer(0.25).timeout  # Recovery time
 
 func bulletAttack():
 	for i in range(0, 8):
@@ -87,14 +87,14 @@ func bulletAttack():
 		get_parent().add_child(bullet)
 
 func waveRainAttack():
-	for i in range(0, 20):
+	for i in range(0, 12):
 		var newWave = waveLoad.instantiate()
-		newWave.global_position = Vector2(250 * i, -100)
+		newWave.global_position = Vector2(250 * i, player.global_position.y-300)
 		get_parent().add_child(newWave)
 		await get_tree().create_timer(0.2).timeout
 
 func slimeSummons():
-	for i in range(0, 4):
+	for i in range(0, 6):
 		var newSummon = smallSummon.instantiate()
 		newSummon.summon = slimeTypes.pick_random()
 		$Lever.rotation_degrees += randi_range(45, 90)
@@ -108,7 +108,7 @@ func _on_timer_timeout() -> void:
 	match counter:
 		0:
 			await chargeAttack()
-			print("charge attack")
+			#print("charge attack")
 			counter += 1
 		1:
 			await bulletAttack()
