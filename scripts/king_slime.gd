@@ -33,10 +33,12 @@ func _ready() -> void:
 
 func destroy():
 	if !destroyed:
-		destroyed = true
+		$Timer.start()
 		set_deferred("monitorable", false)
 		set_deferred("monitoring", false)
-		call_deferred("set_physics_process", false)
+		set_physics_process(false)
+		var tween = get_tree().create_tween()
+		tween.tween_property($CanvasLayer/HealthBar, "modulate:a", 0, 0.25)
 		$SlimeSprite/SlimeParticles.emitting = true
 		$SummonAnim.play_backwards("fadein")
 		await $SummonAnim.animation_finished
@@ -124,16 +126,6 @@ func _on_timer_timeout() -> void:
 			await slimeSummons()
 			counter = 0
 	moving = true
-	$Timer.start()
-	set_deferred("monitorable", false)
-	set_deferred("monitoring", false)
-	set_physics_process(false)
-	var tween = get_tree().create_tween()
-	tween.tween_property($CanvasLayer/HealthBar, "modulate:a", 0, 0.25)
-	$SlimeSprite/SlimeParticles.emitting = true
-	$SummonAnim.play_backwards("fadein")
-	await $SummonAnim.animation_finished
-	queue_free()
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerBullets"):

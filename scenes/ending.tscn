@@ -833,9 +833,9 @@ position = Vector2(615, 607)
 
 [node name="EndingScreen" parent="." instance=ExtResource("1_tcjeb")]
 z_index = 10
-offset_left = -385.0
+offset_left = -375.0
 offset_top = -6.0
-offset_right = -385.0
+offset_right = -375.0
 offset_bottom = -6.0
 
 [node name="Floor" type="TileMapLayer" parent="."]

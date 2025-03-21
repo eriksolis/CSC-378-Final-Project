@@ -188,6 +188,7 @@ autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="Lever"]
 position = Vector2(-2, -388)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 128
 
