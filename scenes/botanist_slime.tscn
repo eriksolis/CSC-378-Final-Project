@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cwvy547yj53aa"]
+[gd_scene load_steps=20 format=3 uid="uid://cwvy547yj53aa"]
 
 [ext_resource type="Script" path="res://scripts/botanist_slime.gd" id="1_71ocm"]
 [ext_resource type="Texture2D" uid="uid://k31ynk4uib1l" path="res://images/enemies/botanist_slime/000.png" id="2_h3i4b"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dd8qsv71clesn" path="res://images/enemies/botanist_slime/002.png" id="4_71b5j"]
 [ext_resource type="Texture2D" uid="uid://cb45fn7a7ek2c" path="res://images/enemies/slime_particle.png" id="5_0s6rn"]
 [ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="6_kn8ba"]
+[ext_resource type="Texture2D" uid="uid://73fb3qh68iif" path="res://images/enemies/boss_health_bar/001.png" id="7_o3qfu"]
+[ext_resource type="Texture2D" uid="uid://8ael3f46uy1n" path="res://images/enemies/boss_health_bar/002.png" id="8_qpaf6"]
+[ext_resource type="Texture2D" uid="uid://di57ygo2hvbyp" path="res://images/enemies/botanist_slime/flower_summon.png" id="9_ugjqp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7nneo"]
 animations = [{
@@ -185,6 +188,33 @@ autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="Lever"]
 position = Vector2(0, -150)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -507.0
+offset_top = 15.0
+offset_right = 507.0
+offset_bottom = 165.0
+grow_horizontal = 2
+value = 100.0
+texture_under = ExtResource("7_o3qfu")
+texture_progress = ExtResource("8_qpaf6")
+texture_progress_offset = Vector2(141, 42)
+
+[node name="BossIcon" type="TextureRect" parent="CanvasLayer/HealthBar"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_top = -8.0
+offset_right = 150.0
+offset_bottom = 142.0
+texture = ExtResource("9_ugjqp")
+expand_mode = 1
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

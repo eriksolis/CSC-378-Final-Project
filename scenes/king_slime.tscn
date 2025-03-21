@@ -1,10 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://bpalqkfvqnm4k"]
+[gd_scene load_steps=20 format=3 uid="uid://bpalqkfvqnm4k"]
 
 [ext_resource type="Script" path="res://scripts/king_slime.gd" id="1_q78p1"]
 [ext_resource type="Texture2D" uid="uid://phyiidwrfamt" path="res://images/enemies/king_slime/000.png" id="2_j21rr"]
 [ext_resource type="Texture2D" uid="uid://ixcjxw70nhrb" path="res://images/enemies/king_slime/001.png" id="3_owwr8"]
 [ext_resource type="Texture2D" uid="uid://dpuoeofdhrxno" path="res://images/enemies/king_slime/002.png" id="4_dncho"]
 [ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="6_osnf1"]
+[ext_resource type="Texture2D" uid="uid://73fb3qh68iif" path="res://images/enemies/boss_health_bar/001.png" id="7_ia4mi"]
+[ext_resource type="Texture2D" uid="uid://8ael3f46uy1n" path="res://images/enemies/boss_health_bar/002.png" id="8_njt4n"]
+[ext_resource type="Texture2D" uid="uid://bu3fi8jqb7c5k" path="res://images/enemies/boss_health_bar/king_slime_icon.png" id="9_dyvy2"]
 [ext_resource type="Texture2D" uid="uid://cb45fn7a7ek2c" path="res://images/enemies/slime_particle.png" id="11_gf631"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7nneo"]
@@ -175,6 +178,34 @@ simplify_path = true
 [node name="Timer" type="Timer" parent="Navigation"]
 wait_time = 0.1
 autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -507.0
+offset_top = 15.0
+offset_right = 507.0
+offset_bottom = 165.0
+grow_horizontal = 2
+value = 100.0
+texture_under = ExtResource("7_ia4mi")
+texture_progress = ExtResource("8_njt4n")
+texture_progress_offset = Vector2(141, 42)
+
+[node name="BossIcon" type="TextureRect" parent="CanvasLayer/HealthBar"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_left = -9.0
+offset_top = -1.0
+offset_right = 141.0
+offset_bottom = 149.0
+texture = ExtResource("9_dyvy2")
+expand_mode = 1
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
