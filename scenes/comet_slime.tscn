@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b8m2wrwmanrn4" path="res://images/enemies/slime_particle8.png" id="5_2x1f3"]
 [ext_resource type="Texture2D" uid="uid://c7fkeckdjqeg" path="res://images/enemies/cloud_slime/particle_flipbook.png" id="6_ea7sf"]
 [ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="7_lqakx"]
-[ext_resource type="AudioStream" uid="uid://chtu4g3wjjdsk" path="res://audio/slime_fire.wav" id="8_64mrl"]
+[ext_resource type="AudioStream" uid="uid://dld0lh7d18g7v" path="res://audio/comet.wav" id="8_ubnvk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7nneo"]
 animations = [{
@@ -202,7 +202,7 @@ stream = ExtResource("7_lqakx")
 bus = &"SFX"
 
 [node name="Fire" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_64mrl")
+stream = ExtResource("8_ubnvk")
 bus = &"SFX"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

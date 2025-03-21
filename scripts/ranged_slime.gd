@@ -58,6 +58,7 @@ func _physics_process(delta: float) -> void:
 		attack_timer -= delta
 
 func shoot_fireball() -> void:
+	$Fire.play()
 	# Instantiate the enemy fireball
 	var bullet = enemy_fireball_scene.instantiate()
 	# Position it at the slime's location (or use a Marker2D if you want a different spawn point)

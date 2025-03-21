@@ -1,9 +1,9 @@
 extends "res://scripts/ranged_slime.gd"
 
 func shoot_fireball() -> void:
-	$Fire.play()
 	var bulletArray = []
 	for i in range(0, 8):
+		$Fire.play()
 		# Instantiate the enemy fireball
 		bulletArray.append(enemy_fireball_scene.instantiate())
 		# Position it at the slime's location
