@@ -25,4 +25,6 @@ func destroy() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if !body.is_in_group("Enemies") and !body.is_in_group("Player"):
+		$Explode.pitch_scale += randf_range(-0.2, 0.2)
+		$Explode.play()
 		destroy()

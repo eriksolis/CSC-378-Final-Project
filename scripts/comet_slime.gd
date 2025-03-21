@@ -40,6 +40,7 @@ func _physics_process(delta: float) -> void:
 			linear_velocity = Vector2.ZERO
 			has_stopped = true
 			await get_tree().create_timer(1).timeout
+			$Fire.play()
 			has_stopped = false
 			playerPos = player.global_position
 			attack_timer = attack_cooldown

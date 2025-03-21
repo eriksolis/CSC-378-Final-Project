@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bl123ikpe7y1h"]
+[gd_scene load_steps=18 format=3 uid="uid://bl123ikpe7y1h"]
 
 [ext_resource type="Script" path="res://scripts/overgrowth_slime.gd" id="1_yyy6j"]
 [ext_resource type="Texture2D" uid="uid://bayppu35sqo0l" path="res://images/enemies/overgrowth_slime/000.png" id="2_i333k"]
 [ext_resource type="Texture2D" uid="uid://b1marpabf1e5j" path="res://images/enemies/overgrowth_slime/001.png" id="3_o8y0r"]
 [ext_resource type="Texture2D" uid="uid://bc2dstnp6i1wi" path="res://images/enemies/overgrowth_slime/002.png" id="4_prusu"]
 [ext_resource type="Texture2D" uid="uid://p6sjdqbl732i" path="res://images/enemies/slime_particle11.png" id="5_1vwnv"]
+[ext_resource type="AudioStream" uid="uid://7wq1asih5fml" path="res://audio/overgrowth.wav" id="7_0b087"]
 [ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="12_8rlqt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7nneo"]
@@ -165,6 +166,11 @@ shape = SubResource("CapsuleShape2D_kmai8")
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_8rlqt")
+bus = &"SFX"
+
+[node name="Clone" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_0b087")
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="Navigation" type="Node2D" parent="."]

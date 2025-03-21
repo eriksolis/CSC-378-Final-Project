@@ -23,6 +23,7 @@ func _physics_process(delta:float) -> void:
 			stopped = true
 			cloned = true
 			await get_tree().create_timer(3).timeout
+			$Clone.play()
 			var newClone = clone.instantiate()
 			newClone.copied = copied
 			newClone.global_position = global_position - direction * 100

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://xevegll2238a"
+path="res://.godot/imported/flower slime.wav-302d073d5fd0c6f0d4c30f55f92c960a.sample"
+
+[deps]
+
+source_file="res://audio/flower slime.wav"
+dest_files=["res://.godot/imported/flower slime.wav-302d073d5fd0c6f0d4c30f55f92c960a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
