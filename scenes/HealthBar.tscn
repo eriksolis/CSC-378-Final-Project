@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwbu4p4e5td50"]
+
+[ext_resource type="Texture2D" uid="uid://csank4mnh0jiq" path="res://images/EnemyHealthBar.png" id="1_n8esn"]
+
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_n8esn")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(0.847717, 0.0150868, 0.00597688, 1)
+layout_mode = 0
+offset_left = 38.0
+offset_top = 22.0
+offset_right = 422.0
+offset_bottom = 39.0
+value = 100.0
+show_percentage = false

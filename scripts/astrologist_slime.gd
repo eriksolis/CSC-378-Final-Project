@@ -10,15 +10,30 @@ signal astrologist_defeated
 var destroyed = false
 var moving = true
 var counter = 2
+var health_bar_scene = preload("res://scenes/HealthBar.tscn") 
+var health_bar
 
 func _ready() -> void:
+	health_bar = health_bar_scene.instantiate()
+	add_child(health_bar)
+	health_bar.position = Vector2(-232, -180)
 	$SummonAnim.play("fadein")
 	await $SummonAnim.animation_finished
+	var bar_node = health_bar.get_node("ProgressBar")
+	if bar_node:
+		bar_node.max_value = health
+		bar_node.value = health
 	
 	var player = get_tree().get_first_node_in_group("Player")
 	if player:
 		astrologist_defeated.connect(player.unlock_dash)
-
+		
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	super._on_hitbox_area_entered(area)
+	var bar_node = health_bar.get_node("ProgressBar")
+	if bar_node:
+		bar_node.value = health
+		
 func destroy():
 	if !destroyed:
 		destroyed = true
@@ -33,6 +48,8 @@ func destroy():
 		await $SummonAnim.animation_finished
 		minibossDead.emit()
 		astrologist_defeated.emit()
+		if health_bar:
+			queue_free()
 		queue_free()
 
 func _physics_process(delta:float) -> void:

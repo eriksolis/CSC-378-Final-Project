@@ -53,6 +53,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		health -= area.damage
 		if health <= 0:
 			destroy()
+			
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):

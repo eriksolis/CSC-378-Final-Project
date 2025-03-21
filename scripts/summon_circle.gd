@@ -21,7 +21,7 @@ var enabled = false
 @onready var overgrowth_slime_scene = load("res://scenes/overgrowth_slime.tscn")
 var count = 0
 var spawned = 0
-@export var maxSpawns = 7
+@export var maxSpawns = 1
 @export var summonDelay = 0.5
 signal spawnComplete
 signal spawnedClear

@@ -10,11 +10,21 @@ signal minibossDead
 var destroyed = false
 var moving = true
 var counter = 3
+var health_bar_scene = preload("res://scenes/HealthBar.tscn") 
+var health_bar
+
 
 func _ready() -> void:
+	health_bar = health_bar_scene.instantiate()
+	add_child(health_bar)
+	health_bar.position = Vector2(-232, -180)
 	$SummonAnim.play("fadein")
 	await $SummonAnim.animation_finished
-
+	var bar_node = health_bar.get_node("ProgressBar")
+	if bar_node:
+		bar_node.max_value = health
+		bar_node.value = health
+		
 func destroy():
 	if !destroyed:
 		destroyed = true
@@ -28,6 +38,8 @@ func destroy():
 		$SummonAnim.play_backwards("fadein")
 		await $SummonAnim.animation_finished
 		minibossDead.emit()
+		if health_bar:
+			queue_free()
 		queue_free()
 
 func _physics_process(delta:float) -> void:
