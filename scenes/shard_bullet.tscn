@@ -1,0 +1,113 @@
+[gd_scene load_steps=13 format=3 uid="uid://4124ura6uuyq"]
+
+[ext_resource type="Script" path="res://scripts/enemy_fireball.gd" id="1_pqkdv"]
+[ext_resource type="Texture2D" uid="uid://bsqgv2qaanbxq" path="res://images/enemies/star_slime/corner_bullet.png" id="2_e70qw"]
+[ext_resource type="Texture2D" uid="uid://c7fkeckdjqeg" path="res://images/enemies/cloud_slime/particle_flipbook.png" id="3_itskn"]
+[ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="4_7phyt"]
+
+[sub_resource type="Animation" id="Animation_ajvcb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5ex32"]
+resource_name = "fadein"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ogsn0"]
+_data = {
+"RESET": SubResource("Animation_ajvcb"),
+"fadein": SubResource("Animation_5ex32")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fvhc1"]
+radius = 10.0
+height = 28.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vfdfb"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_wsdye"]
+_data = [Vector2(0, 0.603166), 0.0, 3.329, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_li4qk"]
+curve = SubResource("Curve_wsdye")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wpvxl"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.7
+alpha_curve = SubResource("CurveTexture_li4qk")
+anim_offset_max = 1.0
+
+[node name="EnemyFireball" type="Area2D" groups=["Enemies"]]
+y_sort_enabled = true
+collision_layer = 2
+script = ExtResource("1_pqkdv")
+speed = 6.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+rotation = 1.5708
+texture = ExtResource("2_e70qw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ogsn0")
+}
+autoplay = "fadein"
+speed_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_fvhc1")
+
+[node name="FireParticles" type="GPUParticles2D" parent="."]
+self_modulate = Color(1, 0.930874, 0.510623, 1)
+y_sort_enabled = true
+material = SubResource("CanvasItemMaterial_vfdfb")
+emitting = false
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_wpvxl")
+texture = ExtResource("3_itskn")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_7phyt")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

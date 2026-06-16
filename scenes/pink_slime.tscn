@@ -1,0 +1,181 @@
+[gd_scene load_steps=19 format=3 uid="uid://bpe8si04vxi0s"]
+
+[ext_resource type="Script" path="res://scripts/pink_slime.gd" id="1_nin15"]
+[ext_resource type="PackedScene" uid="uid://qqrsdx5mb1jv" path="res://scenes/pink_bullet.tscn" id="2_vre8b"]
+[ext_resource type="Texture2D" uid="uid://bofecdonnnwex" path="res://images/enemies/heart_slime/000.png" id="3_uwyd6"]
+[ext_resource type="Texture2D" uid="uid://btlche8c5aspq" path="res://images/enemies/heart_slime/001.png" id="4_bqgak"]
+[ext_resource type="Texture2D" uid="uid://cx0npvam6hhc5" path="res://images/enemies/heart_slime/002.png" id="5_we7w6"]
+[ext_resource type="Texture2D" uid="uid://bfoa5fim0bn2n" path="res://images/enemies/slime_particle7.png" id="6_4l4j1"]
+[ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="7_tu2cg"]
+[ext_resource type="AudioStream" uid="uid://bwnleyyckkajc" path="res://audio/heartslime.wav" id="8_5fjkp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7nneo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_uwyd6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bqgak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_we7w6")
+}],
+"loop": true,
+"name": &"pink",
+"speed": 6.0
+}]
+
+[sub_resource type="Curve" id="Curve_u1yal"]
+_data = [Vector2(0, 0.603166), 0.0, 3.329, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8ikw3"]
+curve = SubResource("Curve_u1yal")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fg8xw"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.7
+alpha_curve = SubResource("CurveTexture_8ikw3")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3aloq"]
+radius = 32.0
+height = 90.0
+
+[sub_resource type="Animation" id="Animation_ad0yy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SlimeSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SlimeSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rtm10"]
+resource_name = "fadein"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SlimeSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2hsbx"]
+resource_name = "squish"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SlimeSprite:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tvx30"]
+_data = {
+"RESET": SubResource("Animation_ad0yy"),
+"fadein": SubResource("Animation_rtm10"),
+"squish": SubResource("Animation_2hsbx")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kmai8"]
+radius = 27.0
+height = 80.0
+
+[node name="PinkSlime" type="RigidBody2D" groups=["Enemies"]]
+y_sort_enabled = true
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_nin15")
+health = 4
+attack_cooldown = 3.0
+enemy_fireball_scene = ExtResource("2_vre8b")
+
+[node name="SlimeSprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 3
+y_sort_enabled = true
+position = Vector2(0, 32)
+sprite_frames = SubResource("SpriteFrames_7nneo")
+animation = &"pink"
+autoplay = "pink"
+offset = Vector2(0, -32)
+
+[node name="SlimeParticles" type="GPUParticles2D" parent="SlimeSprite"]
+y_sort_enabled = true
+position = Vector2(0, -32)
+emitting = false
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_fg8xw")
+texture = ExtResource("6_4l4j1")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 18
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1, 4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3aloq")
+
+[node name="SummonAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tvx30")
+}
+speed_scale = 2.0
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(2, 4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kmai8")
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_tu2cg")
+bus = &"SFX"
+
+[node name="Fire" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_5fjkp")
+volume_db = 20.0
+bus = &"SFX"
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

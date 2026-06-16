@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://qsmge41ixknx"]
+
+[ext_resource type="Texture2D" uid="uid://cg7yg6f1bl6mo" path="res://images/summon/boss/001.png" id="1_m5xkm"]
+[ext_resource type="Texture2D" uid="uid://drd2dfgsyegab" path="res://images/summon/boss/000.png" id="2_3imdn"]
+[ext_resource type="Script" path="res://scenes/boss_summon.gd" id="2_3patx"]
+[ext_resource type="AudioStream" uid="uid://bg8nmhtrh2ljj" path="res://audio/summon.wav" id="4_ox0wh"]
+
+[sub_resource type="Animation" id="Animation_ybg60"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Glow:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jpk6g"]
+resource_name = "fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.784314)]
+}
+
+[sub_resource type="Animation" id="Animation_3o52e"]
+resource_name = "summon"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Glow:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.196078)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_acc5b"]
+_data = {
+"RESET": SubResource("Animation_ybg60"),
+"fadein": SubResource("Animation_jpk6g"),
+"summon": SubResource("Animation_3o52e")
+}
+
+[node name="Summon" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("1_m5xkm")
+script = ExtResource("2_3patx")
+
+[node name="Glow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+y_sort_enabled = true
+texture = ExtResource("2_3imdn")
+offset = Vector2(0, -42)
+
+[node name="SummonManager" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_acc5b")
+}
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -47)
+
+[node name="Summon" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ox0wh")
+pitch_scale = 0.5
+bus = &"SFX"

@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnfu8fswmaame"]
+
+[ext_resource type="Script" path="res://scripts/music_handler.gd" id="1_4wdwf"]
+[ext_resource type="AudioStream" uid="uid://bqtqu2lti8h86" path="res://audio/bit tragedy.wav" id="1_51k4n"]
+[ext_resource type="AudioStream" uid="uid://del06e5e2cshp" path="res://audio/square dreams.wav" id="2_fmkfq"]
+[ext_resource type="AudioStream" uid="uid://beo35w5h1gsao" path="res://audio/swarming onslaught.wav" id="3_1gr8j"]
+[ext_resource type="AudioStream" uid="uid://c48vrg8j1wd2" path="res://audio/pixelized fields.wav" id="4_al66w"]
+
+[node name="MusicHandler" type="Node"]
+process_mode = 3
+script = ExtResource("1_4wdwf")
+
+[node name="BitTragedy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_51k4n")
+volume_db = -10.0
+bus = &"Music"
+
+[node name="SquareDreams" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fmkfq")
+volume_db = -10.0
+bus = &"Music"
+
+[node name="SwarmingOnslaught" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1gr8j")
+volume_db = -10.0
+bus = &"Music"
+
+[node name="PixelizedFields" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_al66w")
+volume_db = -10.0
+bus = &"Music"

@@ -1,0 +1,221 @@
+[gd_scene load_steps=20 format=3 uid="uid://cwvy547yj53aa"]
+
+[ext_resource type="Script" path="res://scripts/botanist_slime.gd" id="1_71ocm"]
+[ext_resource type="Texture2D" uid="uid://k31ynk4uib1l" path="res://images/enemies/botanist_slime/000.png" id="2_h3i4b"]
+[ext_resource type="Texture2D" uid="uid://c4gdfcwnjvbp8" path="res://images/enemies/botanist_slime/001.png" id="3_vni3a"]
+[ext_resource type="Texture2D" uid="uid://dd8qsv71clesn" path="res://images/enemies/botanist_slime/002.png" id="4_71b5j"]
+[ext_resource type="Texture2D" uid="uid://cb45fn7a7ek2c" path="res://images/enemies/slime_particle.png" id="5_0s6rn"]
+[ext_resource type="AudioStream" uid="uid://cr8u2qgf7j1ui" path="res://audio/hit.wav" id="6_kn8ba"]
+[ext_resource type="Texture2D" uid="uid://73fb3qh68iif" path="res://images/enemies/boss_health_bar/001.png" id="7_o3qfu"]
+[ext_resource type="Texture2D" uid="uid://8ael3f46uy1n" path="res://images/enemies/boss_health_bar/002.png" id="8_qpaf6"]
+[ext_resource type="Texture2D" uid="uid://di57ygo2hvbyp" path="res://images/enemies/botanist_slime/flower_summon.png" id="9_ugjqp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7nneo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h3i4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vni3a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_71b5j")
+}],
+"loop": true,
+"name": &"botanist_slime",
+"speed": 6.0
+}]
+
+[sub_resource type="Curve" id="Curve_u1yal"]
+_data = [Vector2(0, 0.603166), 0.0, 3.329, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_m7sat"]
+curve = SubResource("Curve_u1yal")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fg8xw"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_min = 600.0
+initial_velocity_max = 600.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 5.0
+alpha_curve = SubResource("CurveTexture_m7sat")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3aloq"]
+radius = 95.0
+height = 272.0
+
+[sub_resource type="Animation" id="Animation_ad0yy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SlimeSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SlimeSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rtm10"]
+resource_name = "fadein"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SlimeSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2hsbx"]
+resource_name = "squish"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SlimeSprite:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tvx30"]
+_data = {
+"RESET": SubResource("Animation_ad0yy"),
+"fadein": SubResource("Animation_rtm10"),
+"squish": SubResource("Animation_2hsbx")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kmai8"]
+radius = 84.0
+height = 242.0
+
+[node name="BotanistSlime" type="CharacterBody2D" groups=["Enemies"]]
+y_sort_enabled = true
+script = ExtResource("1_71ocm")
+health = 200
+
+[node name="SlimeSprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 3
+y_sort_enabled = true
+position = Vector2(0, 165)
+sprite_frames = SubResource("SpriteFrames_7nneo")
+animation = &"botanist_slime"
+autoplay = "botanist_slime"
+offset = Vector2(0, -165)
+
+[node name="SlimeParticles" type="GPUParticles2D" parent="SlimeSprite"]
+y_sort_enabled = true
+position = Vector2(0, -142)
+emitting = false
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_fg8xw")
+texture = ExtResource("5_0s6rn")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 18
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 9)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3aloq")
+
+[node name="SummonAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tvx30")
+}
+speed_scale = 2.0
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kmai8")
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_kn8ba")
+bus = &"SFX"
+
+[node name="Navigation" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
+simplify_path = true
+
+[node name="Timer" type="Timer" parent="Navigation"]
+wait_time = 0.1
+autostart = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Lever" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Lever"]
+position = Vector2(0, -150)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -507.0
+offset_top = 15.0
+offset_right = 507.0
+offset_bottom = 165.0
+grow_horizontal = 2
+value = 100.0
+texture_under = ExtResource("7_o3qfu")
+texture_progress = ExtResource("8_qpaf6")
+texture_progress_offset = Vector2(141, 42)
+
+[node name="BossIcon" type="TextureRect" parent="CanvasLayer/HealthBar"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_top = -8.0
+offset_right = 150.0
+offset_bottom = 142.0
+texture = ExtResource("9_ugjqp")
+expand_mode = 1
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
